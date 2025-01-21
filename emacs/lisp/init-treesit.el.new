@@ -1,0 +1,65 @@
+;;; init-treesit.el --- the configurations for treesit
+;;; Commentary:
+;;; Code:
+
+;; -*- lexical-binding: t -*-
+
+(use-package treesit-auto
+  :when (and (fboundp 'treesit-available-p) (treesit-available-p))
+  :mode (("\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'" . dockerfile-ts-mode)
+	 ("\\.go\\'" . go-ts-mode)
+	 ("/go\\.mod\\'" . go-mod-ts-mode)
+	 ("\\.rs\\'" . rust-ts-mode)
+	 ("\\.ts\\'" . typescript-ts-mode)
+	 ("\\.y[a]?ml\\'" . yaml-ts-mode))
+  :config (setq treesit-font-lock-level 4)
+  :init
+  (setq major-mode-remap-alist
+	'((sh-mode         . bash-ts-mode)
+	  (c-mode          . c-ts-mode)
+	  (c++-mode        . c++-ts-mode)
+	  (c-or-c++-mode   . c-or-c++-ts-mode)
+	  (css-mode        . css-ts-mode)
+	  (js-mode         . js-ts-mode)
+	  (java-mode       . java-ts-mode)
+	  (js-json-mode    . json-ts-mode)
+	  (makefile-mode   . cmake-ts-mode)
+	  (python-mode     . python-ts-mode)
+	  (ruby-mode       . ruby-ts-mode)
+	  (conf-toml-mode  . toml-ts-mode)))
+  (setq treesit-language-source-alist
+	'((bash       . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-bash"))
+	  (c          . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-c"))
+	  (cpp        . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-cpp"))
+	  (css        . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-css"))
+	  (cmake      . ("https://mirror.ghproxy.com/https://github.com/uyha/tree-sitter-cmake"))
+	  (csharp     . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-c-sharp.git"))
+	  (dockerfile . ("https://mirror.ghproxy.com/https://github.com/camdencheek/tree-sitter-dockerfile"))
+	  (elisp      . ("https://mirror.ghproxy.com/https://github.com/Wilfred/tree-sitter-elisp"))
+	  (go         . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-go"))
+	  (gomod      . ("https://mirror.ghproxy.com/https://github.com/camdencheek/tree-sitter-go-mod.git"))
+	  (html       . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-html"))
+	  (java       . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-java.git"))
+	  (javascript . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-javascript"))
+	  (json       . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-json"))
+	  (lua        . ("https://mirror.ghproxy.com/https://github.com/Azganoth/tree-sitter-lua"))
+	  (make       . ("https://mirror.ghproxy.com/https://github.com/alemuller/tree-sitter-make"))
+	  (markdown   . ("https://mirror.ghproxy.com/https://github.com/MDeiml/tree-sitter-markdown" nil "tree-sitter-markdown/src"))
+	  (ocaml      . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-ocaml" nil "ocaml/src"))
+	  (org        . ("https://mirror.ghproxy.com/https://github.com/milisims/tree-sitter-org"))
+	  (python     . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-python"))
+	  (php        . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-php"))
+	  (typescript . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-typescript" nil "typescript/src"))
+	  (tsx        . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src"))
+	  (ruby       . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-ruby"))
+	  (rust       . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-rust"))
+	  (sql        . ("https://mirror.ghproxy.com/https://github.com/m-novikov/tree-sitter-sql"))
+	  (vue        . ("https://mirror.ghproxy.com/https://github.com/merico-dev/tree-sitter-vue"))
+	  (yaml       . ("https://mirror.ghproxy.com/https://github.com/ikatyang/tree-sitter-yaml"))
+	  (toml       . ("https://mirror.ghproxy.com/https://github.com/tree-sitter/tree-sitter-toml"))
+	  (zig        . ("https://mirror.ghproxy.com/https://github.com/GrayJack/tree-sitter-zig")))))
+
+(provide 'init-treesit)
+
+;;; init-treesit.el ends here
+
