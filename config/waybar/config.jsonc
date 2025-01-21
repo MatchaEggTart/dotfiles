@@ -1,0 +1,97 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 40,
+  "modules-left": [
+    "custom/appmenu",
+    "wlr/taskbar"
+  ],
+  "custom/appmenu": {
+    "format": " Menu {icon}",
+    "format-icon": "󰻀",
+    "rotate": 0,
+    "on-click": "sh ~/.config/waybar/runtofi.sh"
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 30,
+    "tooltip": true,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "active-first": true
+  },
+  "modules-center": [
+    "clock"
+  ],
+  "clock": {
+    "timezone": "Asia/Shanghai",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "modules-right": [
+    "hyprland/workspaces",
+    "network",
+    "pulseaudio",
+    "keyboard-state",
+    "tray"
+  ],
+  "hyprland/workspaces": {
+    "format": " {name} ",
+    "persistent-workspaces": {
+      "Virtual-1": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "network": {
+    "format-wifi": "{essid} ({signalStrength}%)   ",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠ ",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "tray": {
+    "spacing": 20,
+    "icon-size": 40
+  },
+  "keyboard-state": {
+    "interval": 0.1,
+    "capslock": true,
+    "icon-size" : 60,
+    "format": {
+      "capslock": " {icon} "
+    },
+    "format-icons": {
+      "locked": "🅰️",
+      "unlocked": "🔤"
+    }
+  }
+}
