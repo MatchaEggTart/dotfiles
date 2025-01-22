@@ -167,5 +167,7 @@ vterm_printf() {
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
+# Hyprland Use
+
 # ~/.zprofile
-source $HOME/.zprofile 
+source $HOME/.zsh_profile
