@@ -14,11 +14,6 @@
     "hyprland/workspaces",
     // "temperature",
     "network",
-    /*
-    "network#bat1",
-    "network#bat2",
-    "network#bat3",
-    */
     "pulseaudio",
     // "keyboard-state",
     "tray",
@@ -124,52 +119,24 @@
     },
     "on-click": "pavucontrol"
   },
-  
   "network": {
     //  "interface": "enp11s0", // (Optional) To force the use of this interface
     // "format-wifi": " {bandwidthDownBits}   | {bandwidthUpBits}   |   {signalStrength}%",
     "format-wifi": "<span color='green'><b>{essid}</b></span> {bandwidthDownBits}   | {bandwidthUpBits}   |   ",
-    "format-ethernet": " {ban3dwidthDownBits}   | {bandwidthUpBits}   | 󰈀 ",
-    "tooltip-format": "{ipaddr} ({essid}) | {ifname} via {gwaddr}",
-    "format-linked": " {ifname} (No IP)",
+    "format-ethernet": " {bandwidthDownBits}   | {bandwidthUpBits}   | 󰈀 ",
     "format-disconnected": "⚠ Disconnected",
+    "tooltip-format-wifi": "{ipaddr} ({essid}) | {ifname} via {gwaddr}",
+    "tooltip-format-ethernet": "{ipaddr}  | {ifname} via {gwaddr}",
+    "tooltip-format-disconnected": "Disconnected",
     "interval": 2,
-    "format-alt": "󰤨  {signalStrength}%",
-    // "max-length": 50,
-  },
-  /*
-  "network#bat1": {
-    "format-wifi": "<span color='green'><b>{essid}</b></span>",
-    "format-ethernet": "",
-    "tooltip-format": "{ipaddr} ({essid}) | {ifname} via {gwaddr}",
-    "format-linked": " {ifname} (No IP)",
-    "format-disconnected": "⚠ Disconnected",
-    "interval": 2,
-    "format-alt": "󰤨  {signalStrength}%",
-    // "max-length": 50,
-  },
-  "network#bat2": {
-    "format-wifi": "{bandwidthDownBits}  ",
-    "format-ethernet": " {ban3dwidthDownBits}  ",
-    "tooltip-format": "{ipaddr} ({essid}) | {ifname} via {gwaddr}",
+    "max-length": 50,
+    // "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    // "tooltip-format-ethernet": "{ifname} ",
+    // "tooltip-format-disconnected": "Disconnected",
     // "format-linked": " {ifname} (No IP)",
     // "format-disconnected": "⚠ Disconnected",
-    "interval": 2,
     // "format-alt": "󰤨  {signalStrength}%",
-    // "max-length": 50,
   },
-  "network#bat3": {
-    //  "interface": "enp11s0", // (Optional) To force the use of this interface
-    "format-wifi": "{bandwidthUpBits}   |   ",
-    "format-ethernet": "{bandwidthUpBits}   | 󰈀 ",
-    "tooltip-format": "{ipaddr} ({essid}) | {ifname} via {gwaddr}",
-    // "format-linked": " {ifname} (No IP)",
-    // "format-disconnected": "⚠ Disconnected",
-    "interval": 2,
-    // "format-alt": "󰤨  {signalStrength}%",
-    // "max-length": 50,
-  },
-  */
   "tray": {
     "spacing": 20,
     "icon-size": 30
