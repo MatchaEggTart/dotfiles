@@ -2,13 +2,33 @@
   "layer": "top",
   "position": "top",
   "height": 40,
+  // 分组
   "modules-left": [
     "custom/appmenu",
-    "wlr/taskbar"
+    "wlr/taskbar",
   ],
+  "modules-center": [
+    "clock",
+  ],
+  "modules-right": [
+    "hyprland/workspaces",
+    // "temperature",
+    "network",
+    /*
+    "network#bat1",
+    "network#bat2",
+    "network#bat3",
+    */
+    "pulseaudio",
+    // "keyboard-state",
+    "tray",
+    "custom/power"
+  ],
+  // 模块
   "custom/appmenu": {
-    "format": " Menu {icon}",
-    "format-icon": "󰻀",
+    "format": "   ",
+    // "format-icon": "󰻀",
+    "tooltip-format": "Menu",
     "rotate": 0,
     "on-click": "sh ~/.config/waybar/runtofi.sh"
   },
@@ -21,23 +41,49 @@
     "on-click-middle": "close",
     "active-first": true
   },
-  "modules-center": [
-    "clock"
-  ],
   "clock": {
-    "timezone": "Asia/Shanghai",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%Y-%m-%d}"
+    "format": "{:%H:%M}",
+    "format-alt": "{:L%A, %B %d, %Y (%R)}  ",
+    "tooltip-format": "\n<span size='14pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   },
-  "modules-right": [
-    "hyprland/workspaces",
-    "network",
-    "pulseaudio",
-    "keyboard-state",
-    "tray"
-  ],
+  "actions": {
+    "on-click-forward": "tz_up",
+    "on-click-backward": "tz_down",
+    "on-scroll-up": "shift_up",
+    "on-scroll-down": "shift_down"
+  },
   "hyprland/workspaces": {
-    "format": " {name} ",
+    "format": "{icon}",
+    "icon-size": 40,
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      // "active": "",
+      // "default": ""
+    },
     "persistent-workspaces": {
       "Virtual-1": [
         1,
@@ -48,13 +94,13 @@
       ]
     }
   },
-  "network": {
-    "format-wifi": "{essid} ({signalStrength}%)   ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠ ",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  "temperature": {
+    "thermal-zone": 2,
+    // hwmon1 nvme; hwmon2 cpu; hwmon 主板
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C",
+    "format": "{temperatureC}°C"
   },
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
@@ -78,14 +124,60 @@
     },
     "on-click": "pavucontrol"
   },
+  
+  "network": {
+    //  "interface": "enp11s0", // (Optional) To force the use of this interface
+    // "format-wifi": " {bandwidthDownBits}   | {bandwidthUpBits}   |   {signalStrength}%",
+    "format-wifi": "<span color='green'><b>{essid}</b></span> {bandwidthDownBits}   | {bandwidthUpBits}   |   ",
+    "format-ethernet": " {ban3dwidthDownBits}   | {bandwidthUpBits}   | 󰈀 ",
+    "tooltip-format": "{ipaddr} ({essid}) | {ifname} via {gwaddr}",
+    "format-linked": " {ifname} (No IP)",
+    "format-disconnected": "⚠ Disconnected",
+    "interval": 2,
+    "format-alt": "󰤨  {signalStrength}%",
+    // "max-length": 50,
+  },
+  /*
+  "network#bat1": {
+    "format-wifi": "<span color='green'><b>{essid}</b></span>",
+    "format-ethernet": "",
+    "tooltip-format": "{ipaddr} ({essid}) | {ifname} via {gwaddr}",
+    "format-linked": " {ifname} (No IP)",
+    "format-disconnected": "⚠ Disconnected",
+    "interval": 2,
+    "format-alt": "󰤨  {signalStrength}%",
+    // "max-length": 50,
+  },
+  "network#bat2": {
+    "format-wifi": "{bandwidthDownBits}  ",
+    "format-ethernet": " {ban3dwidthDownBits}  ",
+    "tooltip-format": "{ipaddr} ({essid}) | {ifname} via {gwaddr}",
+    // "format-linked": " {ifname} (No IP)",
+    // "format-disconnected": "⚠ Disconnected",
+    "interval": 2,
+    // "format-alt": "󰤨  {signalStrength}%",
+    // "max-length": 50,
+  },
+  "network#bat3": {
+    //  "interface": "enp11s0", // (Optional) To force the use of this interface
+    "format-wifi": "{bandwidthUpBits}   |   ",
+    "format-ethernet": "{bandwidthUpBits}   | 󰈀 ",
+    "tooltip-format": "{ipaddr} ({essid}) | {ifname} via {gwaddr}",
+    // "format-linked": " {ifname} (No IP)",
+    // "format-disconnected": "⚠ Disconnected",
+    "interval": 2,
+    // "format-alt": "󰤨  {signalStrength}%",
+    // "max-length": 50,
+  },
+  */
   "tray": {
     "spacing": 20,
-    "icon-size": 40
+    "icon-size": 30
   },
   "keyboard-state": {
     "interval": 0.1,
     "capslock": true,
-    "icon-size" : 60,
+    "icon-size": 60,
     "format": {
       "capslock": " {icon} "
     },
@@ -93,5 +185,11 @@
       "locked": "🅰️",
       "unlocked": "🔤"
     }
+  },
+  "custom/power": {
+    "format": " ⏻ ",
+    "icon-size": 40,
+    "tooltip": false,
+    "on-click": "wlogout --protocol layer-shell"
   }
 }
