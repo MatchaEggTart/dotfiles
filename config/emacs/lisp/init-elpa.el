@@ -8,13 +8,19 @@
 ;; (message package-archives)
 (use-package package
   :config
-  (add-to-list 'package-archives '("melpa"         . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
-  (add-to-list 'package-archives '("melpa-stable"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/stable-melpa/"))
-  (add-to-list 'package-archives '("gnu"           . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
-  (add-to-list 'package-archives '("gnu-devel"     . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu-devel/"))
-  (add-to-list 'package-archives '("nongnu"        . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/"))
-  (add-to-list 'package-archives '("nongnu-devel"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu-devel/"))
-  (add-to-list 'package-archives '("org"           . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/"))
+  (add-to-list 'package-archives '("melpa"	     . "https://mirrors.ustc.edu.cn/elpa/melpa/"))
+  (add-to-list 'package-archives '("melpa-stable"  . "https://mirrors.ustc.edu.cn/elpa/stable-melpa/"))
+  (add-to-list 'package-archives '("gnu"	     . "https://mirrors.ustc.edu.cn/elpa/gnu/"))
+  (add-to-list 'package-archives '("gnu-devel"	    . "https://mirrors.ustc.edu.cn/elpa/gnu-devel/"))
+  (add-to-list 'package-archives '("nongnu"	     . "https://mirrors.ustc.edu.cn/elpa/nongnu/"))
+  (add-to-list 'package-archives '("nongnu-devel"  . "https://mirrors.ustc.edu.cn/elpa/nongnu-devel/"))
+  (add-to-list 'package-archives '("org"	     . "https://mirrors.ustc.edu.cn/elpa/org/"))
+  ;; (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/")) ;; installed by default
+  ;; (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/")) ;; installed by default from Emacs 28 onwards
+  ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+  ;; (add-to-list 'package-archives '("elpa-devel" . "https://elpa.gnu.org/devel/"))
+  ;; (add-to-list 'package-archives '("nongnu-devel" . "https://elpa.nongnu.org/devel/"))
   (unless (bound-and-true-p package--initialized)
     (package-initialize))
   (progn
@@ -36,6 +42,7 @@
 
 ;; 默认使用 melpa-stable
 (setq use-package-always-pin "melpa-stable")
+;; (setq use-package-always-pin "nongnu")
 
 ;; 装完插件的重启工具
 (use-package restart-emacs)

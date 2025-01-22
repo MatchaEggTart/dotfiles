@@ -40,8 +40,8 @@
     ;; Setting English Font
     (set-face-attribute 'default nil :font (font-spec :family "JetBrainsMonoNerdFont" :size 16))
     ;; Setting Chinese Font
-    (set-fontset-font t 'han (font-spec :family "霞鹜文楷" :weight 'bold))
-
+    ;; (set-fontset-font t 'han (font-spec :family "霞鹜文楷" :weight 'bold))
+    (set-fontset-font t 'han (font-spec :family "WenQuanYi Zen Hei Mono" :weight 'bold))
     ;; 透明度
     ;; (set-frame-parameter nil 'alpha-background 90)
     ;; (add-to-list 'default-frame-alist '(alpha-background . 90))
@@ -69,25 +69,47 @@
   )
 
 ;; 主题
-;;; For packaged versions which must use `require'.
-(use-package modus-themes
+;; For packaged versions which must use `require'.
+;; (use-package modus-themes
+;;   :init
+;;   (require-theme 'modus-themes)
+;;   :config
+;;   (progn
+;;     ;; Add all your customizations prior to loading the themes
+;;     (setq modus-themes-italic-constructs t
+;;  	  modus-themes-bold-constructs nil)
+;;     
+;;     ;; Maybe define some palette overrides, such as by using our presets
+;;     (setq modus-themes-common-palette-overrides
+;;  	  modus-themes-preset-overrides-intense)
+;;     
+;;     ;; Load the theme of your choice.
+;;     (load-theme 'modus-operandi-tinted :no-confim)
+;;     
+;;     ;; (define-key global-map (kbd "<f5>") #'modus-themes-toggle)
+;;     )
+;;   )
+
+;; 垃圾
+;; (use-package dracula-theme
+;;   :pin nongnu
+;;   :ensure t
+;;   :init
+;;   (require-theme 'dracula-theme)
+;;   :config
+;;   (load-theme 'dracula t)
+;;   )
+
+;; catppuccin-theme
+(use-package catppuccin-theme
+  :ensure t
   :init
-  (require-theme 'modus-themes)
+  (require-theme 'catppuccin-theme)
   :config
-  (progn
-    ;; Add all your customizations prior to loading the themes
-    (setq modus-themes-italic-constructs t
-          modus-themes-bold-constructs nil)
-
-    ;; Maybe define some palette overrides, such as by using our presets
-    (setq modus-themes-common-palette-overrides
-          modus-themes-preset-overrides-intense)
-
-    ;; Load the theme of your choice.
-    (load-theme 'modus-operandi-tinted :no-confim)
-
-    ;; (define-key global-map (kbd "<f5>") #'modus-themes-toggle)
-    )
+  (add-hook 'server-after-make-frame-hook #'catppuccin-reload)
+  (load-theme 'catppuccin :no-confirm)
+  (setq catppuccin-flavor 'latte) ;; or 'latte, 'macchiato, or 'mocha 'frappe
+  ;; (catppuccin-reload)
   )
 
 ;; 代码更多颜色
@@ -107,7 +129,8 @@
   :init
   (progn
     (setq column-number-mode t)
-    ))
+    )
+  )
 
 ;; 显示按键指令
 (use-package keycast
