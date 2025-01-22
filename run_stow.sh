@@ -16,4 +16,6 @@ rm -rf $HOME/.config/waybar
 stow bash
 stow zsh
 stow -t $HOME/.config config
+
+mkdir -p $HOME/Pictures/Wallpapers
 cp -r hypr/* $HOME/.config/hypr/
