@@ -18,10 +18,6 @@
     font-size: 20px;
 }
 
-#clock.calendar {
-    font-size: 40px;
-}
-
 #workspaces {
     font-size: 40px;
     margin: 0 5px;
@@ -37,6 +33,7 @@
 }
 
 #workspaces button:hover {
+    background-color: #64727d;
     color: green;
 }
 
@@ -87,12 +84,22 @@
 
 #custom-appmenu {
     padding: 0 3px;
+    color: #64727d;
+    font-size: 25px;    
+}
+
+#custom-appmenu:hover {
+    box-shadow: inset 0 -3px #ffffff;
     color: skyblue;
-    font-size: 25px;
-    
 }
 
 #custom-power {
     padding: 0 10px;
     color: #64727d;
+}
+
+#custom-power:hover {
+    background-color: #64727d;
+    box-shadow: inset 0 -3px #ffffff;
+    color: purple;
 }
