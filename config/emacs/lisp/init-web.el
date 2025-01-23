@@ -5,6 +5,7 @@
 ;; -*- lexical-binding: t -*-
 
 ;; emmet
+;; meta:vp ctrl-j
 (use-package emmet-mode
   :hook ((
 	  ;;sgml-mode-hook
