@@ -5,7 +5,8 @@
   // 分组
   "modules-left": [
     "custom/appmenu",
-    "wlr/taskbar",
+    "wlr/taskbar"
+    // "backlight"
   ],
   "modules-center": [
     "clock",
@@ -14,6 +15,7 @@
     "hyprland/workspaces",
     // "temperature",
     "network",
+
     "pulseaudio",
     // "keyboard-state",
     "tray",
@@ -137,6 +139,13 @@
     // "format-disconnected": "⚠ Disconnected",
     // "format-alt": "󰤨  {signalStrength}%",
   },
+  /*
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": ["", ""]
+  },
+  */
   "tray": {
     "spacing": 20,
     "icon-size": 30
