@@ -91,26 +91,26 @@
 ;;   )
 
 ;; 垃圾
-;; (use-package dracula-theme
-;;   :pin nongnu
-;;   :ensure t
-;;   :init
-;;   (require-theme 'dracula-theme)
-;;   :config
-;;   (load-theme 'dracula t)
-;;   )
+ (use-package dracula-theme
+   :pin nongnu
+   :ensure t
+   :init
+   (require-theme 'dracula-theme)
+   :config
+   (load-theme 'dracula t)
+   )
 
 ;; catppuccin-theme
-(use-package catppuccin-theme
-  :ensure t
-  :init
-  (require-theme 'catppuccin-theme)
-  :config
-  (add-hook 'server-after-make-frame-hook #'catppuccin-reload)
-  (load-theme 'catppuccin :no-confirm)
-  (setq catppuccin-flavor 'latte) ;; or 'latte, 'macchiato, or 'mocha 'frappe
-  ;; (catppuccin-reload)
-  )
+;; (use-package catppuccin-theme
+;;   :ensure t
+;;   :init
+;;   (require-theme 'catppuccin-theme)
+;;   :config
+;;   (add-hook 'server-after-make-frame-hook #'catppuccin-reload)
+;;   (load-theme 'catppuccin :no-confirm)
+;;   (setq catppuccin-flavor 'latte) ;; or 'latte, 'macchiato, or 'mocha 'frappe
+;;   ;; (catppuccin-reload)
+;;   )
 
 ;; 代码更多颜色
 (use-package color-identifiers-mode
