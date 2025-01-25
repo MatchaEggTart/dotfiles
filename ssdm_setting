@@ -1,0 +1,22 @@
+Name= /usr/lib/sddm/sddm.conf.d
+
+Face= /usr/share/sddm/faces/UserName.face.icon
+
+
+
+# sddm theme
+
+open "/usr/lib/sddm/sddm.conf.d/default.conf"
+
+edit section "[Theme]"
+
+for example:
+
+[Theme]
+
+Current=name_theme
+
+
+#name_theme is a theme inside "/usr/share/sddm/themes/" (to download themes:https://store.kde.org/browse?cat=101&ord=latest)
+
+#https://wiki.archlinux.org/title/SDDM#:~:text=The%20default%20configuration,for%20all%20options.
