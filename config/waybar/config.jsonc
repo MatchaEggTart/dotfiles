@@ -151,11 +151,11 @@
     "format-icons": ["\uDB80\uDCDE", "\uDB80\uDCDF", "\uDB80\uDCE0"],
     "return-type": "json",
     "exec-on-event": false,
-    "exec": "ddccontrol -r 0x10 dev:/dev/i2c-16 2>/dev/null | grep -oP '(?<=\\+/)\\d+(?=\\/100)' | { read x; echo '{\"percentage\":'${x}'}'; }",
-    "on-scroll-up": "notify-send \"Brightness + 10%\" && ddccontrol -r 0x10 -W +10 dev:/dev/i2c-16 2>/dev/null",
-    "on-scroll-down": "notify-send \"Brightness - 10%\" && ddccontrol -r 0x10 -W -10 dev:/dev/i2c-16 2>/dev/null",
-    "on-click": "ddccontrol -r 0x10 -w 0 dev:/dev/i2c-16 2>/dev/null",
-    "on-click-right": "ddccontrol -r 0x10 -w 100 dev:/dev/i2c-16 2>/dev/null",
+    "exec": "ddccontrol -r 0x10 dev:/dev/i2c-1 2>/dev/null | grep -oP '(?<=\\+/)\\d+(?=\\/100)' | { read x; echo '{\"percentage\":'${x}'}'; }",
+    "on-scroll-up": "notify-send \"Brightness + 10%\" && ddccontrol -r 0x10 -W +10 dev:/dev/i2c-1 2>/dev/null",
+    "on-scroll-down": "notify-send \"Brightness - 10%\" && ddccontrol -r 0x10 -W -10 dev:/dev/i2c-1 2>/dev/null",
+    "on-click": "ddccontrol -r 0x10 -w 0 dev:/dev/i2c-1 2>/dev/null",
+    "on-click-right": "ddccontrol -r 0x10 -w 100 dev:/dev/i2c-1 2>/dev/null",
     "interval": 1
   },
   // 关机键
