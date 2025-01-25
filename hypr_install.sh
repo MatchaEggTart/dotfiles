@@ -8,6 +8,8 @@
 # wlogou 开机关机功能
 # ddccontrol 外接屏幕光度
 sudo pacman -Syy mako hyprpaper waybar hyprlock hypridle brightnessctl
+# 图标主题
+sudo pacman -S papirus-icon-theme
 mkdir -p $HOME/Pictures/Wallpapers
 paru -S tofi wlogout ddccontrol
 # if use input
