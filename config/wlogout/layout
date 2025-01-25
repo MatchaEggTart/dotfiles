@@ -6,13 +6,13 @@
 }
 {
   "label" : "hibernate",
-  "action" : "systemctl hibernate",
+  "action" : "notify-send 'systemctl hibernate'",
   "text" : "Hibernate",
   "keybind" : "h"
 }
 {
   "label" : "logout",
-  "action" : "sleep 1; hyprctl dispatch exit",
+  "action" : "notify-send 'sleep 1; hyprctl dispatch exit'",
   "text" : "Logout",
   "keybind" : "e"
 }
@@ -24,7 +24,7 @@
 }
 {
   "label" : "suspend",
-  "action" : "systemctl suspend",
+  "action" : "notify-send 'systemctl suspend'",
   "text" : "Suspend",
   "keybind" : "u"
 }

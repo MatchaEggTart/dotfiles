@@ -139,7 +139,7 @@ source /usr/share/nvm/bash_completion
 source /usr/share/nvm/install-nvm-exec
 
 # open QQMusic
-alias qqmusic="/opt/Tencent/QQMusic/qqmusic-1.1.5.AppImage --no-sandbox"
+alias qqmusic="/opt/Tencent/QQMusic/qqmusic-1.1.7.AppImage --no-sandbox"
 # close QQMusic
 alias killqqmusic="killall -9 qqmusic"
 
