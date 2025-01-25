@@ -2,26 +2,21 @@
   "layer": "top",
   "position": "top",
   "height": 40,
-  // 分组
-  "modules-left": [
-    "custom/appmenu",
-    "wlr/taskbar"
-    // "backlight"
-  ],
-  "modules-center": [
-    "clock",
-  ],
+  // 左侧栏
+  "modules-left": ["custom/appmenu", "wlr/taskbar"],
+  // 中部栏
+  "modules-center": ["clock"],
+  // 右侧栏
   "modules-right": [
     "hyprland/workspaces",
-    // "temperature",
     "network",
-
     "pulseaudio",
-    // "keyboard-state",
+    "backlight",
+    "custom/brightness",
     "tray",
     "custom/power"
   ],
-  // 模块
+  // 开始按钮
   "custom/appmenu": {
     "format": "   ",
     // "format-icon": "󰻀",
@@ -29,6 +24,7 @@
     "rotate": 0,
     "on-click": "sh ~/.config/waybar/runtofi.sh"
   },
+  // 任务栏
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 30,
@@ -38,6 +34,7 @@
     "on-click-middle": "close",
     "active-first": true
   },
+  // 时钟
   "clock": {
     "format": "{:%H:%M}",
     "format-alt": "{:L%A, %B %d, %Y (%R)}  ",
@@ -69,6 +66,7 @@
     "on-scroll-up": "shift_up",
     "on-scroll-down": "shift_down"
   },
+  // 工作栏，多页显示
   "hyprland/workspaces": {
     "format": "{icon}",
     "icon-size": 40,
@@ -77,20 +75,15 @@
       "2": "2",
       "3": "3",
       "4": "4",
-      "5": "5",
+      "5": "5"
       // "active": "",
       // "default": ""
     },
     "persistent-workspaces": {
-      "Virtual-1": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ]
+      "Virtual-1": [1, 2, 3, 4, 5]
     }
   },
+  // 温度计
   "temperature": {
     "thermal-zone": 2,
     // hwmon1 nvme; hwmon2 cpu; hwmon 主板
@@ -99,6 +92,7 @@
     "format-critical": "{temperatureC}°C",
     "format": "{temperatureC}°C"
   },
+  // 音量
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
     "format-bluetooth": "{volume}% {icon} {format_source}",
@@ -113,43 +107,26 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
+      "default": ["", "", ""]
     },
     "on-click": "pavucontrol"
   },
+  // 网络
   "network": {
-    //  "interface": "enp11s0", // (Optional) To force the use of this interface
-    // "format-wifi": " {bandwidthDownBits}   | {bandwidthUpBits}   |   {signalStrength}%",
     "format-wifi": "<span color='green'><b>{essid}</b></span> {bandwidthDownBits}   | {bandwidthUpBits}   |   ",
     "format-ethernet": " {bandwidthDownBits}   | {bandwidthUpBits}   | 󰈀 ",
     "format-disconnected": "⚠ Disconnected",
-    "tooltip-format-wifi": "{ipaddr} ({essid}) | {ifname} via {gwaddr}",
-    "tooltip-format-ethernet": "{ipaddr}  | {ifname} via {gwaddr}",
+    "tooltip-format-wifi": " {ipaddr} ({essid})\n {ifname} via {gwaddr}\n 󰤨  ({signalStrength}%) ",
+    "tooltip-format-ethernet": " {ipaddr}  \n {ifname} via {gwaddr}\n  ",
     "tooltip-format-disconnected": "Disconnected",
     "interval": 2,
-    "max-length": 50,
-    // "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-    // "tooltip-format-ethernet": "{ifname} ",
-    // "tooltip-format-disconnected": "Disconnected",
-    // "format-linked": " {ifname} (No IP)",
-    // "format-disconnected": "⚠ Disconnected",
-    // "format-alt": "󰤨  {signalStrength}%",
+    "max-length": 50
   },
-  /*
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{percent}% {icon}",
-    "format-icons": ["", ""]
-  },
-  */
   "tray": {
     "spacing": 20,
     "icon-size": 30
   },
+  // 大写提示
   "keyboard-state": {
     "interval": 0.1,
     "capslock": true,
@@ -162,6 +139,26 @@
       "unlocked": "🔤"
     }
   },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": ["", ""]
+  },
+  // 需要使用 ddccontrol -p，知道显示器 i2c 编号
+  //ddccontrol version
+  "custom/brightness": {
+    "format": "{percentage}% {icon}",
+    "format-icons": ["\uDB80\uDCDE", "\uDB80\uDCDF", "\uDB80\uDCE0"],
+    "return-type": "json",
+    "exec-on-event": false,
+    "exec": "ddccontrol -r 0x10 dev:/dev/i2c-16 2>/dev/null | grep -oP '(?<=\\+/)\\d+(?=\\/100)' | { read x; echo '{\"percentage\":'${x}'}'; }",
+    "on-scroll-up": "notify-send \"Brightness + 10%\" && ddccontrol -r 0x10 -W +10 dev:/dev/i2c-16 2>/dev/null",
+    "on-scroll-down": "notify-send \"Brightness - 10%\" && ddccontrol -r 0x10 -W -10 dev:/dev/i2c-16 2>/dev/null",
+    "on-click": "ddccontrol -r 0x10 -w 0 dev:/dev/i2c-16 2>/dev/null",
+    "on-click-right": "ddccontrol -r 0x10 -w 100 dev:/dev/i2c-16 2>/dev/null",
+    "interval": 1
+  },
+  // 关机键
   "custom/power": {
     "format": " ⏻ ",
     "icon-size": 40,
