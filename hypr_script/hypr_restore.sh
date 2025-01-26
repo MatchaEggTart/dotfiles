@@ -1,4 +1,5 @@
 # 获取当前路径
-current_path="$(pwd)"
+current_dir=$(pwd)
+parent_dir=$(dirname "$current_dir")
 
-cp -r ${current_path}/hypr/* $HOME/.config/hypr/
+cp -r ${parent_dir}/hypr/* $HOME/.config/hypr/

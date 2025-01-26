@@ -129,14 +129,7 @@ alias nv="nvim"
 
 # Edge
 alias edge="microsoft-edge-beta"
-
-# nvm
-source /usr/share/nvm/init-nvm.sh
-
-[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
-source /usr/share/nvm/nvm.sh
-source /usr/share/nvm/bash_completion
-source /usr/share/nvm/install-nvm-exec
+alias pedge="proxy-ns microsoft-edge-beta"
 
 # open QQMusic
 alias qqmusic="/opt/Tencent/QQMusic/qqmusic-1.1.7.AppImage --no-sandbox"
@@ -167,7 +160,15 @@ vterm_printf() {
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-# Hyprland Use
+# nvm
+source /usr/share/nvm/init-nvm.sh
 
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/bash_completion
+source /usr/share/nvm/install-nvm-exec
+
+
+# Hyprland Use
 # ~/.zprofile
 source $HOME/.zsh_profile

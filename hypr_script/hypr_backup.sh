@@ -1,14 +1,17 @@
 
 # 获取当前路径
-current_path="$(pwd)"
+# current_path="$(pwd)"
 # echo $current_path
+current_dir=$(pwd)
+parent_dir=$(dirname "$current_dir")
+# echo "The parent directory is: $parent_dir"
 
-if [ ! -d "${current_path}/hypr" ];then
+if [ ! -d "${parent_dir}/hypr" ];then
     echo "folder is not exist"
 else
-    rm -rf "${current_path}/hypr"
+    rm -rf "${parent_dir}/hypr"
 fi
-
-cp -r $HOME/.config/hypr "${current_path}/"
-
-ls -al $current_path/hypr
+ 
+cp -r $HOME/.config/hypr "${parent_dir}/"
+ 
+ls -al $parent_dir/hypr
