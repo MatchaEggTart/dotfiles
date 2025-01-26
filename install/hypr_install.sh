@@ -1,3 +1,5 @@
+# pipewire-pulse 音频驱动
+# pavucontrol 音频控制器
 # mako 通知功能
 # hyprpaper 壁纸
 # waybar 上条
@@ -7,7 +9,7 @@
 # tofi 软件启动
 # wlogou 开机关机功能
 # ddccontrol 外接屏幕光度
-sudo pacman -Syy mako hyprpaper waybar hyprlock hypridle brightnessctl
+sudo pacman -Syy pipewire-pulse pavucontrol mako hyprpaper waybar hyprlock hypridle brightnessctl
 # 图标主题
 sudo pacman -S papirus-icon-theme
 mkdir -p $HOME/Pictures/Wallpapers
