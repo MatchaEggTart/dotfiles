@@ -170,5 +170,8 @@ source /usr/share/nvm/install-nvm-exec
 
 
 # Hyprland Use
+
+# ~/.backup hyprland
+alias hypr_backup="$HOME/dotfiles/hypr_script/hypr_backup.sh"
 # ~/.zprofile
 source $HOME/.zsh_profile

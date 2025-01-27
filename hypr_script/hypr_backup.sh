@@ -2,8 +2,10 @@
 # 获取当前路径
 # current_path="$(pwd)"
 # echo $current_path
-current_dir=$(pwd)
-parent_dir=$(dirname "$current_dir")
+
+# current_dir=$(pwd)
+# parent_dir=$(dirname "$current_dir")
+parent_dir="$HOME/dotfiles"
 # echo "The parent directory is: $parent_dir"
 
 if [ ! -d "${parent_dir}/hypr" ];then
