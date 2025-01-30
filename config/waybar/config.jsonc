@@ -12,7 +12,7 @@
     "network",
     "pulseaudio",
     "backlight",
-    // "custom/brightness",
+    "custom/brightness",
     "tray",
     "custom/power"
   ],
@@ -32,12 +32,7 @@
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
-    "active-first": true,
-    /*
-    "format-icons": {
-      "Chatbox": "💬"
-    }
-    */
+    "active-first": true
   },
   // 时钟
   "clock": {
@@ -156,12 +151,12 @@
     "format-icons": ["\uDB80\uDCDE", "\uDB80\uDCDF", "\uDB80\uDCE0"],
     "return-type": "json",
     "exec-on-event": false,
-    "exec-if": "ddccontrol -r 0x10 dev:/dev/i2c-1 2>/dev/null | grep -oP '(?<=\\+/)\\d+(?=\\/100)' | { read x; echo '{\"percentage\":'${x}'}'; }",
+    "exec-if": "ddccontrol -r 0x10 dev:/dev/i2c-1 | grep -oP '(?<=\\+/)\\d+(?=\\/100)' | { read x; echo '{\"percentage\":'${x}'}';",
     "on-scroll-up": "notify-send \"Brightness + 10%\" && ddccontrol -r 0x10 -W +10 dev:/dev/i2c-1 2>/dev/null",
     "on-scroll-down": "notify-send \"Brightness - 10%\" && ddccontrol -r 0x10 -W -10 dev:/dev/i2c-1 2>/dev/null",
     "on-click": "ddccontrol -r 0x10 -w 0 dev:/dev/i2c-1 2>/dev/null",
     "on-click-right": "ddccontrol -r 0x10 -w 100 dev:/dev/i2c-1 2>/dev/null",
-    "interval": 1
+    "interval": 0.1
   },
   // 关机键
   "custom/power": {
