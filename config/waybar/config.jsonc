@@ -185,7 +185,7 @@
   // 电池
   "battery": {
     // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
-    "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}%",
+    "format": "{capacity}% <span font='Font Awesome 5 Free 11'>{icon}</span>",
     "format-icons": [
       "",
       "",
@@ -196,8 +196,8 @@
     "format-time": "{H}h{M}m",
     // "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
     // "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
-    "format-charging": "<span font='Font Awesome 5 Free'></span>  {capacity}%",
-    "format-full": "<span font='Font Awesome 5 Free'></span>  {capacity}%",
+    "format-charging": "{capacity}% <span font='Font Awesome 5 Free'></span>",
+    "format-full": "{capacity}% <span font='Font Awesome 5 Free'></span>",
     "interval": 30,
     "states": {
       "warning": 25,
