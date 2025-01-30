@@ -145,3 +145,11 @@
     border-left: 1px solid rgba(100, 114, 125, 0.5);
     border-right: 1px solid rgba(100, 114, 125, 0.5);
 }
+
+#battery {
+    padding: 0 20px;
+    font-size: 20px;
+    min-width: 40px;
+    border-left: 1px solid rgba(100, 114, 125, 0.5);
+    border-right: 1px solid rgba(100, 114, 125, 0.5);
+}
