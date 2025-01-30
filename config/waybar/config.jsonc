@@ -3,12 +3,17 @@
   "position": "top",
   "height": 40,
   // 左侧栏
-  "modules-left": ["custom/appmenu", "wlr/taskbar"],
+  "modules-left": [
+    "custom/appmenu",
+    "hyprland/workspaces",
+    "wlr/taskbar"
+  ],
   // 中部栏
-  "modules-center": ["clock"],
+  "modules-center": [
+    "clock"
+  ],
   // 右侧栏
   "modules-right": [
-    "hyprland/workspaces",
     "network",
     "pulseaudio",
     "backlight",
@@ -81,7 +86,13 @@
       // "default": ""
     },
     "persistent-workspaces": {
-      "Virtual-1": [1, 2, 3, 4, 5]
+      "Virtual-1": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     }
   },
   // 温度计
@@ -108,7 +119,11 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
     "on-click": "pavucontrol"
   },
@@ -143,37 +158,53 @@
   "backlight": {
     "device": "intel_backlight",
     "format": "{percent}% {icon}",
-    "format-icons": ["", ""]
+    "format-icons": [
+      "",
+      ""
+    ]
   },
   // 需要使用 ddccontrol -p，知道显示器 i2c 编号
   //ddccontrol version
   "custom/brightness": {
     "format": "{percentage}% {icon}",
-    "format-icons": ["\uDB80\uDCDE", "\uDB80\uDCDF", "\uDB80\uDCE0"],
+    "format-icons": [
+      "\uDB80\uDCDE",  // 低亮度图标
+      "\uDB80\uDCDF",  // 中亮度图标
+      "\uDB80\uDCE0"   // 高亮度图标
+    ],
     "return-type": "json",
     "exec-on-event": false,
-    "exec-if": "ddccontrol -r 0x10 dev:/dev/i2c-1 | grep -oP '(?<=\\+/)\\d+(?=\\/100)' | { read x; echo '{\"percentage\":'${x}'}';",
+    "exec": "ddccontrol -r 0x10 dev:/dev/i2c-1 2>/dev/null | grep -oP '(?<=\\+/)\\d+(?=/100)' | { IFS= read -r x || x=0; echo '{\"percentage\":'${x}'}'; }",
     "on-scroll-up": "notify-send \"Brightness + 10%\" && ddccontrol -r 0x10 -W +10 dev:/dev/i2c-1 2>/dev/null",
     "on-scroll-down": "notify-send \"Brightness - 10%\" && ddccontrol -r 0x10 -W -10 dev:/dev/i2c-1 2>/dev/null",
     "on-click": "ddccontrol -r 0x10 -w 0 dev:/dev/i2c-1 2>/dev/null",
     "on-click-right": "ddccontrol -r 0x10 -w 100 dev:/dev/i2c-1 2>/dev/null",
-    "interval": 0.1
+    "interval": 1
   },
+
   // 电池
   "battery": {
-    "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
-    "format-icons": ["", "", "", "", ""],
+    // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+    "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
     "format-time": "{H}h{M}m",
-    "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
-    "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
+    // "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+    // "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
+    "format-charging": "<span font='Font Awesome 5 Free'></span>  {capacity}%",
+    "format-full": "<span font='Font Awesome 5 Free'></span>  {capacity}%",
     "interval": 30,
     "states": {
       "warning": 25,
       "critical": 10
     },
-    "tooltip": false,
-    "on-click": "2",
-    "interval": 1
+    "tooltip": "{time}",
+    // "on-click": "2"
   },
   // 关机键
   "custom/power": {
