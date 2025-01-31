@@ -15,9 +15,9 @@
 callback() {
     monitor_count=$(hyprctl monitors | grep -c " (ID [0-9]):")
     if (($monitor_count > 1)); then
-        hyprctl keyword monitor eDP-2,disable
+        hyprctl keyword monitor eDP-1,disable
     else
-        hyprctl keyword monitor eDP-2,preferred,0x0,1
+        hyprctl keyword monitor eDP-1,2560x1440@165,0x0,1
     fi
 }
 
