@@ -22,7 +22,10 @@
 
 #workspaces {
     margin: 0 5px;
-    padding: 0 10px 0 0;
+    padding: 0 10px 0 10px;
+    border-left: 1px solid rgba(100, 114, 125, 0.5);
+    border-right: 1px solid rgba(100, 114, 125, 0.5);
+    min-width: 220px;
 }
 
 #workspaces button:hover label {
