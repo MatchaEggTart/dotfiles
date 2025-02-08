@@ -167,6 +167,7 @@
   //ddccontrol version
   "custom/brightness": {
     "format": "{percentage}% {icon}",
+    // "format": "{icon}",
     "format-icons": [
       "\uDB80\uDCDE",  // 低亮度图标
       "\uDB80\uDCDF",  // 中亮度图标
