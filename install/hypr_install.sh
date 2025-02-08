@@ -13,7 +13,7 @@ sudo pacman -Syy pipewire-pulse pavucontrol mako hyprpaper waybar hyprlock hypri
 # 图标主题
 sudo pacman -S papirus-icon-theme
 mkdir -p $HOME/Pictures/Wallpapers
-paru -S tofi wlogout ddccontrol rose-pine-hyprcursor
+paru -S tofi wlogout ddccontrol # rose-pine-hyprcursor
 # if use input
 # sudo usermod -aG input matchaeggtart
 # 双显示器工具 https://wiki.archlinuxcn.org/wiki/%E8%83%8C%E5%85%89
