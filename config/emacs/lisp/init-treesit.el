@@ -20,18 +20,18 @@
   :init
   (setq treesit-language-source-alist
 	'(
-	  (c          . ("https://gh-proxy.com/https://github.com/tree-sitter/tree-sitter-c"))
-	  (cpp        . ("https://gh-proxy.com/https://github.com/tree-sitter/tree-sitter-cpp"))
-	  (bash       . ("https://gh-proxy.com/https://github.com/tree-sitter/tree-sitter-bash"))
-	  (elisp      . ("https://gh-proxy.com/https://github.com/Wilfred/tree-sitter-elisp"))
-	  (html       . ("https://gh-proxy.com/https://github.com/tree-sitter/tree-sitter-html"))
-	  (css        . ("https://gh-proxy.com/https://github.com/tree-sitter/tree-sitter-css"))
-	  (javascript . ("https://gh-proxy.com/https://github.com/tree-sitter/tree-sitter-javascript"))
-	  (typescript . ("https://gh-proxy.com/https://github.com/tree-sitter/tree-sitter-typescript" nil "typescript/src"))
-	  (tsx        . ("https://gh-proxy.com/https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src"))
-	  (json       . ("https://gh-proxy.com/https://github.com/tree-sitter/tree-sitter-json"))
-	  (org        . ("https://gh-proxy.com/https://github.com/milisims/tree-sitter-org"))
-	  (yaml       . ("https://gh-proxy.com/https://github.com/ikatyang/tree-sitter-yaml"))
+	  (c          . ("https://github.com/tree-sitter/tree-sitter-c"))
+	  (cpp        . ("https://github.com/tree-sitter/tree-sitter-cpp"))
+	  (bash       . ("https://github.com/tree-sitter/tree-sitter-bash"))
+	  (elisp      . ("https://github.com/Wilfred/tree-sitter-elisp"))
+	  (html       . ("https://github.com/tree-sitter/tree-sitter-html"))
+	  (css        . ("https://github.com/tree-sitter/tree-sitter-css"))
+	  (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
+	  (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "typescript/src"))
+	  (tsx	      . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src"))
+	  (json	      . ("https://github.com/tree-sitter/tree-sitter-json"))
+	  (org	      . ("https://github.com/milisims/tree-sitter-org"))
+	  (yaml	      . ("https://github.com/ikatyang/tree-sitter-yaml"))
 	  ))
   :mode
   (
