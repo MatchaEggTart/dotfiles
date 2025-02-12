@@ -182,7 +182,7 @@
     "on-scroll-down": "notify-send \"Brightness - 10%\" && ddccontrol -r 0x10 -W -10 dev:/dev/i2c-1 2>/dev/null",
     "on-click": "ddccontrol -r 0x10 -w 0 dev:/dev/i2c-1 2>/dev/null",
     "on-click-right": "ddccontrol -r 0x10 -w 100 dev:/dev/i2c-1 2>/dev/null",
-    "tooltip-format": false,
+    "tooltip-format": "DP-1",
     "interval": 1
   },
 
