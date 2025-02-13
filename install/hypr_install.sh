@@ -11,7 +11,7 @@
 # ddccontrol 外接屏幕光度
 sudo pacman -Syy pipewire-pulse pavucontrol mako hyprpaper waybar hyprlock hypridle brightnessctl papirus-icon-theme
 # 图标主题
-paru -S tofi wlogout ddccontrol bibata-cursor-theme-bin # rose-pine-hyprcursor
+paru -S tofi wlogout ddccontrol bibata-cursor-theme-bin hyprshot # rose-pine-hyprcursor
 # if use input
 # sudo usermod -aG input matchaeggtart
 # 双显示器工具 https://wiki.archlinuxcn.org/wiki/%E8%83%8C%E5%85%89
