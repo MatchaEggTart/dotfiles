@@ -3,15 +3,9 @@
   "position": "top",
   "height": 40,
   // 左侧栏
-  "modules-left": [
-    "custom/appmenu",
-    "hyprland/workspaces",
-    "wlr/taskbar"
-  ],
+  "modules-left": ["custom/appmenu", "hyprland/workspaces", "wlr/taskbar"],
   // 中部栏
-  "modules-center": [
-    "clock"
-  ],
+  "modules-center": ["clock"],
   // 右侧栏
   "modules-right": [
     "network",
@@ -28,7 +22,25 @@
     // "format-icon": "󰻀",
     "tooltip-format": "Menu",
     "rotate": 0,
-    "on-click": "sh ~/.config/waybar/runtofi.sh"
+    // "on-click": "sh ~/.config/waybar/runtofi.sh"
+    "on-click": "wofi --show drun"
+  },
+  // 工作栏，多页显示
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "icon-size": 40,
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5"
+      // "active": "",
+      // "default": ""
+    },
+    "persistent-workspaces": {
+      "Virtual-1": [1, 2, 3, 4, 5]
+    }
   },
   // 任务栏
   "wlr/taskbar": {
@@ -39,6 +51,7 @@
     "on-click": "activate",
     "on-click-middle": "close",
     // "active-first": true
+    "ignore-list": ["wofi"]
   },
   // 时钟
   "clock": {
@@ -72,29 +85,6 @@
     "on-scroll-up": "shift_up",
     "on-scroll-down": "shift_down"
   },
-  // 工作栏，多页显示
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "icon-size": 40,
-    "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5"
-      // "active": "",
-      // "default": ""
-    },
-    "persistent-workspaces": {
-      "Virtual-1": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ]
-    }
-  },
   // 温度计
   "temperature": {
     "thermal-zone": 2,
@@ -103,32 +93,6 @@
     "critical-threshold": 80,
     "format-critical": "{temperatureC}°C",
     "format": "{temperatureC}°C"
-  },
-  // 音量
-  "pulseaudio": {
-    // "format": "{volume}% {icon}   {format_source}",
-    // "format-bluetooth": "{volume}% {icon} {format_source}",
-    // "format-bluetooth-muted": " {icon} {format_source}",
-    "format": "{volume}% {icon} ",
-    "format-bluetooth": "{volume}% {icon}",
-    "format-bluetooth-muted": " {icon}",     
-    "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
-    },
-    "on-click": "pavucontrol"
   },
   // 网络
   "network": {
@@ -141,9 +105,27 @@
     "interval": 2,
     "max-length": 50
   },
-  "tray": {
-    "spacing": 20,
-    "icon-size": 30
+  // 音量
+  "pulseaudio": {
+    // "format": "{volume}% {icon}   {format_source}",
+    // "format-bluetooth": "{volume}% {icon} {format_source}",
+    // "format-bluetooth-muted": " {icon} {format_source}",
+    "format": "{volume}% {icon} ",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth-muted": " {icon}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
   },
   // 大写提示
   "keyboard-state": {
@@ -161,10 +143,7 @@
   "backlight": {
     "device": "intel_backlight",
     "format": "{percent}% {icon}",
-    "format-icons": [
-      "",
-      ""
-    ]
+    "format-icons": ["", ""]
   },
   // 需要使用 ddccontrol -p，知道显示器 i2c 编号
   //ddccontrol version
@@ -172,15 +151,16 @@
     "format": "{percentage}% {icon}",
     // "format": "{icon}",
     "format-icons": [
-      "\uDB80\uDCDE",  // 低亮度图标
-      "\uDB80\uDCDF",  // 中亮度图标
-      "\uDB80\uDCE0"   // 高亮度图标
+      "\uDB80\uDCDE", // 低亮度图标
+      "\uDB80\uDCDF", // 中亮度图标
+      "\uDB80\uDCE0" // 高亮度图标
     ],
     "return-type": "json",
     "exec-on-event": false,
     // "exec": "ddccontrol -r 0x10 dev:/dev/i2c-1 2>/dev/null | grep -oP '(?<=\\+/)\\d+(?=/100)' | { IFS= read -r x || x=0; echo '{\"percentage\":'${x}'}'; }",
     "exec-if": "sh -c '[ $(hyprctl monitors all | grep \"Monitor\" | wc -l) -eq 2 ]'",
-    "exec": "ddccontrol -r 0x10 dev:/dev/i2c-1 | grep Control | sed -En 's/.*\\/([0-9]+)\\/.*/\\1/p' | { read x; echo '{\"percentage\":'${x}'}'; }",
+    "exec": "ddccontrol -r 0x10 dev:/dev/i2c-1 2>/dev/null | grep Control | sed -En 's/.*\\/([0-9]+)\\/.*/\\1/p' | { read x; echo '{\"percentage\":'${x}'}'; }",
+    // "exec": "brightness=$(ddccontrol -r 0x10 dev:/dev/i2c-1 2>/dev/null | sed -n 's/.*Control:\\([0-9]\\+\\).*/\\1/p'); brightness=${brightness:-0}; [ $brightness -gt 100 ] && brightness=100; jq -n --argjson br $brightness '{percentage: $br}'",
     "on-scroll-up": "notify-send \"Brightness + 10%\" && ddccontrol -r 0x10 -W +10 dev:/dev/i2c-1 2>/dev/null",
     "on-scroll-down": "notify-send \"Brightness - 10%\" && ddccontrol -r 0x10 -W -10 dev:/dev/i2c-1 2>/dev/null",
     "on-click": "ddccontrol -r 0x10 -w 0 dev:/dev/i2c-1 2>/dev/null",
@@ -188,18 +168,11 @@
     "tooltip-format": "DP-1",
     "interval": 1
   },
-
   // 电池
   "battery": {
     // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
     "format": "{capacity}% <span font='Font Awesome 5 Free 11'>{icon}</span>",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
+    "format-icons": ["", "", "", "", ""],
     "format-time": "{H}h{M}m",
     // "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
     // "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
@@ -210,8 +183,12 @@
       "warning": 25,
       "critical": 10
     },
-    "tooltip": "{time}",
+    "tooltip": "{time}"
     // "on-click": "2"
+  },
+  "tray": {
+    "spacing": 20,
+    "icon-size": 30
   },
   // 关机键
   "custom/power": {

@@ -1,7 +1,7 @@
-key_up=Control_L-p
-key_down=Control_L-n
-key_right=Control_L-f
-key_left=Control_L-b
+key_up=Ctrl-p
+key_down=Ctrl-n
+key_right=Ctrl-f
+key_left=Ctrl-b
 key_expand=Tab
 show=drun
 width=40%
