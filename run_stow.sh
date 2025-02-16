@@ -1,4 +1,5 @@
 rm -rf $HOME/.emacs.d
+rm -rf $HOME/nvim
 
 rm -rf $HOME/.bash_logout
 rm -rf $HOME/.bashrc
