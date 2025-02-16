@@ -87,7 +87,7 @@
 
 #window {
     border-radius: 50px;
-    border-left: 1px solid rgba(100, 114, 125, 0.5);
+    border-left: 3px solid rgba(100, 114, 125, 0.5);
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -104,6 +104,7 @@ window#waybar.chromium {
 /* make window module transparent when no windows present */
 window#waybar.empty #window {
     background-color: transparent;
+    border-left: 0px solid rgba(100, 114, 125, 0.5);
 }
 
 #clock {
@@ -118,7 +119,7 @@ window#waybar.empty #window {
     color: #ffffff;
 
     padding: 2px 0px 0px 10px;
-    margin: 8px 5px 8px 0px;
+    margin: 0px 5px 0px 0px;
     opacity:0.8;
     min-width: 300px;
     /*

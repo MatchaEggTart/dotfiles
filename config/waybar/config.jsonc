@@ -66,7 +66,17 @@
     "on-click-middle": "close",
     "on-click-right": "minimize",
     // "active-first": true
-    "ignore-list": ["wofi", "kitty"]
+    "ignore-list": ["wofi", "kitty"],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition",
+      "microsoft-edge-beta": "microsoft-edge-stable"
+
+    },
+    "rewrite": {
+        "Firefox Web Browser": "Firefox",
+        "Foot Server": "Terminal",
+        "microsoft-edge-beta": "microsoft-edge-stable"
+    }
   },
   // 显示当前程序名称 
   "hyprland/window": {
