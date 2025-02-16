@@ -11,13 +11,17 @@
 # monitor = eDP-1, 2560x1440@165, 0x0, 1
 # monitor = DP-3, 2560x1440@165, 0x0, 1, mirror, eDP-1
 
+# 获取主显示器接口
+MONITOR_LAPTOP=$(hyprctl monitors all | grep -oP 'eDP-\d+')
+# 获取外接显示器接口
+MONITOR_EXTERNAL=$(hyprctl monitors all | grep -oP '(?<!e)DP-\d+')
 
 callback() {
-    monitor_count=$(hyprctl monitors | grep -c " (ID [0-9]):")
-    if (($monitor_count > 1)); then
-        hyprctl keyword monitor eDP-2,disable
+    MONITOR_COUNT=$(hyprctl monitors | grep -c " (ID [0-9]):")
+    if (($MONITOR_COUNT > 1)); then
+        hyprctl keyword monitor $MONITOR_LAPTOP,disable
     else
-        hyprctl keyword monitor eDP-2,preferred,0x0,1
+        hyprctl keyword monitor $MONITOR_LAPTOP,preferred,0x0,1
     fi
 }
 

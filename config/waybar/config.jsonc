@@ -3,22 +3,30 @@
   "position": "top",
   "height": 40,
   // 左侧栏
-  "modules-left": ["custom/appmenu", "hyprland/workspaces", "wlr/taskbar"],
+  "modules-left": [
+    "custom/appmenu",
+    "hyprland/workspaces",
+    "wlr/taskbar",
+    "hyprland/window"
+  ],
   // 中部栏
-  "modules-center": ["clock"],
+  "modules-center": [
+    "clock"
+  ],
   // 右侧栏
   "modules-right": [
     "network",
-    "pulseaudio",
     "backlight",
     "custom/brightness",
     "battery",
+    "pulseaudio",
+    // "pulseaudio/slider",
     "tray",
     "custom/power"
   ],
   // 开始按钮
   "custom/appmenu": {
-    "format": "   ",
+    "format": " ",
     // "format-icon": "󰻀",
     "tooltip-format": "Menu",
     "rotate": 0,
@@ -28,13 +36,17 @@
   // 工作栏，多页显示
   "hyprland/workspaces": {
     "format": "{icon}",
-    "icon-size": 40,
     "format-icons": {
       "1": "1",
       "2": "2",
       "3": "3",
       "4": "4",
-      "5": "5"
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "0"
       // "active": "",
       // "default": ""
     },
@@ -44,14 +56,33 @@
   },
   // 任务栏
   "wlr/taskbar": {
+    "max-length": 50,
+    "min-length": 1,
     "format": "{icon}",
     "icon-size": 30,
     "tooltip": true,
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
+    "on-click-right": "minimize",
     // "active-first": true
-    "ignore-list": ["wofi"]
+    "ignore-list": ["wofi", "kitty"]
+  },
+  // 显示当前程序名称 
+  "hyprland/window": {
+    "max-length": 50,
+    "min-length": 1,
+    "format": "❯ {title}",
+    "rewrite": {
+      "❯ (.*) — Mozilla Firefox": "❯ 🌎 $1",
+      "❯ (.*) - fish": "❯ [$1]",
+      "❯ (.*) Edge Beta": "❯ Microsoft Edge",
+      "❯ (.*) GNU Emacs at arch": "❯ GNU Emacs",
+      "❯ matchaeggtart@arch:(.*)": "❯ Terminal",
+      "❯ nvim (.*)": "❯ NeoVim",
+      "❯ qqmusic": "❯ QQ Music"
+    },
+    "separate-outputs": true
   },
   // 时钟
   "clock": {
@@ -127,6 +158,13 @@
     },
     "on-click": "pavucontrol"
   },
+  /*
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+  */
   // 大写提示
   "keyboard-state": {
     "interval": 0.1,
@@ -187,8 +225,9 @@
     // "on-click": "2"
   },
   "tray": {
-    "spacing": 20,
-    "icon-size": 30
+    "spacing": 10,
+    "icon-size": 30,
+    "reverse-direction": true
   },
   // 关机键
   "custom/power": {
