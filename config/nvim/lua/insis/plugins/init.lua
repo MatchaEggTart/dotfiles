@@ -191,15 +191,12 @@ return {
     end,
   },
 
+  -- Install markdown-preview.nvim without yarn or npm
+  -- command :Lazy build markdown-preview.nvim
   {
     "iamcco/markdown-preview.nvim",
-    enabled = function()
-      local cfg = require("insis").config.markdown
-      return cfg and cfg.enable
-    end,
-    config = function()
-      require("insis.plugins.markdown-preview")
-    end,
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
     build = function()
       vim.fn["mkdp#util#install"]()
     end,

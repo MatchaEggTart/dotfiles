@@ -115,6 +115,7 @@ window#waybar.chromium {
 
 /* make window module transparent when no windows present */
 window#waybar.empty #window {
+    color: transparent;
     background-color: transparent;
     border-left: 0px solid rgba(100, 114, 125, 0.5);
     border-right: 0px solid rgba(100, 114, 125, 0.5);
