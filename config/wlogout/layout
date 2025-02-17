@@ -24,7 +24,7 @@
 }
 {
   "label" : "suspend",
-  "action" : "notify-send 'systemctl suspend'",
+  "action" : "notify-send 'systemctl suspend' && systemctl suspend",
   "text" : "Suspend",
   "keybind" : "u"
 }

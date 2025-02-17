@@ -7,6 +7,16 @@
     min-width: 25px;
 }
 
+tooltip {
+    background: rgba(43, 48, 59, 0.9);
+    border: 1px solid rgba(100, 114, 125, 0.5);
+    border-radius: 10px;
+}
+
+tooltip label {
+    color: white;
+}
+
 #waybar {
     background: rgba(43, 48, 59, 0.5);
     border-bottom: 3px solid rgba(100, 114, 125, 0.5);
@@ -17,7 +27,7 @@
 #custom-appmenu {
     padding-left: 3px;
     color: #64727d;
-    font-size: 20px;
+    font-size: 25px;
     min-width: 60px;
     border: 1px solid rgba(100, 114, 125, 0.5);
 }
@@ -25,7 +35,7 @@
 #custom-appmenu:hover {
     box-shadow: inset 0 -3px #ffffff;
     color: #1E90FF;
-    font-size: 25px;  
+    font-size: 30px;  
 }
 
 #workspaces {
@@ -79,6 +89,7 @@
 
 #taskbar {
     min-width: 400px;
+    margin: 0 20px 0 20px;
 }
 
 #taskbar button.active {
@@ -88,6 +99,7 @@
 #window {
     border-radius: 50px;
     border-left: 3px solid rgba(100, 114, 125, 0.5);
+    border-right: 3px solid rgba(100, 114, 125, 0.5);
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -105,11 +117,12 @@ window#waybar.chromium {
 window#waybar.empty #window {
     background-color: transparent;
     border-left: 0px solid rgba(100, 114, 125, 0.5);
+    border-right: 0px solid rgba(100, 114, 125, 0.5);
 }
 
 #clock {
-    margin: 0px 16px 0px 10px;
-    min-width: 140px;
+    margin: 0px 10px 0px 10px;
+    min-width: 420px;
     font-size: 25px;
 }
 

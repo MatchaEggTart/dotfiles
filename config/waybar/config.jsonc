@@ -1,13 +1,12 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 40,
+  "height": 42,
   // 左侧栏
   "modules-left": [
     "custom/appmenu",
-    "hyprland/workspaces",
     "wlr/taskbar",
-    "hyprland/window"
+    "hyprland/workspaces"
   ],
   // 中部栏
   "modules-center": [
@@ -15,12 +14,13 @@
   ],
   // 右侧栏
   "modules-right": [
+    "hyprland/window",
     "network",
+    "pulseaudio",
+    // "pulseaudio/slider",
     "backlight",
     "custom/brightness",
     "battery",
-    "pulseaudio",
-    // "pulseaudio/slider",
     "tray",
     "custom/power"
   ],
@@ -73,9 +73,9 @@
 
     },
     "rewrite": {
-        "Firefox Web Browser": "Firefox",
-        "Foot Server": "Terminal",
-        "microsoft-edge-beta": "microsoft-edge-stable"
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal",
+      "microsoft-edge-beta": "microsoft-edge-stable"
     }
   },
   // 显示当前程序名称 
@@ -205,14 +205,14 @@
     ],
     "return-type": "json",
     "exec-on-event": false,
-    // "exec": "ddccontrol -r 0x10 dev:/dev/i2c-1 2>/dev/null | grep -oP '(?<=\\+/)\\d+(?=/100)' | { IFS= read -r x || x=0; echo '{\"percentage\":'${x}'}'; }",
+    // "exec": "ddccontrol -r 0x10 dev:/dev/i2c-17 2>/dev/null | grep -oP '(?<=\\+/)\\d+(?=/100)' | { IFS= read -r x || x=0; echo '{\"percentage\":'${x}'}'; }",
     "exec-if": "sh -c '[ $(hyprctl monitors all | grep \"Monitor\" | wc -l) -eq 2 ]'",
-    "exec": "ddccontrol -r 0x10 dev:/dev/i2c-1 2>/dev/null | grep Control | sed -En 's/.*\\/([0-9]+)\\/.*/\\1/p' | { read x; echo '{\"percentage\":'${x}'}'; }",
-    // "exec": "brightness=$(ddccontrol -r 0x10 dev:/dev/i2c-1 2>/dev/null | sed -n 's/.*Control:\\([0-9]\\+\\).*/\\1/p'); brightness=${brightness:-0}; [ $brightness -gt 100 ] && brightness=100; jq -n --argjson br $brightness '{percentage: $br}'",
-    "on-scroll-up": "notify-send \"Brightness + 10%\" && ddccontrol -r 0x10 -W +10 dev:/dev/i2c-1 2>/dev/null",
-    "on-scroll-down": "notify-send \"Brightness - 10%\" && ddccontrol -r 0x10 -W -10 dev:/dev/i2c-1 2>/dev/null",
-    "on-click": "ddccontrol -r 0x10 -w 0 dev:/dev/i2c-1 2>/dev/null",
-    "on-click-right": "ddccontrol -r 0x10 -w 100 dev:/dev/i2c-1 2>/dev/null",
+    "exec": "ddccontrol -r 0x10 dev:/dev/i2c-17 2>/dev/null | grep Control | sed -En 's/.*\\/([0-9]+)\\/.*/\\1/p' | { read x; echo '{\"percentage\":'${x}'}'; }",
+    // "exec": "brightness=$(ddccontrol -r 0x10 dev:/dev/i2c-17 2>/dev/null | sed -n 's/.*Control:\\([0-9]\\+\\).*/\\1/p'); brightness=${brightness:-0}; [ $brightness -gt 100 ] && brightness=100; jq -n --argjson br $brightness '{percentage: $br}'",
+    "on-scroll-up": "notify-send \"Brightness + 10%\" && ddccontrol -r 0x10 -W +10 dev:/dev/i2c-17 2>/dev/null",
+    "on-scroll-down": "notify-send \"Brightness - 10%\" && ddccontrol -r 0x10 -W -10 dev:/dev/i2c-17 2>/dev/null",
+    "on-click": "ddccontrol -r 0x10 -w 0 dev:/dev/i2c-17 2>/dev/null",
+    "on-click-right": "ddccontrol -r 0x10 -w 100 dev:/dev/i2c-17 2>/dev/null",
     "tooltip-format": "DP-1",
     "interval": 1
   },
@@ -236,7 +236,7 @@
   },
   "tray": {
     "spacing": 10,
-    "icon-size": 30,
+    "icon-size": 25,
     "reverse-direction": true
   },
   // 关机键
