@@ -70,35 +70,35 @@
 
 ;; 主题
 ;; For packaged versions which must use `require'.
-;; (use-package modus-themes
-;;   :init
-;;   (require-theme 'modus-themes)
-;;   :config
-;;   (progn
-;;     ;; Add all your customizations prior to loading the themes
-;;     (setq modus-themes-italic-constructs t
-;;  	  modus-themes-bold-constructs nil)
-;;     
-;;     ;; Maybe define some palette overrides, such as by using our presets
-;;     (setq modus-themes-common-palette-overrides
-;;  	  modus-themes-preset-overrides-intense)
-;;     
-;;     ;; Load the theme of your choice.
-;;     (load-theme 'modus-operandi-tinted :no-confim)
-;;     
-;;     ;; (define-key global-map (kbd "<f5>") #'modus-themes-toggle)
-;;     )
-;;   )
+ (use-package modus-themes
+   :init
+   (require-theme 'modus-themes)
+   :config
+   (progn
+     ;; Add all your customizations prior to loading the themes
+     (setq modus-themes-italic-constructs t
+  	  modus-themes-bold-constructs nil)
+     
+     ;; Maybe define some palette overrides, such as by using our presets
+     (setq modus-themes-common-palette-overrides
+  	  modus-themes-preset-overrides-intense)
+     
+     ;; Load the theme of your choice.
+     (load-theme 'modus-operandi-tinted :no-confim)
+     
+     ;; (define-key global-map (kbd "<f5>") #'modus-themes-toggle)
+     )
+   )
 
 ;; 垃圾
- (use-package dracula-theme
-   :pin nongnu
-   :ensure t
-   :init
-   (require-theme 'dracula-theme)
-   :config
-   (load-theme 'dracula t)
-   )
+;; (use-package dracula-theme
+;;   :pin nongnu
+;;   :ensure t
+;;   :init
+;;   (require-theme 'dracula-theme)
+;;   :config
+;;   (load-theme 'dracula t)
+;;   )
 
 ;; catppuccin-theme
 ;; (use-package catppuccin-theme

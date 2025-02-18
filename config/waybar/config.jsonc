@@ -10,11 +10,10 @@
   ],
   // 中部栏
   "modules-center": [
-    "clock"
+    "hyprland/window"
   ],
   // 右侧栏
   "modules-right": [
-    "hyprland/window",
     "network",
     "pulseaudio",
     // "pulseaudio/slider",
@@ -22,6 +21,7 @@
     "custom/brightness",
     "battery",
     "tray",
+    "clock",
     "custom/power"
   ],
   // 开始按钮
@@ -32,6 +32,29 @@
     "rotate": 0,
     // "on-click": "sh ~/.config/waybar/runtofi.sh"
     "on-click": "wofi --show drun"
+  },
+    // 任务栏
+  "wlr/taskbar": {
+    "max-length": 50,
+    "min-length": 1,
+    "format": "{icon}",
+    "icon-size": 30,
+    "tooltip": true,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "on-click-right": "minimize",
+    // "active-first": true
+    "ignore-list": ["wofi", "kitty"],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition",
+      "microsoft-edge-beta": "microsoft-edge-stable"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal",
+      "microsoft-edge-beta": "microsoft-edge-stable"
+    }
   },
   // 工作栏，多页显示
   "hyprland/workspaces": {
@@ -54,77 +77,18 @@
       "Virtual-1": [1, 2, 3, 4, 5]
     }
   },
-  // 任务栏
-  "wlr/taskbar": {
-    "max-length": 50,
-    "min-length": 1,
-    "format": "{icon}",
-    "icon-size": 30,
-    "tooltip": true,
-    "tooltip-format": "{title}",
-    "on-click": "activate",
-    "on-click-middle": "close",
-    "on-click-right": "minimize",
-    // "active-first": true
-    "ignore-list": ["wofi", "kitty"],
-    "app_ids-mapping": {
-      "firefoxdeveloperedition": "firefox-developer-edition",
-      "microsoft-edge-beta": "microsoft-edge-stable"
 
-    },
-    "rewrite": {
-      "Firefox Web Browser": "Firefox",
-      "Foot Server": "Terminal",
-      "microsoft-edge-beta": "microsoft-edge-stable"
-    }
-  },
   // 显示当前程序名称 
   "hyprland/window": {
-    "max-length": 50,
-    "min-length": 1,
+    "max-length": 35,
+    "min-length": 20,
+    "font-size": 16,
     "format": "❯ {title}",
     "rewrite": {
       "❯ (.*) — Mozilla Firefox": "❯ 🌎 $1",
-      "❯ (.*) - fish": "❯ [$1]",
-      "❯ (.*) Edge Beta": "❯ Microsoft Edge",
-      "❯ (.*) GNU Emacs at arch": "❯ GNU Emacs",
-      "❯ matchaeggtart@arch:(.*)": "❯ Terminal",
-      "❯ nvim (.*)": "❯ NeoVim",
-      "❯ qqmusic": "❯ QQ Music"
+      "❯ (.*) - fish": "❯ [$1]"
     },
     "separate-outputs": true
-  },
-  // 时钟
-  "clock": {
-    "format": "{:%H:%M}",
-    "format-alt": "{:L%A, %B %d, %Y (%R)}  ",
-    "tooltip-format": "\n<span size='14pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>\n",
-    "calendar": {
-      "mode": "year",
-      "mode-mon-col": 3,
-      "weeks-pos": "right",
-      "on-scroll": 1,
-      "format": {
-        "months": "<span color='#ffead3'><b>{}</b></span>",
-        "days": "<span color='#ecc6d9'><b>{}</b></span>",
-        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-      }
-    },
-    "actions": {
-      "on-click-right": "mode",
-      "on-click-forward": "tz_up",
-      "on-click-backward": "tz_down",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down"
-    }
-  },
-  "actions": {
-    "on-click-forward": "tz_up",
-    "on-click-backward": "tz_down",
-    "on-scroll-up": "shift_up",
-    "on-scroll-down": "shift_down"
   },
   // 温度计
   "temperature": {
@@ -137,14 +101,15 @@
   },
   // 网络
   "network": {
-    "format-wifi": "<span color='green'><b>{essid}</b></span> {bandwidthDownBits}   | {bandwidthUpBits}   |   ",
-    "format-ethernet": " {bandwidthDownBits}   | {bandwidthUpBits}   | 󰈀 ",
+    // "format-wifi": "<span color='green'><b>{essid}</b></span> {bandwidthDownBits}   | {bandwidthUpBits}   |   ",
+    "format-wifi": "<span color='green'><b>{essid}</b></span> {bandwidthDownBits}   | {bandwidthUpBits}  ",
+    "format-ethernet": "󰈀 | {bandwidthDownBits}   | {bandwidthUpBits}  ",
     "format-disconnected": "⚠ Disconnected",
     "tooltip-format-wifi": " {ipaddr} ({essid})\n {ifname} via {gwaddr}\n 󰤨  ({signalStrength}%) ",
     "tooltip-format-ethernet": " {ipaddr}  \n {ifname} via {gwaddr}\n  ",
     "tooltip-format-disconnected": "Disconnected",
     "interval": 2,
-    "max-length": 50
+    "max-length": 40
   },
   // 音量
   "pulseaudio": {
@@ -189,9 +154,17 @@
     }
   },
   "backlight": {
-    "device": "intel_backlight",
+    "device": "intel_backlight",  // 务必检查 /sys/class/backlight/ 中的实际设备名
     "format": "{percent}% {icon}",
-    "format-icons": ["", ""]
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "tooltip": true,    
+    // 新增点击事件
+    "on-click": "brightnessctl set 100% 2>/dev/null",      // 左键点击：最大亮度
+    "on-click-right": "brightnessctl set 10% 2>/dev/null", // 右键点击：最低亮度
+    // 保留原有滚轮调节
+    "on-scroll-up": "brightnessctl set +5% 2>/dev/null",
+    "on-scroll-down": "brightnessctl set 5%- 2>/dev/null",
+    "tooltip-format": "eDP"
   },
   // 需要使用 ddccontrol -p，知道显示器 i2c 编号
   //ddccontrol version
@@ -209,11 +182,11 @@
     "exec-if": "sh -c '[ $(hyprctl monitors all | grep \"Monitor\" | wc -l) -eq 2 ]'",
     "exec": "ddccontrol -r 0x10 dev:/dev/i2c-17 2>/dev/null | grep Control | sed -En 's/.*\\/([0-9]+)\\/.*/\\1/p' | { read x; echo '{\"percentage\":'${x}'}'; }",
     // "exec": "brightness=$(ddccontrol -r 0x10 dev:/dev/i2c-17 2>/dev/null | sed -n 's/.*Control:\\([0-9]\\+\\).*/\\1/p'); brightness=${brightness:-0}; [ $brightness -gt 100 ] && brightness=100; jq -n --argjson br $brightness '{percentage: $br}'",
+    "on-click": "ddccontrol -r 0x10 -w 100 dev:/dev/i2c-17 2>/dev/null",
+    "on-click-right": "ddccontrol -r 0x10 -w 10 dev:/dev/i2c-17 2>/dev/null",
     "on-scroll-up": "notify-send \"Brightness + 10%\" && ddccontrol -r 0x10 -W +10 dev:/dev/i2c-17 2>/dev/null",
     "on-scroll-down": "notify-send \"Brightness - 10%\" && ddccontrol -r 0x10 -W -10 dev:/dev/i2c-17 2>/dev/null",
-    "on-click": "ddccontrol -r 0x10 -w 0 dev:/dev/i2c-17 2>/dev/null",
-    "on-click-right": "ddccontrol -r 0x10 -w 100 dev:/dev/i2c-17 2>/dev/null",
-    "tooltip-format": "DP-1",
+    "tooltip-format": "DP",
     "interval": 1
   },
   // 电池
@@ -238,6 +211,40 @@
     "spacing": 10,
     "icon-size": 25,
     "reverse-direction": true
+  },
+    // 时钟
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:L%A, %B %d, %Y (%R)}  ",
+    "tooltip-format": "\n<span size='14pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>\n",
+    "calendar": {
+      // "mode": "year",
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      // "on-click-left": "mode",
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "actions": {
+    "on-click-forward": "tz_up",
+    "on-click-backward": "tz_down",
+    "on-scroll-up": "shift_up",
+    "on-scroll-down": "shift_down"
   },
   // 关机键
   "custom/power": {
