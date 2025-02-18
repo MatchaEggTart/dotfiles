@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 42,
+  "height": 45,
   // 左侧栏
   "modules-left": [
     "custom/appmenu",
@@ -48,12 +48,14 @@
     "ignore-list": ["wofi", "kitty"],
     "app_ids-mapping": {
       "firefoxdeveloperedition": "firefox-developer-edition",
-      "microsoft-edge-beta": "microsoft-edge-stable"
+      "microsoft-edge-beta": "microsoft-edge-stable",
+      "qqmusic": "QQ Music"
     },
     "rewrite": {
       "Firefox Web Browser": "Firefox",
       "Foot Server": "Terminal",
-      "microsoft-edge-beta": "microsoft-edge-stable"
+      "microsoft-edge-beta": "microsoft-edge-stable",
+      "qqmusic": "QQ Music"
     }
   },
   // 工作栏，多页显示
@@ -86,7 +88,8 @@
     "format": "❯ {title}",
     "rewrite": {
       "❯ (.*) — Mozilla Firefox": "❯ 🌎 $1",
-      "❯ (.*) - fish": "❯ [$1]"
+      "❯ (.*) - fish": "❯ [$1]",
+      "❯ qqmusic": "❯ QQ Music"
     },
     "separate-outputs": true
   },

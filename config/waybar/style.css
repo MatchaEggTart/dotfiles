@@ -41,7 +41,7 @@ tooltip label {
 }
 
 #taskbar {
-    min-width: 500px;
+    min-width: 480px;
     margin: 0 20px 0 20px;
 }
 
@@ -50,7 +50,7 @@ tooltip label {
 }
 
 #workspaces {
-    min-width: 360px;
+    min-width: 400px;
     margin: 0 0 0 0;
     padding: 0 15px 0 15px;
     border-radius: 40px;
