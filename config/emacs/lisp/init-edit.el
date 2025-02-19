@@ -64,6 +64,12 @@
 
 ;; 块选择器
 (use-package multiple-cursors
+  :hook
+  (multiple-cursors-mode-enabled . (lambda () (corfu-mode -1)))
+  (multiple-cursors-mode-disabled . (lambda () (corfu-mode 1)))
+  :config
+  (global-unset-key (kbd "M-<down-mouse-1>"))
+  (setq mc/always-run-for-all 1)
   :bind
   ("C-S-c C-S-c" . 'mc/edit-lines)
   ("C->"         . 'mc/mark-next-like-this)
@@ -76,6 +82,11 @@
   ("C-;"         . 'mc/mark-all-symbols-like-this)
   ("C-:"         . 'mc/mark-all-symbols-like-this-in-defun)
   )
+
+;; Increase selected region by semantic units
+(use-package expand-region
+  :bind (:map custom-bindings-map ("C-=" . er/expand-region)))
+
 
 (provide 'init-edit)
 

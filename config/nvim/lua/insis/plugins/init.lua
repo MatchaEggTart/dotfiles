@@ -192,6 +192,7 @@ return {
   },
 
   -- Install markdown-preview.nvim without yarn or npm
+  -- command :Lazy load markdown-preview.nvim
   -- command :Lazy build markdown-preview.nvim
   {
     "iamcco/markdown-preview.nvim",
@@ -201,7 +202,6 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
-
   ------------------ LSP ------------------------------------------------------
 
   -- Installer

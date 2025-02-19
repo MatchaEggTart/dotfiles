@@ -177,5 +177,5 @@ alias hypr_backup="$HOME/dotfiles/hypr_script/hypr_backup.sh"
 source $HOME/.zsh_profile
 
 # wallpaper
-alias mpvshow="mpvpaper -o \"no-audio --loop-playlist --terminal=no --panscan=1\" \"*\" $HOME/Videos/Wallpaper/nilou-genshin-impact-4k.mp4 &"
+alias mpvshow="mpvpaper -o \"no-audio --loop-playlist --terminal=no --panscan=1\" \"*\" $HOME/Videos/Wallpapers/0.mp4 &"
 alias mpvkill="killall -e mpvpaper"
