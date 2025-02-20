@@ -8,6 +8,7 @@ require("insis").setup({
     formatter = "jsonls",
     format_on_save = false,
     indent = 2,
+    tabWidth = 2,
   },
   -- markdown
   markdown = {
@@ -41,7 +42,7 @@ require("insis").setup({
     ---@type false | "prettier" | "ts_ls"
     formatter = "ts_ls",
     format_on_save = false,
-    indent = 4,
+    indent = 2,
     cspell = false,
     tailwindcss = true,
     prisma = false,

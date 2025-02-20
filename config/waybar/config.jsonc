@@ -33,7 +33,7 @@
     // "on-click": "sh ~/.config/waybar/runtofi.sh"
     "on-click": "wofi --show drun"
   },
-    // 任务栏
+  // 任务栏
   "wlr/taskbar": {
     "max-length": 50,
     "min-length": 1,
@@ -45,7 +45,10 @@
     "on-click-middle": "close",
     "on-click-right": "minimize",
     // "active-first": true
-    "ignore-list": ["wofi", "kitty"],
+    "ignore-list": [
+      "wofi",
+      "kitty"
+    ],
     "app_ids-mapping": {
       "firefoxdeveloperedition": "firefox-developer-edition",
       "microsoft-edge-beta": "microsoft-edge-stable",
@@ -76,10 +79,15 @@
       // "default": ""
     },
     "persistent-workspaces": {
-      "Virtual-1": [1, 2, 3, 4, 5]
+      "Virtual-1": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     }
   },
-
   // 显示当前程序名称 
   "hyprland/window": {
     "max-length": 35,
@@ -132,7 +140,11 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
     "on-click": "pavucontrol"
   },
@@ -157,12 +169,16 @@
     }
   },
   "backlight": {
-    "device": "intel_backlight",  // 务必检查 /sys/class/backlight/ 中的实际设备名
+    "device": "intel_backlight", // 务必检查 /sys/class/backlight/ 中的实际设备名
     "format": "{percent}% {icon}",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "tooltip": true,    
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+    "tooltip": true,
     // 新增点击事件
-    "on-click": "brightnessctl set 100% 2>/dev/null",      // 左键点击：最大亮度
+    "on-click": "brightnessctl set 100% 2>/dev/null", // 左键点击：最大亮度
     "on-click-right": "brightnessctl set 10% 2>/dev/null", // 右键点击：最低亮度
     // 保留原有滚轮调节
     "on-scroll-up": "brightnessctl set +5% 2>/dev/null",
@@ -196,7 +212,13 @@
   "battery": {
     // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
     "format": "{capacity}% <span font='Font Awesome 5 Free 11'>{icon}</span>",
-    "format-icons": ["", "", "", "", ""],
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
     "format-time": "{H}h{M}m",
     // "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
     // "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
@@ -215,7 +237,7 @@
     "icon-size": 25,
     "reverse-direction": true
   },
-    // 时钟
+  // 时钟
   "clock": {
     "format": "{:%H:%M}",
     "format-alt": "{:L%A, %B %d, %Y (%R)}  ",

@@ -102,7 +102,7 @@ autocmd({ "FileType" }, {
 autocmd({ "FileType" }, {
   callback = function()
     local ft = vim.bo.filetype
-    local default_indent_size = 4
+    local default_indent_size = 2
     local indent_size
     local switch = {
       javascript = cfg.frontend.indent or default_indent_size,
@@ -118,6 +118,7 @@ autocmd({ "FileType" }, {
       python = cfg.python.indent or default_indent_size,
       ruby = cfg.ruby.indent or default_indent_size,
       json = cfg.json.indent or default_indent_size,
+      jsonc = cfg.json.indent or default_indent_size,
       toml = cfg.toml.indent or default_indent_size,
       yaml = cfg.yaml.indent or default_indent_size,
       dockerfile = cfg.docker.indent or default_indent_size,
