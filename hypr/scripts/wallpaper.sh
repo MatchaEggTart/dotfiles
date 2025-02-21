@@ -11,7 +11,9 @@ set_wallpaper() {
 
     if [[ -f "$video_wallpaper" ]]; then
         notify-send "Set Video Wallpaper: $video_wallpaper"
-        mpvpaper -o "no-audio --loop-playlist --terminal=no --panscan=1" "*" "$video_wallpaper" &
+        # mpvpaper -o "no-audio --loop-playlist --terminal=no --panscan=1" "*" "$video_wallpaper" &
+	# mpvpaper -o "no-audio --loop-file --terminal=no --panscan=1" "*" "$video_wallpaper" &
+	mpvpaper -o "no-audio --loop-file=inf --video-sync=display-resample --hr-seek=yes --cache=yes --hwdec=nvdec --demuxer-max-bytes=500M" "*" "$video_wallpaper" &
     elif [[ -f "$image_wallpaper" ]]; then
         notify-send "Set Image Wallpaper: $image_wallpaper"
 	hyprpaper &

@@ -47,7 +47,8 @@
     // "active-first": true
     "ignore-list": [
       "wofi",
-      "kitty"
+      "kitty",
+      "swayimg"
     ],
     "app_ids-mapping": {
       "firefoxdeveloperedition": "firefox-developer-edition",
