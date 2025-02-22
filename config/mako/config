@@ -14,6 +14,17 @@ font=Noto Sans CJK TC 14
 margin=12
 padding=12,20
 
+[category=capslock]
+border-color=#ff7777
+anchor=center
+layer=overlay
+width=300
+height=80
+default-timeout=500
+font=Noto Sans CJK TC 20
+text-alignment=center
+
+
 [urgency=low]
 border-color=#aaaaaa
 
