@@ -9,9 +9,9 @@
 # tofi 软件启动
 # wlogou 开机关机功能
 # ddccontrol 外接屏幕光度
-sudo pacman -Syy pipewire-pulse pavucontrol mako hyprpaper waybar hyprlock hypridle brightnessctl copyq swayimg papirus-icon-theme 
+sudo pacman -Syy pipewire-pulse pavucontrol mako hyprpaper waybar hyprlock hypridle brightnessctl copyq swayimg grim slurp papirus-icon-theme 
 # 图标主题
-paru -S tofi wlogout ddccontrol bibata-cursor-theme-bin hyprshot mpvpaper # rose-pine-hyprcursor
+paru -S tofi wlogout ddccontrol bibata-cursor-theme-bin mpvpaper # hyprshot # rose-pine-hyprcursor
 
 mkdir -p $HOME/Pictures/Screenshots $HOME/Videos/Wallpapers $HOME/Pictures/Wallpapers
 # if use input
