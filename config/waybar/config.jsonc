@@ -98,7 +98,9 @@
     "rewrite": {
       "❯ (.*) — Mozilla Firefox": "❯ 🌎 $1",
       "❯ (.*) - fish": "❯ [$1]",
-      "❯ qqmusic": "❯ QQ Music"
+      "❯ qqmusic": "❯ QQ Music",
+      "❯ nv (.*)": "❯ NeoVim",
+      "❯ nvim(.*)": "❯ NeoVim"
     },
     "separate-outputs": true
   },
