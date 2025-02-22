@@ -63,13 +63,6 @@ tooltip label {
     font-weight: bold;
 }
 
-/* .active on hyprland, .focused on sway */
-#workspaces button.active label,
-#workspaces button.persistent label {
-    font-size: 30px;
-    font-weight: bold;
-}
-
 #workspaces label {
     font-size: 25px;
 }
@@ -96,9 +89,16 @@ tooltip label {
 
 #workspaces button.urgent {
     color: #E4080A;
-    font-size: 40px;
     font-weight: bold;
     box-shadow: inset 0 -3px  #D20103;
+}
+
+/* .active on hyprland, .focused on sway */
+#workspaces button.active label,
+#workspaces button.urgent label,
+#workspaces button.persistent label {
+    font-size: 30px;
+    font-weight: bold;
 }
 
 #window {
@@ -234,7 +234,7 @@ window#waybar.empty #window {
 #custom-power:hover {
     background-color: #64727d;
     box-shadow: inset 0 -3px #ffffff;
-    color: #FE9900;
+    color: #ffffff;
     font-size: 25px;
 }
 
