@@ -95,9 +95,10 @@ tooltip label {
 }
 
 #workspaces button.urgent {
-    color: rgba(238, 46, 36, 1);
-    font-size: 30px;
+    color: #E4080A;
+    font-size: 40px;
     font-weight: bold;
+    box-shadow: inset 0 -3px  #D20103;
 }
 
 #window {
@@ -233,7 +234,7 @@ window#waybar.empty #window {
 #custom-power:hover {
     background-color: #64727d;
     box-shadow: inset 0 -3px #ffffff;
-    color: #7FFF00;
+    color: #FE9900;
     font-size: 25px;
 }
 
