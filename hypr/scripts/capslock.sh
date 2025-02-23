@@ -1,29 +1,35 @@
 #!/bin/bash
 sleep 0.2  # 适当延时确保状态更新
 
-# 获取所有键盘的 CapsLock 状态
+# 设备名称配置（请根据实际名称修改）
+# 使用 hyprctl -j devices | jq  检查
+internal_kb="at-translated-set-2-keyboard"  # 内置键盘
+# 智能识别特定外接键盘
+external_kb=$(
+    hyprctl -j devices | jq -r '.keyboards[] | select(((.name | test("keyboard"; "i")) and (.name | test("virtual|translated|event|bus|button|receiver"; "i") | not))) | .name' | head -n1 
+)
+
+# 获取所有键盘状态
 declare -A status_map
 while IFS= read -r line; do
     name=$(jq -r '.name' <<< "$line")
     status_map["$name"]=$(jq -r '.capsLock' <<< "$line")
 done < <(hyprctl -j devices | jq -c '.keyboards[]')
 
-# 定义优先检测顺序（根据实际键盘名称修改）
-declare -a keyboard_order=(
-    "hl-virtual-keyboard"           # 外接键盘设备名    
-    "at-translated-set-2-keyboard"  # 笔记本内置键盘
-)
-
-# 按优先级检测首个活动键盘状态
-for kb in "${keyboard_order[@]}"; do
-    if [[ -n "${status_map[$kb]}" ]]; then
-        current_status="${status_map[$kb]}"
-        break
-    fi
-done
-
-# 如果找不到指定设备则获取第一个键盘状态
-[[ -z "$current_status" ]] && current_status=$(hyprctl -j devices | jq -r '.keyboards[1].capsLock')
+# 状态检测逻辑
+if [[ -n "${status_map[$external_kb]}" ]]; then
+    # 优先使用外接键盘状态
+    current_status="${status_map[$external_kb]}"
+    echo "External Keyboard Connected"
+elif [[ -n "${status_map[$internal_kb]}" ]]; then
+    # 回退到内置键盘
+    current_status="${status_map[$internal_kb]}"
+    echo "External Keyboard Disconnected"
+else
+    # 应急回退方案
+    current_status=$(hyprctl -j devices | jq -r '.keyboards[0].capsLock')
+    echo "External Keyboard Disconnected: Use Built-in Keyboard"
+fi
 
 # 通知逻辑
 if [[ "$current_status" == "true" ]]; then
