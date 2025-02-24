@@ -279,6 +279,6 @@
     "format": " ⏻ ",
     "icon-size": 40,
     "tooltip": false,
-    "on-click": "wlogout --protocol layer-shell"
+    "on-click": "wlogout -b 6 --protocol layer-shell"
   }
 }
