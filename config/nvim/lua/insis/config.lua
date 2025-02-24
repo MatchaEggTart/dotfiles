@@ -71,10 +71,10 @@ local UserConfig = {
     enable = true,
     keys = {
       -- left / right cycle
-      prev = "<C-h>",
-      next = "<C-l>",
+      prev = "<A-h>",
+      next = "<A-l>",
       -- close current buffer
-      close = "<C-w>",
+      close = "<A-w>",
       -- close = "<leader>bc",
       -- close all left / right tabs
       close_left = "<leader>bh",
@@ -96,10 +96,10 @@ local UserConfig = {
       -- close others
       close_others = "so",
       -- jump between windows
-      jump_left = { "<A-h>", "<leader>h" },
-      jump_right = { "<A-l>", "<leader>l" },
-      jump_up = { "<A-k>", "<leader>k" },
-      jump_down = { "<A-j>", "<leader>j" },
+      jump_left = { "<leader>h" },
+      jump_right = { "<leader>l" },
+      jump_up = { "<leader>k" },
+      jump_down = { "<leader>j" },
       -- control windows size
       width_decrease = "s,",
       width_increase = "s.",
