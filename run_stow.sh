@@ -13,9 +13,11 @@ rm -rf $HOME/.config/kitty
 rm -rf $HOME/.config/mako
 rm -rf $HOME/.config/tofi
 rm -rf $HOME/.config/waybar
+rm -rf $HOME/.npmrc
 
 stow bash
 stow zsh
+stow npm
 stow -t $HOME/.config config
 
 # mkdir -p $HOME/Pictures/Wallpapers
