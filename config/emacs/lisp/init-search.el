@@ -5,10 +5,15 @@
 ;; -*- lexical-binding: t -*-
 
 ;; 搜索功能
+;; Enable Vertico.
 (use-package vertico
+  ;; :custom
+  ;; (vertico-scroll-margin 0) ;; Different scroll margin
+  ;; (vertico-count 20) ;; Show more candidates
+  ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+  ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
   :init
-  (vertico-mode)
-  )
+  (vertico-mode))
 
 ;; 保存搜索历史
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
