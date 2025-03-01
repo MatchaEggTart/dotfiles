@@ -1,13 +1,31 @@
 #!/bin/bash
-sleep 0.2  # 适当延时确保状态更新
+sleep 0.1
 
-# 设备名称配置（请根据实际名称修改）
-# 使用 hyprctl -j devices | jq  检查
-internal_kb="at-translated-set-2-keyboard"  # 内置键盘
-# 智能识别特定外接键盘
-external_kb=$(
-    hyprctl -j devices | jq -r '.keyboards[] | select(((.name | test("keyboard"; "i")) and (.name | test("virtual|translated|event|bus|button|receiver"; "i") | not))) | .name' | head -n1 
-)
+# 配置区域 ==============================
+# 内置键盘标识（根据实际情况修改）
+internal_kb="at-translated-set-2-keyboard"
+
+# 优先检测的键盘列表（按优先级排序）
+preferred_kbs=("milsky-mini84" "keychron-k6-pro" "keychron-k8")
+# ======================================
+
+# 智能识别键盘逻辑
+external_kb=""
+# 获取所有连接中的键盘设备
+all_kbs=($(hyprctl -j devices | jq -r '.keyboards[].name'))
+
+# 优先检查预设列表
+for kb in "${preferred_kbs[@]}"; do
+    if [[ " ${all_kbs[*]} " =~ " $kb " ]]; then
+        external_kb="$kb"
+        break
+    fi
+done
+
+# 未找到预设设备时使用自动检测
+if [[ -z "$external_kb" ]]; then
+    external_kb=$(hyprctl -j devices | jq -r '.keyboards[] | select(((.name | test("keyboard"; "i")) and (.name | test("virtual|translated|mouse|event|bus|button|receiver"; "i") | not))) | .name' | head -n1)
+fi
 
 # 获取所有键盘状态
 declare -A status_map

@@ -53,7 +53,10 @@ local UserConfig = {
     -- quick save / quite
     n_save = "<leader>w", -- :w
     n_force_quit = "<leader>q", -- :qa!
-    n_save_quit = "<leader>wq",
+    n_save_quit = "<leader>wq", -- :wq
+    n_save_all = "<leader>wa", -- :wa
+    n_save_all_quit = "<leader>waq", -- :waq
+
     -- quick move
     n_v_5j = "<C-j>",
     n_v_5k = "<C-k>",
@@ -162,6 +165,8 @@ local UserConfig = {
     enable = true,
     keys = {
       toggle = { "<A-m>", "<leader>m" },
+      help = "gz",
+      reload = "C-e",
       refresh = "R",
       -- open / close --
       edit = { "o", "<2-LeftMouse>", "<CR>" },
