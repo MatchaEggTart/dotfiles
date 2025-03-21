@@ -59,7 +59,7 @@
 
 ;; C-s C-r 搜索增强
 ;; sudo dnf install ripgrep || sudo pacman -S ripgrep
-(use-package consult
+ (use-package consult
   :bind
   ("C-s"     . consult-line)
   ;; ("C-x b" . consult-buffer)
@@ -68,8 +68,9 @@
   ("M-g i"   . consult-imenu)
   ("M-g I"   . consult-imenu-multi)
   ;; 跳行
-  ("M-g g"   . consult-goto-line)             ;; orig. goto-line
-  ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+  ;; ("M-g g"   . consult-goto-line)           ;; orig. goto-line
+  ("M-g M-g" . consult-goto-line)              ;; orig. goto-line
+  ("C-c g"   . consult-goto-line)              ;; orig. goto-lin
   )
 
 ;; 在 函数 使用 embark-act (C-.) 可以看到函数的详细信息
