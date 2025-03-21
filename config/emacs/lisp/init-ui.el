@@ -34,14 +34,18 @@
     ;; (global-hl-line-mode t)
     
     ;; 光标线状还是块状
-    (setq-default cursor-type 'bar)
+    ;; (setq-default cursor-type 'bar)
+    (setq-default cursor-type 'box)
 
     ;; 字体
     ;; Setting English Font
-    (set-face-attribute 'default nil :font (font-spec :family "JetBrainsMonoNerdFont" :size 16))
+    ;; (set-face-attribute 'default nil :font (font-spec :family "JetBrainsMonoNerdFont" :size 16))
+    (set-face-attribute 'default nil :font (font-spec :family "Maple Mono NF CN" :size 16))
     ;; Setting Chinese Font
     ;; (set-fontset-font t 'han (font-spec :family "霞鹜文楷" :weight 'bold))
-    (set-fontset-font t 'han (font-spec :family "WenQuanYi Zen Hei Mono" :size 16))
+    ;; (set-fontset-font t 'han (font-spec :family "WenQuanYi Zen Hei Mono" :size 16))
+    ;; (set-fontset-font t 'han (font-spec :family "Maple Mono NF CN" :size 16))
+    
     ;; 透明度
     ;; (set-frame-parameter nil 'alpha-background 90)
     ;; (add-to-list 'default-frame-alist '(alpha-background . 90))

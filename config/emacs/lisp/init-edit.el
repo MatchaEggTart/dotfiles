@@ -85,7 +85,10 @@
 
 ;; Increase selected region by semantic units
 (use-package expand-region
-  :bind (:map custom-bindings-map ("C-=" . er/expand-region)))
+  :ensure t
+  :defer t
+  :bind (("C-c e e" . er/expand-region)
+         ("C-c e c" . er/contract-region)))
 
 
 (provide 'init-edit)
