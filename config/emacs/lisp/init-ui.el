@@ -65,34 +65,34 @@
   :config
   ;; (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
   (setq dashboard-center-content t)
-  (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
-  (setq dashboard-startup-banner 'official) ;; 也可以自定义图片
-  (setq dashboard-items '((recents  . 10)   ;; 显示多少个最近文件
-			  ;; (bookmarks . 5)  ;; 显示多少个最近书签
-			  (projects . 10))) ;; 显示多少个最近项目
+  (setq dashboard-projects-backend 'projectile)  ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
+  (setq dashboard-startup-banner 'official)      ;; 也可以自定义图片
+  (setq dashboard-items '((recents  . 10)        ;; 显示多少个最近文件
+			  ;; (bookmarks . 5)     ;; 显示多少个最近书签
+			  (projects . 10)))      ;; 显示多少个最近项目
   )
 
 ;; 主题
 ;; For packaged versions which must use `require'.
- (use-package modus-themes
-   :init
-   (require-theme 'modus-themes)
-   :config
-   (progn
-     ;; Add all your customizations prior to loading the themes
-     (setq modus-themes-italic-constructs t
-  	  modus-themes-bold-constructs nil)
-     
-     ;; Maybe define some palette overrides, such as by using our presets
-     (setq modus-themes-common-palette-overrides
-  	  modus-themes-preset-overrides-intense)
-     
-     ;; Load the theme of your choice.
-     (load-theme 'modus-operandi-tinted :no-confim)
-     
-     ;; (define-key global-map (kbd "<f5>") #'modus-themes-toggle)
-     )
-   )
+;; (use-package modus-themes
+;;   :init
+;;   (require-theme 'modus-themes)
+;;   :config
+;;   (progn
+;;     ;; Add all your customizations prior to loading the themes
+;;     (setq modus-themes-italic-constructs t
+;; 	  modus-themes-bold-constructs nil)
+;;     
+;;     ;; Maybe define some palette overrides, such as by using our presets
+;;     (setq modus-themes-common-palette-overrides
+;; 	  modus-themes-preset-overrides-intense)
+;;     
+;;     ;; Load the theme of your choice.
+;;     (load-theme 'modus-operandi-tinted :no-confim)
+;;     
+;;     ;; (define-key global-map (kbd "<f5>") #'modus-themes-toggle)
+;;     )
+;;   )
 
 ;; 垃圾
 ;; (use-package dracula-theme
@@ -104,17 +104,15 @@
 ;;   (load-theme 'dracula t)
 ;;   )
 
-;; catppuccin-theme
-;; (use-package catppuccin-theme
-;;   :ensure t
-;;   :init
-;;   (require-theme 'catppuccin-theme)
-;;   :config
-;;   (add-hook 'server-after-make-frame-hook #'catppuccin-reload)
-;;   (load-theme 'catppuccin :no-confirm)
-;;   (setq catppuccin-flavor 'latte) ;; or 'latte, 'macchiato, or 'mocha 'frappe
-;;   ;; (catppuccin-reload)
-;;   )
+(use-package catppuccin-theme
+  ;; :demand t
+  :pin melpa
+  :ensure t
+  :init
+  (load-theme 'catppuccin :no-confirm)
+  :config
+  (setq catppuccin-flavor 'frappe) ;; or 'latte, 'macchiato, or 'mocha
+  )
 
 ;; 代码更多颜色
 (use-package color-identifiers-mode
