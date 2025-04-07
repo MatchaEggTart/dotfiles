@@ -22,7 +22,8 @@
 (require 'init-edit)
 (require 'init-develop)
 (require 'init-org)
-(require 'init-eglot)
+;; (require 'init-eglot)
+(require 'init-lsp)
 (require 'init-treesit)
 (require 'init-shell)
 

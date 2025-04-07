@@ -7,6 +7,7 @@
 ;; need eglot-update
 (use-package eglot
   ;; :hook (prog-mode . eglot-ensure)
+  :ensure t
   :hook ((
           elisp-mode
           c-mode
@@ -57,6 +58,7 @@
     ;; 关闭 flymake
     ;; (setq eglot-stay-out-of '(flymake))
     )
+   (push :documentHighlightProvider eglot-ignored-server-capabilities)
   )
 
 (provide 'init-eglot)

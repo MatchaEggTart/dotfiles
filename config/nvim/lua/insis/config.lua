@@ -86,8 +86,8 @@ local InsisUserConfig = {
       prev = "<C-h>",
       next = "<C-l>",
       -- close current buffer
-      close = "<C-w>",
-      -- close = "<leader>bc",
+      -- close = "<C-w>",
+      close = "<leader>bc",
       -- close all left / right tabs
       close_left = "<leader>bh",
       close_right = "<leader>bl",

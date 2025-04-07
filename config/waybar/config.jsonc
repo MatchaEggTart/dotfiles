@@ -5,12 +5,15 @@
   // 左侧栏
   "modules-left": [
     "custom/appmenu",
-    "wlr/taskbar",
-    "hyprland/workspaces"
+    // "wlr/taskbar",
+    // "hyprland/workspaces"
+    "hyprland/workspaces",
+    "wlr/taskbar"
   ],
   // 中部栏
   "modules-center": [
-    "hyprland/window"
+    // "hyprland/window"
+    "clock"
   ],
   // 右侧栏
   "modules-right": [
@@ -21,7 +24,7 @@
     "custom/brightness",
     "battery",
     "tray",
-    "clock",
+    // "clock",
     "custom/power"
   ],
   // 开始按钮
@@ -47,7 +50,7 @@
     // "active-first": true
     "ignore-list": [
       "wofi",
-      "kitty",
+      // "kitty",
       "swayimg"
     ],
     "app_ids-mapping": {
