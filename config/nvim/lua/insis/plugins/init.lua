@@ -1,9 +1,10 @@
-return {
+local cfg = require("insis").config
+
+local plugins = {
   -------------------------- plugins -------------------------------------------
   -- requires
   -- 记住上次的位置
   { "farmergreg/vim-lastplace" },
-  -- default
   { "kyazdani42/nvim-web-devicons" },
   { "moll/vim-bbye" },
   { "nvim-lua/plenary.nvim" },
@@ -133,7 +134,7 @@ return {
   -- fidget.nvim
   {
     "j-hui/fidget.nvim",
-    tag = "legacy",
+    -- tag = "legacy",
     config = function()
       require("insis.plugins.fidget")
     end,
@@ -191,17 +192,24 @@ return {
     end,
   },
 
-  -- Install markdown-preview.nvim without yarn or npm
-  -- command :Lazy load markdown-preview.nvim
-  -- command :Lazy build markdown-preview.nvim
   {
     "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
+    enabled = function()
+      local cfg = require("insis").config.markdown
+      return cfg and cfg.enable
+    end,
+    config = function()
+      require("insis.plugins.markdown-preview")
+    end,
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
   },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "codecompanion" },
+  },
+
   ------------------ LSP ------------------------------------------------------
 
   -- Installer
@@ -226,6 +234,12 @@ return {
   { "rafamadriz/friendly-snippets" },
   -- UI improvement
   { "onsails/lspkind-nvim" },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    opts = {}, -- your configuration
+  },
 
   ------------------ Code formatter -------------------------------------------
 
@@ -246,8 +260,6 @@ return {
   },
   -- JSON
   { "b0o/schemastore.nvim" },
-  -- Rust
-  { "simrat39/rust-tools.nvim" },
   -- Java
   { "mfussenegger/nvim-jdtls" },
 
@@ -350,21 +362,39 @@ return {
     end,
   },
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-    },
-    build = "make tiktoken", -- Only on MacOS or Linux
+    "olimorris/codecompanion.nvim",
     config = function()
-      require("insis.plugins.copilot").copilot_chat()
+      require("insis.ai.codecompanion.codecompanion")
     end,
   },
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   dependencies = {
+  --     { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+  --     { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+  --   },
+  --   build = "make tiktoken", -- Only on MacOS or Linux
+  --   config = function()
+  --     require("insis.plugins.copilot").copilot_chat()
+  --   end,
+  -- },
+
   -- Codeium
-  {
-    "Exafunction/codeium.nvim",
-    config = function()
-      require("insis.plugins.codeium").init()
-    end,
-  },
+  -- {
+  --   "Exafunction/codeium.nvim",
+  --   config = function()
+  --     require("insis.plugins.codeium").init()
+  --   end,
+  -- },
 }
+
+-- Rust
+if cfg.rust.enable then
+  table.insert(plugins, {
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- Recommended
+    lazy = false, -- This plugin is already lazy
+  })
+end
+
+return plugins

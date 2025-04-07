@@ -1,3 +1,5 @@
+-- require("insis").setup({})
+
 require("insis").setup({
   -- json
   json = {
@@ -8,9 +10,10 @@ require("insis").setup({
     formatter = "jsonls",
     format_on_save = false,
     indent = 2,
-    tabWidth = 2,
   },
   -- markdown
+  -- command :Lazy load markdown-preview.nvim
+  -- command :Lazy build markdown-preview.nvim
   markdown = {
     enable = true,
     -- 以下为默认值，可以省略
@@ -34,7 +37,7 @@ require("insis").setup({
     ---@type "dark" | "light"
     theme = "dark",
   },
-  -- 前端
+  -- frontend
   frontend = {
     enable = true,
     ---@type "eslint" | false
@@ -49,6 +52,28 @@ require("insis").setup({
     -- vue will take over typescript lsp
     vue = false,
   },
+
+  -- golang
+  golang = {
+    enable = true,
+    -- 下边的都是默认值可以省略
+    lsp = "gopls",
+    linter = "golangci-lint",
+    formatter = "gofmt",
+    format_on_save = false,
+    indent = 4,
+  },
+
+  -- clang
+  clangd = {
+    enable = true,
+    lsp = "clangd",
+    -- linter = "clangd-tidy",
+    formatter = "clang-format",
+    format_on_save = false,
+    indent = 4,
+  },
+
   -- bash
   bash = {
     enable = true,
@@ -56,7 +81,35 @@ require("insis").setup({
     --  brew install shfmt
     formatter = "shfmt",
     format_on_save = false,
+    indent = 4,
+  },
+
+  -- python
+  python = {
+    enable = true,
+    -- can be pylsp or pyright
+    lsp = "pylsp",
+    -- pip install black
+    -- asdf reshim python
+    formatter = "black",
+    format_on_save = false,
+    indent = 4,
+  },
+
+  -- ruby
+  ruby = {
+    enable = true,
+    lsp = "ruby_lsp",
+    -- gem install rubocop
+    formatter = "rubocop",
+    format_on_save = false,
+    indent = 2,
+  },
+
+  -- docker
+  docker = {
+    enable = true,
+    lsp = "dockerls",
     indent = 2,
   },
 })
---

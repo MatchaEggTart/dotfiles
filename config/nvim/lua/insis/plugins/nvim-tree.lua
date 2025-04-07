@@ -80,8 +80,7 @@ if nvimTree and cfg and cfg.enable then
       -- NOTE: WSL need wsl-open
       -- npm install -g wsl-open
       -- https://github.com/4U6U57/wsl-open/
-      -- cmd = isWSL() and "wsl-open" or "open",
-      cmd = '/usr/bin/xdg-open',
+      cmd = isWSL() and "wsl-open" or "open",
     },
     renderer = {
       root_folder_label = false,

@@ -6,12 +6,12 @@ local myAutoGroup = vim.api.nvim_create_augroup("myAutoGroup", {
 local autocmd = vim.api.nvim_create_autocmd
 
 if cfg.enable_imselect then
-  autocmd("InsertLeave", {
+  autocmd({ "InsertLeave", "CmdlineLeave" }, {
     group = myAutoGroup,
     callback = require("insis.utils.im-select").insertLeave,
   })
 
-  autocmd("InsertEnter", {
+  autocmd({ "InsertLeave", "CmdlineLeave" }, {
     group = myAutoGroup,
     callback = require("insis.utils.im-select").insertEnter,
   })
@@ -102,7 +102,7 @@ autocmd({ "FileType" }, {
 autocmd({ "FileType" }, {
   callback = function()
     local ft = vim.bo.filetype
-    local default_indent_size = 2
+    local default_indent_size = 4
     local indent_size
     local switch = {
       javascript = cfg.frontend.indent or default_indent_size,
@@ -118,7 +118,6 @@ autocmd({ "FileType" }, {
       python = cfg.python.indent or default_indent_size,
       ruby = cfg.ruby.indent or default_indent_size,
       json = cfg.json.indent or default_indent_size,
-      jsonc = cfg.json.indent or default_indent_size,
       toml = cfg.toml.indent or default_indent_size,
       yaml = cfg.yaml.indent or default_indent_size,
       dockerfile = cfg.docker.indent or default_indent_size,
@@ -131,3 +130,24 @@ autocmd({ "FileType" }, {
     vim.bo.shiftwidth = indent_size
   end,
 })
+
+-- autocmd({ "BufEnter" }, {
+--   pattern = "*",
+--   desc = "Disable syntax highlighting in files larger than 1MB",
+--   callback = function(args)
+--     local highlighter = require("vim.treesitter.highlighter")
+--     local ts_was_active = highlighter.active[args.buf]
+--     local file_size = vim.fn.getfsize(args.file)
+--     if file_size > 100 * 100 then
+--       vim.cmd("TSBufDisable highlight")
+--       vim.cmd("syntax off")
+--       vim.cmd("syntax clear")
+--       -- vim.cmd("IlluminatePauseBuf")
+--       -- vim.cmd("IndentBlanklineDisable")
+--       vim.cmd("NoMatchParen")
+--       if ts_was_active then
+--         vim.notify("File larger than 1MB, turned off syntax highlighting")
+--       end
+--     end
+--   end,
+-- })

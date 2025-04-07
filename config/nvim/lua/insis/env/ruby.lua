@@ -1,4 +1,4 @@
---- @param config RubyConfig
+--- @param config InsisRubyConfig
 return function(config)
   return {
 
@@ -14,12 +14,12 @@ return function(config)
     end,
 
     getLSPEnsureList = function()
-      return { "ruby_ls" }
+      return { "ruby_lsp" }
     end,
 
     getLSPConfigMap = function()
       return {
-        ruby_ls = require("insis.lsp.config.rubyls"),
+        ruby_lsp = require("insis.lsp.config.rubyls"),
       }
     end,
 
