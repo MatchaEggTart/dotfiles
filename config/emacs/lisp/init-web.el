@@ -6,15 +6,22 @@
 
 ;; emmet
 ;; meta:vp ctrl-j
+;; (use-package emmet-mode
+
+;;   )
+
 (use-package emmet-mode
+  :ensure t
   :hook ((
-	  ;;sgml-mode-hook
-	  html-mode-hook
-	  ;; web-mode-hook
-	  css-mode-hook
-	  tsx-ts-mode-hook) . emmet-mode)
+ 	  ;;sgml-mode-hook
+ 	  html-mode-hook
+ 	  ;; web-mode-hook
+ 	  css-mode-hook
+ 	  tsx-ts-mode-hook) . emmet-mode)
   :bind (("C-j" . emmet-expand-line))
-  )
+  :config
+  (setq emmet-indent-after-insert nil
+        emmet-indentation 2))
 
 ;; JSONRPC
 ;; (use-package jsonrpc
@@ -22,21 +29,34 @@
 
 (use-package web-mode
   :ensure t
-  :mode
-  (
-   ;; ("\\.phtml\\'" . web-mode)
-   ;; ("\\.php\\'" . web-mode)
-   ;; ("\\.tpl\\'" . web-mode)
-   ;; ("\\.[agj]sp\\'" . web-mode)
-   ;; ("\\.as[cp]x\\'" . web-mode)
-   ;; ("\\.erb\\'" . web-mode)
-   ;; ("\\.mustache\\'" . web-mode)
-   ;; ("\\.djhtml\\'" . web-mode)
-   ("\\.html\\'" . web-mode)
-   )
+  :custom
+  (web-mode-enable-current-element-highlight t)
+  (web-mode-enable-current-column-highlight t)
+  :mode (("\\.html\\'" . web-mode)
+         ("\\.html.eex\\'" . web-mode)
+         ("\\.html.leex\\'" . web-mode)
+         ("\\.hbs\\'" . web-mode))
   :config
   (setq web-mode-markup-indent-offset 2)
   )
+
+;; (use-package web-mode
+;;   :ensure t
+;;   :mode
+;;   (
+;;    ;; ("\\.phtml\\'" . web-mode)
+;;    ;; ("\\.php\\'" . web-mode)
+;;    ;; ("\\.tpl\\'" . web-mode)
+;;    ;; ("\\.[agj]sp\\'" . web-mode)
+;;    ;; ("\\.as[cp]x\\'" . web-mode)
+;;    ;; ("\\.erb\\'" . web-mode)
+;;    ;; ("\\.mustache\\'" . web-mode)
+;;    ;; ("\\.djhtml\\'" . web-mode)
+;;    ("\\.html\\'" . web-mode)
+;;    )
+;;   :config
+;;   (setq web-mode-markup-indent-offset 2)
+;;   )
 
 ;; JSON
 (use-package json-mode

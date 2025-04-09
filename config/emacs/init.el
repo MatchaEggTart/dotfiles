@@ -17,6 +17,7 @@
 (require 'init-system)
 (require 'init-elpa)
 (require 'init-keybindings)
+(require 'init-dired)
 (require 'init-ui)
 (require 'init-search)
 (require 'init-edit)
@@ -24,13 +25,9 @@
 (require 'init-org)
 (require 'init-web)
 (require 'init-eglot)
-;; (require 'init-lsp)
-;; (require 'init-lsp-bridge)
 (require 'init-treesit)
 (require 'init-shell)
 
 ;; (require 'init-temp)
 
 ;;; init.el ends here
-(put 'dired-find-alternate-file 'disabled nil)
-(put 'upcase-region 'disabled nil)

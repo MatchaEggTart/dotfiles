@@ -31,8 +31,8 @@
     (setq corfu-preview-current nil)
     ;; (setq corfu-min-width 80)
     ;; (setq corfu-max-width 100)
-    (setq corfu-auto-delay 0.2)
-    (setq corfu-auto-prefix 2)
+    (setq corfu-auto-delay 0.1)
+    (setq corfu-auto-prefix 1)
     (setq corfu-on-exact-match nil)
     )
   )
@@ -70,13 +70,6 @@
  	 ("M-p" . #'flymake-goto-prev-error))
   )
 
-;; flycheck
-;; (use-package flycheck
-;;   :ensure t
-;;   :init (setq flymake-mode nil);
-;;   :hook (prog-mode . flycheck-mode)
-;;   )
-
 ;; 快速运行代码
 (use-package quickrun
   :commands (quickrun)
@@ -98,15 +91,15 @@
 
 ;; format-all-the-code
 (use-package format-all
+  :ensure t
   :commands format-all-mode
   :hook (prog-mode . format-all-mode)
   :config
   (setq-default format-all-formatters
-                '(
-		  ("C"     (astyle "--mode=c"))
+                '(("C"     (astyle "--mode=c"))
                   ("Shell" (shfmt "-i" "4" "-ci"))
-		  )
-		)
+		  ))
+  :bind ("C-c f" . #'format-all-region-or-buffer)
   )
 
 (provide 'init-develop)

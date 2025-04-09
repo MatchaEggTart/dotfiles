@@ -60,7 +60,12 @@ local InsisUserConfig = {
     leader_key = " ",
     -- quick save / quite
     n_save = "<leader>w", -- :w
-    n_force_quit = "<leader>q", -- :qa!
+    -- n_force_quit = "<leader>q", -- :qa!
+    n_quit = "<leader>q", -- :q
+    n_save_quit = "<leader>wq", -- :wq
+    n_save_all = "<leader>wa", -- :wa
+    n_save_all_quit = "<leader>wqa", -- :wqa
+
     -- quick move
     n_v_5j = "<C-j>",
     n_v_5k = "<C-k>",
