@@ -12,6 +12,9 @@ require("insis").setup({
   },
 
   -- markdown
+  -- Install markdown-preview.nvim without yarn or npm
+  -- command :Lazy load markdown-preview.nvim
+  -- command :Lazy build markdown-preview.nvim
   markdown = {
     enable = true,
     -- 以下为默认值，可以省略
