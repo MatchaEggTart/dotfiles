@@ -1,6 +1,5 @@
--- require("insis").setup({})
-
 require("insis").setup({
+
   -- json
   json = {
     enable = true,
@@ -11,9 +10,8 @@ require("insis").setup({
     format_on_save = false,
     indent = 2,
   },
+
   -- markdown
-  -- command :Lazy load markdown-preview.nvim
-  -- command :Lazy build markdown-preview.nvim
   markdown = {
     enable = true,
     -- 以下为默认值，可以省略
@@ -37,6 +35,7 @@ require("insis").setup({
     ---@type "dark" | "light"
     theme = "dark",
   },
+
   -- frontend
   frontend = {
     enable = true,
@@ -64,7 +63,7 @@ require("insis").setup({
     indent = 4,
   },
 
-  -- clang
+  -- c/c++
   clangd = {
     enable = true,
     lsp = "clangd",
@@ -94,16 +93,6 @@ require("insis").setup({
     formatter = "black",
     format_on_save = false,
     indent = 4,
-  },
-
-  -- ruby
-  ruby = {
-    enable = true,
-    lsp = "ruby_lsp",
-    -- gem install rubocop
-    formatter = "rubocop",
-    format_on_save = false,
-    indent = 2,
   },
 
   -- docker

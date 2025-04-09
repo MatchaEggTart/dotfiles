@@ -14,12 +14,12 @@ return function(config)
     end,
 
     getLSPEnsureList = function()
-      return { "ruby_lsp" }
+      return { "ruby_ls" }
     end,
 
     getLSPConfigMap = function()
       return {
-        ruby_lsp = require("insis.lsp.config.rubyls"),
+        ruby_ls = require("insis.lsp.config.rubyls"),
       }
     end,
 

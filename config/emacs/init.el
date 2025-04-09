@@ -22,12 +22,12 @@
 (require 'init-edit)
 (require 'init-develop)
 (require 'init-org)
-;; (require 'init-eglot)
-(require 'init-lsp)
+(require 'init-web)
+(require 'init-eglot)
+;; (require 'init-lsp)
+;; (require 'init-lsp-bridge)
 (require 'init-treesit)
 (require 'init-shell)
-
-(require 'init-web)
 
 ;; (require 'init-temp)
 

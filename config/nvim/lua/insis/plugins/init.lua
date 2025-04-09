@@ -5,6 +5,7 @@ local plugins = {
   -- requires
   -- 记住上次的位置
   { "farmergreg/vim-lastplace" },
+
   { "kyazdani42/nvim-web-devicons" },
   { "moll/vim-bbye" },
   { "nvim-lua/plenary.nvim" },

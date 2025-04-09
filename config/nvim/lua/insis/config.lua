@@ -57,14 +57,11 @@ local InsisUserConfig = {
   ---@field n_v_10j? string
   ---@field terminal_to_normal? string
   keys = {
-    -- leader_key = " ",
-    leader_key = ",",
+    leader_key = " ",
     -- quick save / quite
     n_save = "<leader>w", -- :w
     n_force_quit = "<leader>q", -- :qa!
-    n_save_quit = "<leader>wq",
-    n_save_all = "<leader>wa",
-    n_save_all_quit = "<leader>wqa",
+    -- quick move
     n_v_5j = "<C-j>",
     n_v_5k = "<C-k>",
     n_v_10k = "<C-u>",
@@ -187,8 +184,7 @@ local InsisUserConfig = {
       toggle = { "<A-m>", "<leader>m" },
       refresh = "R",
       -- open / close --
-      -- edit = { "o", "<2-LeftMouse>" },
-      edit = { "<CR>", "<2-LeftMouse>" },
+      edit = { "o", "<2-LeftMouse>", "<CR>" },
       close = "<BS>", -- close parent folder
       -- system_open = "<CR>",
       vsplit = "sv",
@@ -227,7 +223,8 @@ local InsisUserConfig = {
       -- find_files = { "<C-p>", "ff" },
       -- live_grep = "<C-f>",
       find_files = { "<leader>ff" },
-      live_grep = "<leader>fg", -- super find  "xx" -tmd ---@see telescope-live-grep-args.nvim
+      live_grep = "<leader>fg",
+      -- super find  "xx" -tmd ---@see telescope-live-grep-args.nvim
       live_grep_args = "sf",
       -- up and down
       move_selection_next = "<C-j>",
@@ -573,7 +570,7 @@ local InsisUserConfig = {
   ---@class InsisRubyConfig
   ruby = {
     enable = false,
-    lsp = "ruby_lsp",
+    lsp = "ruby_ls",
     -- gem install rubocop
     formatter = "rubocop",
     format_on_save = false,

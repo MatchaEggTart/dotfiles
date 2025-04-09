@@ -39,7 +39,9 @@
 
     ;; HTML
     ;; npm i -g vscode-langservers-extracted
-    (add-to-list 'eglot-server-programs '((html-mode web-mode) "vscode-html-language-server" "--stdio"))
+    ;; (add-to-list 'eglot-server-programs '((html-mode web-mode) "vscode-html-language-server" "--stdio"))
+    ;; (add-to-list 'eglot-server-programs '((html-mode web-mode) "tailwindcss-language-server" "--stdio"))
+    
     ;; Bash
     ;; sudo npm i -g bash-language-server
     ;; (add-to-list 'eglot-server-programs '(bash-ts-mode "bash-language-server" "start"))
@@ -51,15 +53,22 @@
     (add-to-list 'eglot-server-programs '((json-mode jsonc-mode) "vscode-json-language-server" "--stdio"))
 
     ;; html
+    ;; (add-to-list 'eglot-server-programs '((html-mode web-mode) "tailwindcss-language-server" "--stdio"))
     (add-to-list 'eglot-server-programs '((html-mode web-mode) "vscode-html-language-server" "--stdio"))
-
+    
     ;; css
     (add-to-list 'eglot-server-programs '((css-mode) "vscode-css-language-server" "--stdio"))
     ;; 关闭 flymake
     ;; (setq eglot-stay-out-of '(flymake))
+    ;; (push :documentHighlightProvider eglot-ignored-server-capabilities)
     )
-   (push :documentHighlightProvider eglot-ignored-server-capabilities)
   )
+
+(use-package eldoc-box
+  :ensure t
+  :custom
+  ;; remove child frame as soon as cursor moves to another position
+  (eldoc-box-cleanup-interval 0))
 
 (provide 'init-eglot)
 ;;; init-eglot.el ends here
