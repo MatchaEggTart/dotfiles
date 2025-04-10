@@ -8,7 +8,7 @@
 ;; Settings for exec-path-from-shell
 ;; fix the PATH environment variable issue
 (use-package exec-path-from-shell
-  :ensure 
+  :ensure
   :init (exec-path-from-shell-initialize))
 
 ;; Language Server (eglot - builtin since v29)
@@ -19,15 +19,18 @@
   (add-hook 'eglot-managed-mode-hook (lambda () (add-hook 'before-save-hook #'eglot-format-buffer)))
   (add-hook 'prog-mode-hook
 	    (lambda () (unless (member major-mode '(emacs-lisp-mode))
-			 (eglot-ensure))))
+			 (eglot-ensure)))
+	    )
   :config
   (progn
+
     ;; HTML
     ;; npm i -g vscode-langservers-extracted
     ;; (add-to-list 'eglot-server-programs '((html-mode web-mode) "tailwindcss-language-server" "--stdio"))
     (add-to-list 'eglot-server-programs '((html-mode web-mode) "vscode-html-language-server" "--stdio"))
-    )
-  )
+
+    (add-to-list 'eglot-server-programs '((sh-mode bash-ts-mode) . ("bash-language-server" "start")))
+    ))
 
 (use-package eldoc-box
   :ensure t
