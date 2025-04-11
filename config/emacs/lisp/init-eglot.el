@@ -15,8 +15,9 @@
 (use-package eglot
   :bind ("C-c e f" . eglot-format)
   :init
-  (advice-add 'eglot-code-action-organize-imports :before #'eglot-format-buffer)
-  (add-hook 'eglot-managed-mode-hook (lambda () (add-hook 'before-save-hook #'eglot-format-buffer)))
+  ;; 又想虾鸡巴格式化
+  ;; (advice-add 'eglot-code-action-organize-imports :before #'eglot-format-buffer)
+  ;; (add-hook 'eglot-managed-mode-hook (lambda () (add-hook 'before-save-hook #'eglot-format-buffer)))
   (add-hook 'prog-mode-hook
 	    (lambda () (unless (member major-mode '(emacs-lisp-mode))
 			 (eglot-ensure)))
