@@ -58,7 +58,7 @@
   "onedark.nvim": { "branch": "main", "commit": "b5161f0c631571640485be5d1c059cab82c86872" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
-  "rainbow-delimiters.nvim": { "branch": "master", "commit": "de39919a57e1a40a4c7dc5bae0de276f9c616ef3" },
+  "rainbow-delimiters.nvim": { "branch": "master", "commit": "351e449683070a2bb946bbd603555faf5a195e9a" },
   "render-markdown.nvim": { "branch": "main", "commit": "a615baed85137a8c6fc8e95f5545f64d33f5f384" },
   "schemastore.nvim": { "branch": "main", "commit": "c61a74033522c3efbb8465fe6e9c75b27f5c3667" },
   "tailwind-tools": { "branch": "master", "commit": "2bd8ef6e96d07df83c0b785c40416b98607b2f93" },
