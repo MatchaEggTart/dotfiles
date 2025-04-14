@@ -26,7 +26,8 @@
         {
           "background": "#01579B",
           "foreground": "#ffffff",
-          "leading_diamond": "<transparent,#01579B>\ue0b0</>",
+          // "leading_diamond": "<transparent,#01579B>\ue0b0</>",
+	  "leading_diamond": "\ue0c5",
           "properties": {
             "folder_icon": "...",
             "folder_separator_icon": "<transparent> \ue0bd </>",
