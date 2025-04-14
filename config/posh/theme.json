@@ -81,6 +81,7 @@
           "template": "  {{ .UserName }}<transparent> / </>{{ .HostName }} ",
           "type": "session"
         },
+	/*
         {
           "background": "#29315A",
           "foreground": "#3EC669",
@@ -93,6 +94,7 @@
           "template": " {{ .CurrentDate | date .Format }} ",
           "type": "time"
         },
+	*/
         {
           "background": "#49404f",
           "foreground": "#ffffff",
