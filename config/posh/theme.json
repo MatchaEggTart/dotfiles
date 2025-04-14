@@ -3,7 +3,7 @@
   "transient_prompt": {
     "background": "transparent",
     "foreground": "#ffffff",
-    "template": "❯ "
+    "template": "\u276f "
   },
   "blocks": [
     {
@@ -102,6 +102,7 @@
           },
           "style": "diamond",
           "template": " {{ .FormattedMs }}s ",
+	  "trailing_diamond": "\ue0b0<#ffffff,transparent>\u2500\u256e</>",
           "type": "executiontime"
         }
       ],
@@ -123,6 +124,17 @@
         }
       ],
       "type": "prompt"
+    },
+    {
+      "segments": [
+        {
+          "foreground": "#d3d7cf",
+          "style": "plain",
+          "template": "\u2500\u256f",
+          "type": "text"
+        }
+      ],
+      "type": "rprompt"
     }
   ],
 
