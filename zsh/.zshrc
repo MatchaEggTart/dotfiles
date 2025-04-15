@@ -177,4 +177,4 @@ alias mpvkill="killall -e mpvpaper"
 # export PATH=$PATH:/home/matchaeggtart/.local/bin
 
 # eval "$(oh-my-posh init zsh --config $HOME/.config/posh/catppuccin_mocha.omp.json)"
-eval "$(oh-my-posh init zsh --config $HOME/.config/posh/theme.json)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/oh-my-post.theme.json)"

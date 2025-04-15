@@ -13,7 +13,7 @@ rm -rf $HOME/.config/kitty
 rm -rf $HOME/.config/mako
 rm -rf $HOME/.config/tofi
 rm -rf $HOME/.config/waybar
-rm -rf $HOME/.config/posh
+rm -rf $HOME/.config/oh-my-posh
 rm -rf $HOME/.npmrc
 
 stow bash
