@@ -16,6 +16,7 @@
 (require 'init-basic)
 (require 'init-system)
 (require 'init-elpa)
+(require 'init-env)
 (require 'init-keybindings)
 (require 'init-dired)
 (require 'init-ui)

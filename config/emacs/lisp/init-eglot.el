@@ -4,13 +4,6 @@
 
 ;; -*- lexical-binding: t -*-
 
-;; 寻找路径的工具
-;; Settings for exec-path-from-shell
-;; fix the PATH environment variable issue
-(use-package exec-path-from-shell
-  :ensure
-  :init (exec-path-from-shell-initialize))
-
 ;; Language Server (eglot - builtin since v29)
 (use-package eglot
   :bind ("C-c e f" . eglot-format)
