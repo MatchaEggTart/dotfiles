@@ -34,6 +34,7 @@
     (setq corfu-auto-delay 0.1)
     (setq corfu-auto-prefix 1)
     (setq corfu-on-exact-match nil)
+    (setq text-mode-ispell-word-completion nil)
     )
   )
 
