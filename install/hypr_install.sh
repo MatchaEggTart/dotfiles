@@ -9,7 +9,7 @@
 # tofi 软件启动
 # wlogou 开机关机功能
 # ddccontrol 外接屏幕光度
-sudo pacman -Syy pipewire-pulse pavucontrol mako hyprpaper waybar hyprlock hypridle brightnessctl copyq swayimg grim slurp wl-clipboard wl-clip-persist jq papirus-icon-theme
+sudo pacman -Syy pipewire-pulse pavucontrol mako hyprpaper waybar hyprlock hypridle brightnessctl swayimg grim slurp wl-clipboard wl-clip-persist jq papirus-icon-theme cliphist # copyq
 # 图标主题
 paru -S tofi wlogout ddccontrol bibata-cursor-theme-bin mpvpaper # hyprshot # rose-pine-hyprcursor
 
