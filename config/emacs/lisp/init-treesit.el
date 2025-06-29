@@ -20,30 +20,32 @@
   :init
   (setq treesit-language-source-alist
 	'(
-	  (c          . ("https://github.com/tree-sitter/tree-sitter-c"))
-	  (cpp        . ("https://github.com/tree-sitter/tree-sitter-cpp"))
-	  (bash       . ("https://github.com/tree-sitter/tree-sitter-bash"))
-	  (elisp      . ("https://github.com/Wilfred/tree-sitter-elisp"))
-	  (html       . ("https://github.com/tree-sitter/tree-sitter-html"))
-	  (css        . ("https://github.com/tree-sitter/tree-sitter-css"))
-	  (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
-	  (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "typescript/src"))
-	  (tsx	      . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src"))
-	  (json	      . ("https://github.com/tree-sitter/tree-sitter-json"))
-	  (org	      . ("https://github.com/milisims/tree-sitter-org"))
-	  (yaml	      . ("https://github.com/ikatyang/tree-sitter-yaml"))
-	  ))
+	   (c          . ("https://github.com/tree-sitter/tree-sitter-c"))
+	   (cpp        . ("https://github.com/tree-sitter/tree-sitter-cpp"))
+	   (bash       . ("https://github.com/tree-sitter/tree-sitter-bash"))
+	   (elisp      . ("https://github.com/Wilfred/tree-sitter-elisp"))
+	   (html       . ("https://github.com/tree-sitter/tree-sitter-html"))
+	   (css        . ("https://github.com/tree-sitter/tree-sitter-css"))
+	   (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
+	   (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "typescript/src"))
+	   (tsx	      . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src"))
+	   (json	      . ("https://github.com/tree-sitter/tree-sitter-json"))
+	   (org	      . ("https://github.com/milisims/tree-sitter-org"))
+	   (yaml	      . ("https://github.com/ikatyang/tree-sitter-yaml"))
+	   ))
   :mode
   (
-   ("\\.go\\'" . go-ts-mode)
-   ("/go\\.mod\\'" . go-mod-ts-mode)
-   ("\\.rs\\'" . rust-ts-mode)
-   ("\\.js\\'" . js-ts-mode)
-   ("\\.ts\\'" . typescript-ts-mode)
-   ("\\.y[a]?ml\\'" . yaml-ts-mode)
-   ;; ("\\.html\\'" . tsx-ts-mode)
-   ;; ("\\.sh\\'" . bash-ts-mode)
-   )
+    ("\\.go\\'" . go-ts-mode)
+    ("/go\\.mod\\'" . go-mod-ts-mode)
+    ("\\.rs\\'" . rust-ts-mode)
+    ("\\.js\\'" . js-ts-mode)
+    ("\\.ts\\'" . typescript-ts-mode)
+    ("\\.tsx\\'" . typescript-ts-mode)
+    ("\\.y[a]?ml\\'" . yaml-ts-mode)
+    ("\\.com\\'" . nginx-mode)
+    ;; ("\\.html\\'" . tsx-ts-mode)
+    ;; ("\\.sh\\'" . bash-ts-mode)
+    )
   :config
   (setq treesit-auto-install 'prompt)
   (global-treesit-auto-mode)
@@ -54,12 +56,24 @@
   (setq treesit-font-lock-level 4)
 
   ;; 缩进
+
+										; 使用空格代替 Tab
+  (setq-default indent-tabs-mode t)
+  ;; 默认缩进
+  (setq-default tab-width 4)
+
+  ;; lisp
+  (setq lisp-indent-offset 2)
+  ;; c
   (setq c-ts-mode-indent-offset 4)
   ;; js ts
   ;; (setq js-ts-mode-indent-offset 2)
   (setq js-indent-level 2)
+  ;; ts
   (setq typescript-ts-mode-indent-offset 2)
-
+  ;; nginx
+  (with-eval-after-load 'nginx-mode
+	(setq nginx-indent-level 4))
   )
 
 

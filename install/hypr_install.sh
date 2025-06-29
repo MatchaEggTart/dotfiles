@@ -11,7 +11,7 @@
 # ddccontrol 外接屏幕光度
 sudo pacman -Syy pipewire-pulse pavucontrol mako hyprpaper waybar hyprlock hypridle brightnessctl copyq swayimg grim slurp wl-clipboard wl-clip-persist jq papirus-icon-theme
 # 图标主题
-paru -S tofi wlogout ddccontrol bibata-cursor-theme-bin mpvpaper-bin # hyprshot # rose-pine-hyprcursor
+paru -S tofi wlogout ddccontrol bibata-cursor-theme-bin mpvpaper # hyprshot # rose-pine-hyprcursor
 
 mkdir -p $HOME/Pictures/Screenshots $HOME/Videos/Wallpapers $HOME/Pictures/Wallpapers
 # if use input

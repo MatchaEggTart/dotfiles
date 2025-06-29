@@ -182,3 +182,6 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/oh-my-post.theme.j
 # emacs exec-path-from-shell
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# ssh kitty
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
