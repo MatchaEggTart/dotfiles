@@ -30,6 +30,7 @@ recentf
 .mc-lists.el
 snippets
 transient
+.cache
 
 # Org-mode
 .org-id-locations
