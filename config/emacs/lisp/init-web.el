@@ -13,15 +13,16 @@
 (use-package emmet-mode
   :ensure t
   :hook ((
- 	  ;;sgml-mode-hook
- 	  html-mode-hook
- 	  ;; web-mode-hook
- 	  css-mode-hook
- 	  tsx-ts-mode-hook) . emmet-mode)
+ 		   ;;sgml-mode-hook
+ 		   html-mode-hook
+ 		   ;; web-mode-hook
+ 		   css-mode-hook
+ 		   tsx-ts-mode-hook
+		   ) . emmet-mode)
   :bind (("C-j" . emmet-expand-line))
   :config
   (setq emmet-indent-after-insert nil
-        emmet-indentation 2))
+    emmet-indentation 2))
 
 ;; JSONRPC
 ;; (use-package jsonrpc
@@ -33,9 +34,9 @@
   (web-mode-enable-current-element-highlight t)
   (web-mode-enable-current-column-highlight t)
   :mode (("\\.html\\'" . web-mode)
-         ("\\.html.eex\\'" . web-mode)
-         ("\\.html.leex\\'" . web-mode)
-         ("\\.hbs\\'" . web-mode))
+          ("\\.html.eex\\'" . web-mode)
+          ("\\.html.leex\\'" . web-mode)
+          ("\\.hbs\\'" . web-mode))
   :config
   (setq web-mode-markup-indent-offset 2)
   )
@@ -63,9 +64,9 @@
   :ensure t
   :mode
   (
-   ("\\.json\\'" . json-mode)
-   ("\\.jsonc\\'" . json-mode)
-   )
+	("\\.json\\'" . json-mode)
+	("\\.jsonc\\'" . json-mode)
+	)
   :config
   (setq js-indent-level 2)
   )
@@ -75,9 +76,9 @@
   :ensure t
   :mode
   (
-   ("\config\\'" . nginx-mode)
-   ("\\.conf\\'" . nginx-mode)
-   )
+	("\config\\'" . nginx-mode)
+	("\\.conf\\'" . nginx-mode)
+	)
   :config
   (setq nginx-indent-level 2)
   )
@@ -87,7 +88,7 @@
   :ensure t
   ;; :straight t
   :mode (("\\.\\(yml\\|yaml\\)\\'" . yaml-mode)
-         ("Procfile\\'" . yaml-mode))
+          ("Procfile\\'" . yaml-mode))
   )
 
 

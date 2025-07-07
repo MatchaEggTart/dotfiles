@@ -40,7 +40,8 @@
     ("\\.rs\\'" . rust-ts-mode)
     ("\\.js\\'" . js-ts-mode)
     ("\\.ts\\'" . typescript-ts-mode)
-    ("\\.tsx\\'" . typescript-ts-mode)
+    ;; ("\\.tsx\\'" . typescript-ts-mode)
+	("\\.tsx\\'" . tsx-ts-mode)
     ("\\.y[a]?ml\\'" . yaml-ts-mode)
     ("\\.com\\'" . nginx-mode)
     ;; ("\\.html\\'" . tsx-ts-mode)
@@ -71,6 +72,7 @@
   (setq js-indent-level 2)
   ;; ts
   (setq typescript-ts-mode-indent-offset 2)
+  (setq tsx-ts-mode-indent-offset 2)
   ;; nginx
   (with-eval-after-load 'nginx-mode
 	(setq nginx-indent-level 4))
