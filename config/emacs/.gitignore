@@ -28,6 +28,8 @@ places
 recentf
 /tree-sitter/
 .mc-lists.el
+snippets
+transient
 
 # Org-mode
 .org-id-locations
