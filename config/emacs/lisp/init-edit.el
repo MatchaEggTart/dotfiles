@@ -26,15 +26,69 @@
 ;; (use-package evil-nerd-commenter
 ;;   :bind ("C-c C-/" . evilnc-comment-or-uncomment-lines))
 
+;; hideshow 折叠块
+(use-package hideshow
+  :ensure nil  ; 内置包不需要安装
+  :hook (prog-mode . hs-minor-mode)  ; 在编程模式自动启用
+  
+  :config
+  ;; 基本设置
+  (setq hs-hide-comments-when-hiding-all nil
+	hs-isearch-open t
+	hs-allow-nesting t)
+  
+  ;; 按键绑定 (使用 C-c h 前缀)
+  ;; (define-key hs-minor-mode-map (kbd "C-c h h") 'hs-hide-block)
+  ;; (define-key hs-minor-mode-map (kbd "C-c h s") 'hs-show-block)
+  (define-key hs-minor-mode-map (kbd "C-c TAB") 'hs-toggle-hiding)
+  ;; (define-key hs-minor-mode-map (kbd "C-c h a") 'hs-hide-all)
+  ;; (define-key hs-minor-mode-map (kbd "C-c h S") 'hs-show-all)
+  ;; (define-key hs-minor-mode-map (kbd "C-c h n") 'hs-next-hidden-block)
+  ;; (define-key hs-minor-mode-map (kbd "C-c h p") 'hs-previous-hidden-block)
+
+  ;; 自定义折叠显示样式（可选）
+  (setq hs-hide-comments-when-hiding-all nil)  ; 折叠时保留注释可见
+  (setq hs-isearch-open t)                    ; 搜索时自动展开匹配块
+  
+  ;; 高级：折叠时显示函数签名
+  (setq hs-set-up-overlay 'my-hs-overlay-display)
+  (defun my-hs-overlay-display (ov)
+    (when (eq 'code (overlay-get ov 'hs))
+      (let* ((start (overlay-start ov))
+			  (line (buffer-substring start (line-end-position)))
+			  (overlay-put ov 'display (concat " ▶ " (string-trim line) " ..."))))
+      
+      ;; 语言特定配置 (Python 示例)
+      (add-hook 'python-mode-hook
+		(lambda ()
+		  (setq hs-special-modes-alist
+			(cons '(python-mode "\\s-*\\_<\\(class\\|def\\|if\\|for\\|while\\|with\\|try\\)\\_>"
+					 nil "#"
+					 hs-c-like-adjust-block-beginning)
+			  hs-special-modes-alist))))
+      
+      ;; 兼容行号显示
+      (with-eval-after-load 'linum
+		(add-hook 'hs-minor-mode-hook
+		  (lambda () (setq-local linum-disabled t))))
+
+      :bind (:map hs-minor-mode-map
+			  ("C-c <left>" . hs-hide-all)
+			  ("C-c <right>" . hs-show-all))
+	  )
+	)
+  )
+
+
 ;; crux
 (use-package crux
   :bind(
-	;; 回到第一个字符
-	;; ("C-a" . crux-move-beginning-of-line)
-	;; ("C-^" . crux-top-join-line)
-	;; ("C-c I" . crux-find-user-init-file)
-	;; 智能删除键
-	("C-k" . crux-smart-kill-line)))
+		 ;; 回到第一个字符
+		 ;; ("C-a" . crux-move-beginning-of-line)
+		 ;; ("C-^" . crux-top-join-line)
+		 ;; ("C-c I" . crux-find-user-init-file)
+		 ;; 智能删除键
+		 ("C-k" . crux-smart-kill-line)))
 
 ;; 删除自动清除空白位置(新)
 (use-package hungry-delete
@@ -88,7 +142,7 @@
   :ensure t
   :defer t
   :bind (("C-c e e" . er/expand-region)
-         ("C-c e c" . er/contract-region)))
+		  ("C-c e c" . er/contract-region)))
 
 
 (provide 'init-edit)
