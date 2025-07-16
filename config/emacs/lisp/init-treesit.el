@@ -40,6 +40,8 @@
     ("\\.rs\\'" . rust-ts-mode)
     ("\\.js\\'" . js-ts-mode)
     ("\\.ts\\'" . typescript-ts-mode)
+	("\\.json\\'" . json-ts-mode)
+	("\\.jsonc\\'" . json-ts-mode)
     ;; ("\\.tsx\\'" . typescript-ts-mode)
 	("\\.tsx\\'" . tsx-ts-mode)
     ("\\.y[a]?ml\\'" . yaml-ts-mode)
@@ -57,9 +59,8 @@
   (setq treesit-font-lock-level 4)
 
   ;; 缩进
-
-										; 使用空格代替 Tab
-  (setq-default indent-tabs-mode t)
+  ;; 使用空格代替 Tab
+  ;; (setq-default indent-tabs-mode nil)
   ;; 默认缩进
   (setq-default tab-width 4)
 
@@ -70,6 +71,9 @@
   ;; js ts
   ;; (setq js-ts-mode-indent-offset 2)
   (setq js-indent-level 2)
+  (setq tsx-ts-mode-indent-offset 2)
+  ;; json
+  (setq json-ts-mode-indent-offset 2)
   ;; ts
   (setq typescript-ts-mode-indent-offset 2)
   (setq tsx-ts-mode-indent-offset 2)

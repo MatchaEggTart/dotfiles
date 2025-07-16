@@ -51,6 +51,7 @@
     "ignore-list": [
       "wofi",
       // "kitty",
+	  "设置",
       "swayimg"
     ],
     "app_ids-mapping": {

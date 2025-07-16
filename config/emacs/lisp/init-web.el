@@ -60,16 +60,16 @@
 ;;   )
 
 ;; JSON
-(use-package json-mode
-  :ensure t
-  :mode
-  (
-	("\\.json\\'" . json-mode)
-	("\\.jsonc\\'" . json-mode)
-	)
-  :config
-  (setq js-indent-level 2)
-  )
+;;(use-package json-mode
+;;  :ensure t
+;;  :mode
+;;  (
+;;	("\\.json\\'" . json-mode)
+;;	("\\.jsonc\\'" . json-mode)
+;;	)
+;;  :config
+;;  (setq js-indent-level 2)
+;;  )
 
 ;; CONF-MODE
 (use-package nginx-mode
