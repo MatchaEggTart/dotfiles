@@ -163,6 +163,8 @@ source /usr/share/nvm/init-nvm.sh
 # nvidia
 alias nvsmi="watch -n 1 nvidia-smi"
 
+# delete record
+alias clear_record="rm -rf Videos/Record/* Pictures/Screenshots/*"
 # Hyprland Use
 
 # ~/.backup hyprland
