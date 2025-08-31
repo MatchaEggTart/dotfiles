@@ -1,6 +1,6 @@
 * {
     font-size: 16px;
-	color: #D3D3D3;
+	color: #7E7E7E;
 }
 
 window {
@@ -37,9 +37,8 @@ window {
 }
 
 #text:selected {
-	color: white;
+	color: #F5F6F7;
 	font-size: 20px;
-
 }
 #img:selected {
 	background-color: transparent;
