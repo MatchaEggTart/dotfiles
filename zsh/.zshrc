@@ -176,6 +176,10 @@ source $HOME/.zsh_profile
 alias mpvshow="mpvpaper -o \"no-audio --loop-playlist --terminal=no --panscan=1\" \"*\" $HOME/Videos/Wallpapers/0.mp4 &"
 alias mpvkill="killall -e mpvpaper"
 
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx
+
 # export PATH=$PATH:/home/matchaeggtart/.local/bin
 
 # oh-my-posh
@@ -186,4 +190,4 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/oh-my-post.theme.j
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # ssh kitty
-[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+# [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
