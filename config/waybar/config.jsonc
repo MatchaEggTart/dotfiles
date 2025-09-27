@@ -5,14 +5,11 @@
   // 左侧栏
   "modules-left": [
     "custom/appmenu",
-    // "wlr/taskbar",
-    // "hyprland/workspaces"
     "hyprland/workspaces",
     "wlr/taskbar"
   ],
   // 中部栏
   "modules-center": [
-    // "hyprland/window"
     "clock"
   ],
   // 右侧栏
@@ -20,11 +17,8 @@
     "network",
 	"tray",
     "pulseaudio",
-    // "pulseaudio/slider",
     "backlight",
     "custom/brightness",
-    // "clock",
-    // "custom/power"
 	"battery"
   ],
   // 开始按钮

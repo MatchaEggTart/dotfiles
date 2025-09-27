@@ -137,6 +137,17 @@ window#waybar.empty #window {
     */
 }
 
+#clock {
+    margin: 0 0 0 0;
+    min-width: 64px;
+    font-size: 25px;
+    /*
+    border-left: 1px solid rgba(100, 114, 125, 0.5);
+    border-right: 1px solid rgba(100, 114, 125, 0.5);
+    */
+}
+
+
 #network {
     background-color: transparent;
     font-size: 12px;
@@ -151,10 +162,23 @@ window#waybar.empty #window {
     */
 }
 
+#network:hover {
+	box-shadow: inset 0 -3px #ffffff;
+}
+
 #network.ethernet,
 #network.wifi {
     background-color: transparent;
     color: #ffffff;
+}
+
+#network.wifi:hover {
+	box-shadow: inset 0 -3px #ffffff;
+}
+
+#tray {
+    padding: 0 10px 0 12px;
+	border-left: 1px solid rgba(100, 114, 125, 0.5);
 }
 
 #pulseaudio {
@@ -162,6 +186,10 @@ window#waybar.empty #window {
     padding: 0 10px 0 12px;
     font-size: 16px;
     border-left: 1px solid rgba(100, 114, 125, 0.5);
+}
+
+#pulseaudio:hover {
+	box-shadow: inset 0 -3px #ffffff;
 }
 
 #pulseaudio-slider slider {
@@ -178,6 +206,7 @@ window#waybar.empty #window {
     border-radius: 5px;
     background-color: black;
 }
+
 #pulseaudio-slider highlight {
     min-width: 10px;
     border-radius: 5px;
@@ -191,11 +220,20 @@ window#waybar.empty #window {
     border-left: 1px solid rgba(100, 114, 125, 0.5);
 }
 
+
+#backlight:hover {
+    box-shadow: inset 0 -3px #ffffff;
+}
+
 #custom-brightness {
     padding: 0 10px;
     font-size: 16px;
     min-width: 64px;
     border-left: 1px solid rgba(100, 114, 125, 0.5);
+}
+
+#custom-brightness:hover {
+    box-shadow: inset 0 -3px #ffffff;
 }
 
 #battery {
@@ -205,28 +243,8 @@ window#waybar.empty #window {
     border-left: 1px solid rgba(100, 114, 125, 0.5);
 }
 
-#tray {
-    padding: 0 10px 0 12px;
-	border-left: 1px solid rgba(100, 114, 125, 0.5);
-}
-
-/*
-#clock {
-    margin: 0px 10px 0px 10px;
-    min-width: 420px;
-    font-size: 20px;
-    border-right: 1px solid rgba(100, 114, 125, 0.5);
-}
-*/
-
-#clock {
-    margin: 0 0 0 0;
-    min-width: 64px;
-    font-size: 25px;
-    /*
-    border-left: 1px solid rgba(100, 114, 125, 0.5);
-    border-right: 1px solid rgba(100, 114, 125, 0.5);
-    */
+#battery:hover {
+	box-shadow: inset 0 -3px #ffffff;
 }
 
 #custom-power {
