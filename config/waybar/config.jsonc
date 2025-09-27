@@ -18,14 +18,14 @@
   // 右侧栏
   "modules-right": [
     "network",
+	"tray",
     "pulseaudio",
     // "pulseaudio/slider",
     "backlight",
     "custom/brightness",
-    "battery",
-    "tray",
     // "clock",
-    "custom/power"
+    // "custom/power"
+	"battery"
   ],
   // 开始按钮
   "custom/appmenu": {
@@ -161,7 +161,10 @@
         ""
       ]
     },
-    "on-click": "pavucontrol"
+    // "on-click": "sh ~/.config/waybar/scripts/volume.sh",
+	"on-click": "pavucontrol", // 可选：右键打开完整控制面板
+	"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+	"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
   },
   /*
   "pulseaudio/slider": {
@@ -244,8 +247,9 @@
       "warning": 25,
       "critical": 10
     },
-    "tooltip": "{time}"
+    "tooltip": "{time}",
     // "on-click": "2"
+	"on-click": "wlogout -b 6 --protocol layer-shell"
   },
   "tray": {
     "spacing": 10,

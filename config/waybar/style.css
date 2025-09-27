@@ -159,10 +159,9 @@ window#waybar.empty #window {
 
 #pulseaudio {
     min-width: 64px;
-    padding: 0 10px 0 10px;
+    padding: 0 10px 0 12px;
     font-size: 16px;
     border-left: 1px solid rgba(100, 114, 125, 0.5);
-    border-right: 1px solid rgba(100, 114, 125, 0.5);
 }
 
 #pulseaudio-slider slider {
@@ -197,7 +196,6 @@ window#waybar.empty #window {
     font-size: 16px;
     min-width: 64px;
     border-left: 1px solid rgba(100, 114, 125, 0.5);
-    border-right: 1px solid rgba(100, 114, 125, 0.5);
 }
 
 #battery {
@@ -205,12 +203,11 @@ window#waybar.empty #window {
     font-size: 16px;
     min-width: 64px;
     border-left: 1px solid rgba(100, 114, 125, 0.5);
-    border-right: 1px solid rgba(100, 114, 125, 0.5);
 }
 
 #tray {
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 0 10px 0 12px;
+	border-left: 1px solid rgba(100, 114, 125, 0.5);
 }
 
 /*

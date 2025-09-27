@@ -129,8 +129,9 @@ alias qqmusic="/opt/Tencent/QQMusic/qqmusic-1.1.7.AppImage --no-sandbox"
 alias killqqmusic="killall -9 qqmusic"
 
 # neofetch | lolcat
-alias nfl="neofetch --source ~/.config/neofetch/ascii-art-neofetch/communist | lolcat"
-alias nfll="neofetch --source ~/.config/neofetch/ascii-art-neofetch/communist -L | lolcat"
+# alias nfl="neofetch --source ~/.config/neofetch/ascii-art-neofetch/communist | lolcat"
+# alias nfll="neofetch --source ~/.config/neofetch/ascii-art-neofetch/communist -L | lolcat"
+alias lol="fastfetch --logo $HOME/.config/fastfetch/ascii-art-fastfetch/communism | lolcat"
 
 # default editor
 export EDITOR=emacs
@@ -164,7 +165,7 @@ source /usr/share/nvm/init-nvm.sh
 alias nvsmi="watch -n 1 nvidia-smi"
 
 # delete record
-alias clear_record="rm -rf Videos/Record/* Pictures/Screenshots/*"
+alias clear_record="rm -rf $HOME/Videos/Record/* Pictures/Screenshots/*"
 # Hyprland Use
 
 # ~/.backup hyprland
@@ -176,9 +177,10 @@ source $HOME/.zsh_profile
 alias mpvshow="mpvpaper -o \"no-audio --loop-playlist --terminal=no --panscan=1\" \"*\" $HOME/Videos/Wallpapers/0.mp4 &"
 alias mpvkill="killall -e mpvpaper"
 
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export XMODIFIERS=@im=fcitx
+# fcitx
+# export GTK_IM_MODULE=fcitx5
+# export QT_IM_MODULE=fcitx5
+# export XMODIFIERS=@im=fcitx
 
 # export PATH=$PATH:/home/matchaeggtart/.local/bin
 
