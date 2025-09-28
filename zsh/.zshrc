@@ -131,7 +131,7 @@ alias killqqmusic="killall -9 qqmusic"
 # neofetch | lolcat
 # alias nfl="neofetch --source ~/.config/neofetch/ascii-art-neofetch/communist | lolcat"
 # alias nfll="neofetch --source ~/.config/neofetch/ascii-art-neofetch/communist -L | lolcat"
-alias lol="fastfetch --logo $HOME/.config/fastfetch/ascii-art-fastfetch/communism | lolcat"
+alias lol="fastfetch --logo $HOME/.config/fastfetch/ascii-art-fastfetch/new-communsit | lolcat"
 
 # default editor
 export EDITOR=emacs
