@@ -124,7 +124,7 @@ alias edge="microsoft-edge-beta"
 alias pedge="proxy-ns microsoft-edge-beta"
 
 # open QQMusic
-alias qqmusic="/opt/Tencent/QQMusic/qqmusic-1.1.7.AppImage --no-sandbox"
+alias qqmusic="/opt/tencent/qqmusic/qqmusic-1.1.8.AppImage --no-sandbox"
 # close QQMusic
 alias killqqmusic="killall -9 qqmusic"
 
