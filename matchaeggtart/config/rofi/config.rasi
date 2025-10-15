@@ -1,0 +1,39 @@
+configuration {
+  display-drun: "Applications:";
+    display-window: "Windows:";
+      drun-display-format: "{icon} {name}";
+      font: "Hack Nerd Font Regular 13";
+  modi: "window,run,drun";
+  
+  show-icons: true;
+}
+
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+
+mainbox {
+  children: [inputbar, listview];
+}
+
+inputbar {
+  children: [prompt, entry];
+}
+
+prompt {
+  padding: 0 12px;
+}
+
+element {
+  children: [element-icon, element-text];
+}
+
+element-text {
+  padding: 6px 12px;
+}
+
+element-icon {
+    size: 1.4em;
+}
+
+listview {
+  lines: 12;
+}

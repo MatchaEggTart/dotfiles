@@ -1,0 +1,294 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 45,
+  // 左侧栏
+  "modules-left": [
+    "custom/appmenu",
+    "hyprland/workspaces",
+    "wlr/taskbar"
+  ],
+  // 中部栏
+  "modules-center": [
+    "clock"
+  ],
+  // 右侧栏
+  "modules-right": [
+    "network",
+	"tray",
+    "pulseaudio",
+    "backlight",
+    "custom/brightness",
+	"battery"
+  ],
+  // 开始按钮
+  "custom/appmenu": {
+    "format": " ",
+    // "format-icon": "󰻀",
+    "tooltip-format": "Menu",
+    "rotate": 0,
+    // "on-click": "sh ~/.config/waybar/runtofi.sh"
+    "on-click": "$HOME/.config/hypr/scripts/wofi.sh"
+  },
+  // 任务栏
+  "wlr/taskbar": {
+    "max-length": 50,
+    "min-length": 1,
+    "format": "{icon}",
+    "icon-size": 30,
+    "tooltip": true,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "on-click-right": "minimize",
+    // "active-first": true
+    "ignore-list": [
+      "wofi",
+      // "kitty",
+	  "设置",
+      "swayimg"
+    ],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition",
+      "microsoft-edge-beta": "microsoft-edge-stable",
+      "qqmusic": "QQ Music"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal",
+      "microsoft-edge-beta": "microsoft-edge-stable",
+      "qqmusic": "QQ Music"
+    }
+  },
+  // 工作栏，多页显示
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      // "6": "6",
+      // "7": "7",
+      // "8": "8",
+      // "9": "9",
+      // "10": "0"
+      // "active": "",
+      // "default": "",
+      "sort-by-number": true
+    },
+    "persistent-workspaces": {
+      "Virtual-1": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+      /*
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      */
+    }
+  },
+  // 显示当前程序名称 
+  "hyprland/window": {
+    "max-length": 35,
+    "min-length": 20,
+    "font-size": 16,
+    "format": "❯ {title}",
+    "rewrite": {
+      "❯ (.*) — Mozilla Firefox": "❯ 🌎 $1",
+      "❯ (.*) - fish": "❯ [$1]",
+      "❯ qqmusic": "❯ QQ Music",
+      "❯ nv (.*)": "❯ NeoVim",
+      "❯ nvim(.*)": "❯ NeoVim"
+    },
+    "separate-outputs": true
+  },
+  // 温度计
+  "temperature": {
+    "thermal-zone": 2,
+    // hwmon1 nvme; hwmon2 cpu; hwmon 主板
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C",
+    "format": "{temperatureC}°C"
+  },
+  // 网络
+  "network": {
+    // "format-wifi": "<span color='green'><b>{essid}</b></span> {bandwidthDownBits}   | {bandwidthUpBits}   |   ",
+    "format-wifi": "<span color='green'><b>{essid}</b></span> {bandwidthDownBits}   | {bandwidthUpBits}  ",
+    "format-ethernet": "󰈀 | {bandwidthDownBits}   | {bandwidthUpBits}  ",
+    "format-disconnected": "⚠ Disconnected",
+    "tooltip-format-wifi": " {ipaddr} ({essid})\n {ifname} via {gwaddr}\n 󰤨  ({signalStrength}%) ",
+    "tooltip-format-ethernet": " {ipaddr}  \n {ifname} via {gwaddr}\n  ",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 2,
+    "max-length": 40
+  },
+  // 音量
+  "pulseaudio": {
+    // "format": "{volume}% {icon}   {format_source}",
+    // "format-bluetooth": "{volume}% {icon} {format_source}",
+    // "format-bluetooth-muted": " {icon} {format_source}",
+    "format": "{volume}% {icon} ",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth-muted": " {icon}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    // "on-click": "sh ~/.config/waybar/scripts/volume.sh",
+	"on-click": "pavucontrol", // 可选：右键打开完整控制面板
+	"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+	"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+  },
+  /*
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+  */
+  // 大写提示
+  "keyboard-state": {
+    "interval": 0.1,
+    "capslock": true,
+    "icon-size": 60,
+    "format": {
+      "capslock": " {icon} "
+    },
+    "format-icons": {
+      "locked": "🅰️",
+      "unlocked": "🔤"
+    }
+  },
+  "backlight": {
+    "device": "intel_backlight", // 务必检查 /sys/class/backlight/ 中的实际设备名
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+    "tooltip": true,
+    // 新增点击事件
+    "on-click": "brightnessctl set 100% 2>/dev/null", // 左键点击：最大亮度
+    "on-click-right": "brightnessctl set 10% 2>/dev/null", // 右键点击：最低亮度
+    // 保留原有滚轮调节
+    "on-scroll-up": "brightnessctl set +5% 2>/dev/null",
+    "on-scroll-down": "brightnessctl set 5%- 2>/dev/null",
+    "tooltip-format": "eDP"
+  },
+  // 需要使用 ddccontrol -p，知道显示器 i2c 编号
+  //ddccontrol version
+  "custom/brightness": {
+    "format": "{percentage}% {icon}",
+    // "format": "{icon}",
+    "format-icons": [
+      "\uDB80\uDCDE", // 低亮度图标
+      "\uDB80\uDCDF", // 中亮度图标
+      "\uDB80\uDCE0" // 高亮度图标
+    ],
+    "return-type": "json",
+    "exec-on-event": false,
+    // "exec": "ddccontrol -r 0x10 dev:/dev/i2c-17 2>/dev/null | grep -oP '(?<=\\+/)\\d+(?=/100)' | { IFS= read -r x || x=0; echo '{\"percentage\":'${x}'}'; }",
+    "exec-if": "sh -c '[ $(hyprctl monitors all | grep \"Monitor\" | wc -l) -eq 2 ]'",
+    "exec": "ddccontrol -r 0x10 dev:/dev/i2c-17 2>/dev/null | grep Control | sed -En 's/.*\\/([0-9]+)\\/.*/\\1/p' | { read x; echo '{\"percentage\":'${x}'}'; }",
+    // "exec": "brightness=$(ddccontrol -r 0x10 dev:/dev/i2c-17 2>/dev/null | sed -n 's/.*Control:\\([0-9]\\+\\).*/\\1/p'); brightness=${brightness:-0}; [ $brightness -gt 100 ] && brightness=100; jq -n --argjson br $brightness '{percentage: $br}'",
+    "on-click": "ddccontrol -r 0x10 -w 100 dev:/dev/i2c-17 2>/dev/null",
+    "on-click-right": "ddccontrol -r 0x10 -w 10 dev:/dev/i2c-17 2>/dev/null",
+    "on-scroll-up": "notify-send \"Brightness + 10%\" && ddccontrol -r 0x10 -W +10 dev:/dev/i2c-17 2>/dev/null",
+    "on-scroll-down": "notify-send \"Brightness - 10%\" && ddccontrol -r 0x10 -W -10 dev:/dev/i2c-17 2>/dev/null",
+    "tooltip-format": "DP",
+    "interval": 1
+  },
+  // 电池
+  "battery": {
+    // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+    "format": "{capacity}% <span font='Font Awesome 5 Free 11'>{icon}</span>",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "format-time": "{H}h{M}m",
+    // "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+    // "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
+    "format-charging": "{capacity}% <span font='Font Awesome 5 Free'></span>",
+    "format-full": "{capacity}% <span font='Font Awesome 5 Free'></span>",
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 10
+    },
+    "tooltip": "{time}",
+    // "on-click": "2"
+	"on-click": "wlogout -b 6 --protocol layer-shell"
+  },
+  "tray": {
+    "spacing": 10,
+    "icon-size": 25,
+    "reverse-direction": true
+  },
+  // 时钟
+  "clock": {
+    "format": " {:%H:%M} ",
+    "format-alt": " {:L%A, %B %d, %Y (%R)} ",
+    "tooltip-format": "\n<span size='14pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>\n",
+    "calendar": {
+      // "mode": "year",
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      // "on-click-left": "mode",
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "actions": {
+    "on-click-forward": "tz_up",
+    "on-click-backward": "tz_down",
+    "on-scroll-up": "shift_up",
+    "on-scroll-down": "shift_down"
+  },
+  // 关机键
+  "custom/power": {
+    "format": "⏻",
+    "icon-size": 30,
+    "tooltip": false,
+    "on-click": "wlogout -b 6 --protocol layer-shell"
+  }
+}

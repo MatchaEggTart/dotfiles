@@ -1,0 +1,161 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  // 临时提示符设置（命令输入前的符号）
+  "transient_prompt": {
+    "background": "transparent", // 透明背景
+    "foreground": "#ffffff", // 白色前景
+    "template": "\u276f  " // 使用 ❯  符号
+  },
+  // 主提示符区块配置
+  "blocks": [
+    // ========================= 第一行（左对齐） =========================
+    {
+      "alignment": "left",
+      "segments": [
+        // 1. root权限指示器（管理员模式）
+        {
+          "background": "#a313a8", // 紫色背景
+          "foreground": "#FFEB3B", // 黄色闪电图标
+          "style": "plain",
+          "template": "\u26a1 ", // ⚡ 符号
+          "type": "root" // 仅当以root权限运行时显示
+        },
+        // 2. 操作系统信息
+        {
+          "background": "transparent",
+          "foreground": "#ffffff", // 白色文本
+          "style": "plain",
+          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}} ", // 显示OS图标，如果是WSL则标注
+          "type": "os"
+        },
+        // 3. 路径显示（核心模块）
+        {
+          "background": "#01579B", // 深蓝色背景
+          "foreground": "#ffffff", // 白色文本
+          "leading_diamond": "\ue0c5", // Powerline风格左箭头
+          "properties": {
+            "folder_separator_icon": "<transparent> \ue0bd </>", // 透明分隔符
+            "style": "agnoster_short" // 短路径格式（如 ~/documents）
+          },
+          "style": "diamond", // 菱形Powerline样式
+          "template": " {{ .Path }} ", // 当前路径
+          "trailing_diamond": "\ue0b0", // Powerline右箭头
+          "type": "path"
+        },
+        // 4. Git状态模块（核心）
+        {
+          "background": "#00C853", // 绿色默认背景
+          "background_templates": [ // 动态背景色规则：
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFEB3B{{ end }}", // 有修改时黄色警告
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}", // 分支冲突时橙色
+            "{{ if gt .Ahead 0 }}#B388FF{{ end }}", // 本地领先远程时紫色
+            "{{ if gt .Behind 0 }}#B388FF{{ end }}" // 本地落后远程时紫色
+          ],
+          "foreground": "#000000", // 黑色文本
+          "powerline_symbol": "\ue0b0", // Powerline箭头
+          "properties": {
+            "fetch_stash_count": true, // 显示stash数量
+            "fetch_status": true // 实时获取Git状态
+          },
+          "style": "powerline",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          // 显示: 远程图标 | 分支名 | 状态(↑↓) | 工作区修改 | 暂存区修改 | stash数量
+          "type": "git"
+        },
+        // 5. 上条命令状态码
+        {
+          "background": "#910000", // 深红色背景（错误时）
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0 ",
+          "style": "powerline",
+          "template": "<transparent> \uf12a</> {{ reason .Code }} ", // 显示错误原因（非0状态码时）
+          "type": "status"
+        }
+      ],
+      "type": "prompt",
+      "newline": true // 本区块后换行
+    },
+    // ========================= 第二行（右对齐） =========================
+    {
+      "alignment": "right",
+      "segments": [
+        // 1. 用户和主机名
+        {
+          "background": "#29315A", // 深蓝紫色背景
+          "foreground": "#43CCEA", // 青蓝色文本
+          "leading_diamond": "\ue0c5", // Powerline左箭头
+          "trailing_diamond": "\ue0bc", // Powerline右箭头
+          "style": "diamond",
+          "template": "  {{ .UserName }}<transparent> / </>{{ .HostName }} ", // 显示 用户名 / 主机名
+          "type": "session"
+        },
+        // 2. 命令执行时间（已注释掉的时间模块）
+        /*
+        {
+          "background": "#29315A",
+          "foreground": "#3EC669",
+          "properties": { "time_format": "15:04:05" },
+          "leading_diamond": "\ue0ba",
+          "trailing_diamond": "\ue0bc",
+          "style": "diamond",
+          "template": " {{ .CurrentDate | date .Format }} ",
+          "type": "time"
+        },
+        */
+        // 3. 命令执行耗时
+        {
+          "background": "#49404f", // 灰紫色背景
+          "foreground": "#ffffff",
+          "leading_diamond": "\ue0ba", // Powerline左箭头
+          "properties": {
+            "style": "dallas", // 时间显示样式
+            "threshold": 0 // 所有命令都显示耗时
+          },
+          "style": "diamond",
+          "template": " {{ .FormattedMs }}s ", // 显示执行时间（秒）
+          "trailing_diamond": "\ue0b0<#ffffff,transparent>\u2500\u256e</>", // 特殊分隔符
+          "type": "executiontime"
+        }
+      ],
+      "type": "prompt"
+    },
+    // ========================= 第三行（输入提示符） =========================
+    {
+      "alignment": "left",
+      "newline": true, // 在新行显示
+      "segments": [
+        // 命令输入提示符
+        {
+          "foreground": "#ffffff",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#ff0000{{ end }}"
+          ], // 上条命令错误时变红色
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "\u276f  ", // 显示 ❯ 
+          "type": "status"
+        }
+      ],
+      "type": "prompt"
+    },
+    // ========================= 右侧提示符 =========================
+    {
+      "segments": [
+        // 右侧装饰符号
+        {
+          "foreground": "#d3d7cf", // 浅灰色
+          "style": "plain",
+          "template": "\u2500\u256f", // 显示 ─╯
+          "type": "text"
+        }
+      ],
+      "type": "rprompt"
+    }
+  ],
+  // 终端窗口标题模板
+  "console_title_template": "{{if .Root}} \u26a1 {{end}}{{.Folder | replace \"~\" \"🏚️\" }} @ {{.HostName}}",
+  // 格式示例: ⚡ ~/projects @ MyPC
+  "version": 3
+}
