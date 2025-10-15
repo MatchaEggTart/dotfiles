@@ -1,0 +1,222 @@
+{
+  "about": {
+    "browser": "chrome",
+    "version": "21.2.1"
+  },
+  "showall": false,
+  "lang": "en",
+  "dark": "system",
+  "favicon": "",
+  "tabtitle": "",
+  "greeting": "",
+  "greetingsize": "3",
+  "pagegap": 1,
+  "pagewidth": 1600,
+  "time": true,
+  "main": true,
+  "dateformat": "auto",
+  "quicklinks": true,
+  "textShadow": 0.2,
+  "announcements": "major",
+  "review": 5,
+  "css": "",
+  "hide": {},
+  "linkstyle": "medium",
+  "linktitles": true,
+  "linkbackgrounds": true,
+  "linknewtab": false,
+  "linksrow": 6,
+  "linkgroups": {
+    "on": false,
+    "selected": "default",
+    "groups": [
+      "default"
+    ],
+    "pinned": [],
+    "synced": []
+  },
+  "backgrounds": {
+    "type": "images",
+    "fadein": 600,
+    "blur": 15,
+    "bright": 0.8,
+    "frequency": "hour",
+    "color": "#185A63",
+    "urls": "",
+    "images": "bonjourr-images-daylight",
+    "videos": "bonjourr-videos-daylight",
+    "queries": {},
+    "texture": {
+      "type": "none"
+    }
+  },
+  "clock": {
+    "size": 1,
+    "ampm": false,
+    "analog": false,
+    "seconds": true,
+    "ampmlabel": false,
+    "worldclocks": false,
+    "timezone": "Asia/Shanghai"
+  },
+  "worldclocks": [],
+  "analogstyle": {
+    "face": "none",
+    "hands": "modern",
+    "shape": "round",
+    "border": "#ffff",
+    "background": "#fff2"
+  },
+  "weather": {
+    "unit": "metric",
+    "provider": "",
+    "moreinfo": "none",
+    "forecast": "auto",
+    "temperature": "actual",
+    "geolocation": "approximate"
+  },
+  "notes": {
+    "on": false,
+    "width": 40,
+    "opacity": 0.1,
+    "align": "left",
+    "text": "## Edit this note!\n\n[ ] With markdown titles, lists, and checkboxes\n\n[ ] Learn more on https://bonjourr.fr/docs/overview"
+  },
+  "searchbar": {
+    "on": true,
+    "opacity": 0.1,
+    "newtab": false,
+    "suggestions": true,
+    "engine": "default",
+    "request": "",
+    "placeholder": ""
+  },
+  "quotes": {
+    "on": false,
+    "type": "classic",
+    "frequency": "day",
+    "author": false,
+    "last": 1760516296756
+  },
+  "font": {
+    "size": "14",
+    "family": "",
+    "system": true,
+    "weightlist": [],
+    "weight": "300"
+  },
+  "supporters": {
+    "enabled": true,
+    "closed": false,
+    "month": 10
+  },
+  "move": {
+    "selection": "single",
+    "layouts": {
+      "single": {
+        "grid": [
+          [
+            "time"
+          ],
+          [
+            "main"
+          ],
+          [
+            "searchbar"
+          ],
+          [
+            "quicklinks"
+          ]
+        ],
+        "items": {}
+      }
+    }
+  },
+  "linkscimrmc": {
+    "_id": "linkscimrmc",
+    "icon": "https://services.bonjourr.fr/favicon/blob/https://arisaka.io/dashboard",
+    "order": 9,
+    "parent": "default",
+    "title": "Arisaka",
+    "url": "https://arisaka.io/dashboard"
+  },
+  "linksdeimmi": {
+    "_id": "linksdeimmi",
+    "order": 0,
+    "parent": "default",
+    "title": "阿里云",
+    "url": "https://aliyun.com"
+  },
+  "linksdpleef": {
+    "_id": "linksdpleef",
+    "order": 7,
+    "parent": "default",
+    "title": "Reddit",
+    "url": "https://www.reddit.com/"
+  },
+  "linksfeoabm": {
+    "_id": "linksfeoabm",
+    "order": 1,
+    "parent": "default",
+    "title": "知乎",
+    "url": "https://zhihu.com"
+  },
+  "linksfqdqjj": {
+    "_id": "linksfqdqjj",
+    "order": 10,
+    "parent": "default",
+    "title": "Translate",
+    "url": "https://translate.google.com"
+  },
+  "linksglmerp": {
+    "_id": "linksglmerp",
+    "order": 5,
+    "parent": "default",
+    "title": "Outlook",
+    "url": "https://outlook.com"
+  },
+  "linksmqkimr": {
+    "_id": "linksmqkimr",
+    "icon": "https://services.bonjourr.fr/favicon/blob/https://bilibili.com/",
+    "order": 2,
+    "parent": "default",
+    "title": "哔哩哔哩 ",
+    "url": "https://bilibili.com/"
+  },
+  "linksnlqdbr": {
+    "_id": "linksnlqdbr",
+    "order": 11,
+    "parent": "default",
+    "title": "应用商店",
+    "url": "https://chrome.google.com/webstore?hl=zh-CN"
+  },
+  "linkspbljrm": {
+    "_id": "linkspbljrm",
+    "order": 6,
+    "parent": "default",
+    "title": "Google",
+    "url": "https://google.com"
+  },
+  "linksqhbibe": {
+    "_id": "linksqhbibe",
+    "icon": "https://services.bonjourr.fr/favicon/blob/https://douyin.com/",
+    "order": 3,
+    "parent": "default",
+    "title": "抖音",
+    "url": "https://douyin.com/"
+  },
+  "linksqhkcal": {
+    "_id": "linksqhkcal",
+    "order": 8,
+    "parent": "default",
+    "title": "Youtube",
+    "url": "https://youtube.com"
+  },
+  "linksrbimak": {
+    "_id": "linksrbimak",
+    "order": 4,
+    "parent": "default",
+    "title": "斗鱼",
+    "url": "https://douyu.com"
+  }
+}
