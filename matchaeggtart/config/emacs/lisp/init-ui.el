@@ -113,7 +113,7 @@
   :pin melpa
   :ensure t
   :init
-  (setq catppuccin-flavor 'latte) ;; or 'latte, 'macchiato, or 'mocha
+  (setq catppuccin-flavor 'macchiato) ;; or 'latte, 'macchiato, or 'mocha'
   (load-theme 'catppuccin :no-confirm)
   ;; :config
   ;; (load-theme 'catppuccin :no-confirm)
