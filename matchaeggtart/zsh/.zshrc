@@ -132,7 +132,7 @@ alias killqqmusic="killall -9 qqmusic"
 # alias nfl="neofetch --source ~/.config/neofetch/ascii-art-neofetch/communist | lolcat"
 # alias nfll="neofetch --source ~/.config/neofetch/ascii-art-neofetch/communist -L | lolcat"
 # alias lol="fastfetch --logo $HOME/.config/fastfetch/ascii-art-fastfetch/new-communsit | lolcat"
-alias fff="clear && fastfetch --config os.jsonc"
+alias fff="clear && fastfetch"
 
 # default editor
 export EDITOR=emacs
@@ -155,7 +155,10 @@ vterm_printf() {
 
 
 # nvm
-source /usr/share/nvm/init-nvm.sh
+# source /usr/share/nvm/init-nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
 # source /usr/share/nvm/nvm.sh

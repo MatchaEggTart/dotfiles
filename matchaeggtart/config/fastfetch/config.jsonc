@@ -77,14 +77,14 @@
     },
     {
       "type": "localip",
-      "key": "IP ",
+      "key": "IP",
       "format": "{ipv4}",
       "keyColor": "33",
     },
     {
       "type": "media",
       "key": "󰝚 ",
-      "format": "{title:78}",
+      "format": "{title:52}",
       "keyColor": "33",
     },
     "break",
