@@ -1,5 +1,4 @@
 rm -rf $HOME/.emacs.d
-rm -rf $HOME/nvim
 
 rm -rf $HOME/.bash_logout
 rm -rf $HOME/.bashrc
@@ -16,6 +15,7 @@ rm -rf $HOME/.config/tofi
 rm -rf $HOME/.config/waybar
 rm -rf $HOME/.config/oh-my-posh
 rm -rf $HOME/.config/cava
+rm -rf $HOME/.config/pip
 
 rm -rf $HOME/.npmrc
 

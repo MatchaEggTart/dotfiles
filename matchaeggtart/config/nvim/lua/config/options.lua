@@ -6,3 +6,5 @@ local opt = vim.opt
 
 -- Relative line numbers
 opt.relativenumber = false
+-- line numbers width
+opt.numberwidth = 8
