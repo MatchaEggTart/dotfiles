@@ -33,7 +33,7 @@
 	     (org	      	. ("https://github.com/milisims/tree-sitter-org"))
 	     (yaml	      . ("https://github.com/ikatyang/tree-sitter-yaml"))
        ;; pipx install python-lsp-server
-	     (python     	. ("https://github.com/tree-sitter/py-tree-sitter"))
+	     (python 			. ("https://github.com/tree-sitter/tree-sitter-python"))
 	     ))
   :mode
   (
