@@ -8,3 +8,5 @@ local opt = vim.opt
 opt.relativenumber = false
 -- line numbers width
 opt.numberwidth = 8
+
+
