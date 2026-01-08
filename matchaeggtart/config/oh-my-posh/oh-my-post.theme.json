@@ -146,10 +146,11 @@
       "segments": [
         // 右侧装饰符号
         {
-        //  "foreground": "#d3d7cf", // 浅灰色
-        //  "style": "plain",
-        //  "template": "\u2500\u256f", // 显示 ─╯
-        //  "type": "text"
+          //  "foreground": "#d3d7cf", // 浅灰色
+          //  "style": "plain",
+          //  "template": "\u2500\u256f", // 显示 ─╯
+          //  "type": "text"
+          "template": "-v"
         }
       ],
       "type": "rprompt"
