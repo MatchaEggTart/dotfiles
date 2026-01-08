@@ -114,7 +114,7 @@
           },
           "style": "diamond",
           "template": " {{ .FormattedMs }}s ", // 显示执行时间（秒）
-          "trailing_diamond": "\ue0b0<#ffffff,transparent>\u2500\u256e</>", // 特殊分隔符
+          // "trailing_diamond": "\ue0b0<#ffffff,transparent>\u2500\u256e</>", // 特殊分隔符
           "type": "executiontime"
         }
       ],
@@ -146,10 +146,10 @@
       "segments": [
         // 右侧装饰符号
         {
-          "foreground": "#d3d7cf", // 浅灰色
-          "style": "plain",
-          "template": "\u2500\u256f", // 显示 ─╯
-          "type": "text"
+        //  "foreground": "#d3d7cf", // 浅灰色
+        //  "style": "plain",
+        //  "template": "\u2500\u256f", // 显示 ─╯
+        //  "type": "text"
         }
       ],
       "type": "rprompt"
