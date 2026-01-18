@@ -14,7 +14,7 @@
 (delete-selection-mode t)
 
 ;; 折叠代码
-(add-hook 'prog-mode-hook 'hs-minor-mode)
+;; (add-hook 'prog-mode-hook 'hs-minor-mode)
 
 
 ;;让鼠标滚动更好用
@@ -34,8 +34,8 @@
   :config
   ;; 基本设置
   (setq hs-hide-comments-when-hiding-all nil
-	hs-isearch-open t
-	hs-allow-nesting t)
+	  hs-isearch-open t
+	  hs-allow-nesting t)
   
   ;; 按键绑定 (使用 C-c h 前缀)
   ;; (define-key hs-minor-mode-map (kbd "C-c h h") 'hs-hide-block)
@@ -55,40 +55,40 @@
   (defun my-hs-overlay-display (ov)
     (when (eq 'code (overlay-get ov 'hs))
       (let* ((start (overlay-start ov))
-			  (line (buffer-substring start (line-end-position)))
-			  (overlay-put ov 'display (concat " ▶ " (string-trim line) " ..."))))
+			        (line (buffer-substring start (line-end-position)))
+			        (overlay-put ov 'display (concat " ▶ " (string-trim line) " ..."))))
       
       ;; 语言特定配置 (Python 示例)
       (add-hook 'python-mode-hook
-		(lambda ()
-		  (setq hs-special-modes-alist
-			(cons '(python-mode "\\s-*\\_<\\(class\\|def\\|if\\|for\\|while\\|with\\|try\\)\\_>"
-					 nil "#"
-					 hs-c-like-adjust-block-beginning)
-			  hs-special-modes-alist))))
+		    (lambda ()
+		      (setq hs-special-modes-alist
+			      (cons '(python-mode "\\s-*\\_<\\(class\\|def\\|if\\|for\\|while\\|with\\|try\\)\\_>"
+					           nil "#"
+					           hs-c-like-adjust-block-beginning)
+			        hs-special-modes-alist))))
       
       ;; 兼容行号显示
       (with-eval-after-load 'linum
-		(add-hook 'hs-minor-mode-hook
-		  (lambda () (setq-local linum-disabled t))))
+		    (add-hook 'hs-minor-mode-hook
+		      (lambda () (setq-local linum-disabled t))))
 
       :bind (:map hs-minor-mode-map
-			  ("C-c <left>" . hs-hide-all)
-			  ("C-c <right>" . hs-show-all))
+			        ("C-c <left>" . hs-hide-all)
+			        ("C-c <right>" . hs-show-all))
+	    )
 	  )
-	)
   )
 
 
 ;; crux
 (use-package crux
   :bind(
-		 ;; 回到第一个字符
-		 ;; ("C-a" . crux-move-beginning-of-line)
-		 ;; ("C-^" . crux-top-join-line)
-		 ;; ("C-c I" . crux-find-user-init-file)
-		 ;; 智能删除键
-		 ("C-k" . crux-smart-kill-line)))
+		     ;; 回到第一个字符
+		     ;; ("C-a" . crux-move-beginning-of-line)
+		     ;; ("C-^" . crux-top-join-line)
+		     ;; ("C-c I" . crux-find-user-init-file)
+		     ;; 智能删除键
+		     ("C-k" . crux-smart-kill-line)))
 
 ;; 删除自动清除空白位置(新)
 (use-package hungry-delete
@@ -142,7 +142,7 @@
   :ensure t
   :defer t
   :bind (("C-c e e" . er/expand-region)
-		  ("C-c e c" . er/contract-region)))
+		      ("C-c e c" . er/contract-region)))
 
 
 (provide 'init-edit)

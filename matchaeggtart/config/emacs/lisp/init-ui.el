@@ -53,6 +53,15 @@
     ;; 透明度
     ;; (set-frame-parameter nil 'alpha-background 90)
     ;; (add-to-list 'default-frame-alist '(alpha-background . 90))
+
+    ;; 1. 到达窗口右边界时自动折行（只是“视觉”换行，不插 \n）
+    ;; (global-visual-line-mode 1)          ; 对所有缓冲区生效
+
+    ;; 2. 让折行发生在“单词”边界，而不是硬生生劈开单词
+    ;; (setq-default word-wrap t)
+
+    ;; 3. 如果你希望折行后缩进跟上一行对齐，可再加
+    ;; (setq-default adaptive-fill-mode t)  ; 继承前导空格
     )
   )
 
@@ -72,8 +81,8 @@
   (setq dashboard-projects-backend 'projectile)  ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
   (setq dashboard-startup-banner 'official)      ;; 也可以自定义图片
   (setq dashboard-items '((recents  . 10)        ;; 显示多少个最近文件
-						   ;; (bookmarks . 5)     ;; 显示多少个最近书签
-						   (projects . 10)))      ;; 显示多少个最近项目
+						               ;; (bookmarks . 5)     ;; 显示多少个最近书签
+						               (projects . 10)))      ;; 显示多少个最近项目
   )
 
 ;; 主题
@@ -113,7 +122,7 @@
   :pin melpa
   :ensure t
   :init
-  (setq catppuccin-flavor 'macchiato) ;; or 'latte, 'macchiato, or 'mocha'
+  (setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
   (load-theme 'catppuccin :no-confirm)
   ;; :config
   ;; (load-theme 'catppuccin :no-confirm)
