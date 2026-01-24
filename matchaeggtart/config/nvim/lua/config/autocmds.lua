@@ -8,9 +8,10 @@
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
 -- Disable autoformat for lua files
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "lua", "python" },
-  callback = function()
-    vim.b.autoformat = false
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+--   pattern = { "lua", "python" },
+--   callback = function()
+--     vim.b.autoformat = false
+--   end,
+-- })
+vim.g.autoformat = false
