@@ -41,19 +41,19 @@
 ;; 输入补充
 (use-package yasnippet
   :hook ((prog-mode . yas-minor-mode)
-	 (org-mode . yas-minor-mode))
+	        (org-mode . yas-minor-mode))
   :init
   :config
   (progn
     (setq hippie-expand-try-functions-list
-	  '(yas/hippie-try-expand
-	    try-complete-file-name-partially
-	    try-expand-all-abbrevs
-	    try-expand-dabbrev
-	    try-expand-dabbrev-all-buffers
-	    try-expand-dabbrev-from-kill
-	    try-complete-lisp-symbol-partially
-	    try-complete-lisp-symbol)))
+	    '(yas/hippie-try-expand
+	       try-complete-file-name-partially
+	       try-expand-all-abbrevs
+	       try-expand-dabbrev
+	       try-expand-dabbrev-all-buffers
+	       try-expand-dabbrev-from-kill
+	       try-complete-lisp-symbol-partially
+	       try-complete-lisp-symbol)))
   )
 
 (use-package yasnippet-snippets
@@ -68,7 +68,7 @@
   ;; (add-hook 'js-mode-hook 'flymake-jslint-load)
   ;; :hook (prog-mode . flymake-mode)
   :bind (("M-n" . #'flymake-goto-next-error)
- 	 ("M-p" . #'flymake-goto-prev-error))
+ 	        ("M-p" . #'flymake-goto-prev-error))
   )
 
 ;; 快速运行代码
@@ -77,14 +77,14 @@
   :init
   (quickrun-add-command "c++/c1z"
     '((:command . "g++")
-      (:exec . ("%c -std=c++1z %o -o %e %s"
-		"%e %a"))
-      (:remove . ("%e")))
+       (:exec . ("%c -std=c++1z %o -o %e %s"
+		              "%e %a"))
+       (:remove . ("%e")))
     :default "c++")
   ;; You can override existing command
   (quickrun-add-command "c/gcc"
     '((:exec . ("%c -std=c++1z %o -o %e %s"
-		"%e %a")))
+		             "%e %a")))
     :override t)
   :config
   (global-set-key (kbd "<f5>") 'quickrun)
@@ -97,9 +97,9 @@
   :hook (prog-mode . format-all-mode)
   :config
   (setq-default format-all-formatters
-                '(("C"     (astyle "--mode=c"))
-                  ("Shell" (shfmt "-i" "4" "-ci"))
-		  ))
+    '(("C"     (astyle "--mode=c"))
+       ("Shell" (shfmt "-i" "4" "-ci"))
+		   ))
   :bind ("C-c f" . #'format-all-region-or-buffer)
   )
 

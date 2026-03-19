@@ -1,3 +1,6 @@
+# for org-roam.db 
+mkdir  ~/Workspace/Bibliography
+touch  ~/Workspace/Bibliography/references.bib
 # C && Python
 sudo pacman -S clang python-lsp-server
 # npm install -D -g typescript typescript-language-server@4.0.0
