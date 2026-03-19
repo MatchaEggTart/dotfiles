@@ -35,6 +35,7 @@ transient
 
 # Org-mode
 .org-id-locations
+org-roam.db
 *_archive
 
 # flymake-mode
