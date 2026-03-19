@@ -45,8 +45,8 @@
   use-package-expand-minimally t
   use-package-verbose t)
 
-;; 默认使用 melpa-stable
-(setq use-package-always-pin "melpa-stable")
+;; 默认从 melpa 安装，不固定源
+;; (setq use-package-always-pin "melpa-stable")
 ;; (setq use-package-always-pin "nongnu")
 
 ;; 装完插件的重启工具
