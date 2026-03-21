@@ -34,6 +34,7 @@
 	     (yaml	      . ("https://github.com/ikatyang/tree-sitter-yaml"))
        ;; pipx install python-lsp-server
 	     (python 			. ("https://github.com/tree-sitter/tree-sitter-python"))
+       (lua         . ("https://github.com/MunifTanjim/tree-sitter-lua"))
 	     ))
   :mode
   (
@@ -51,6 +52,7 @@
     ;; ("\\.html\\'" 	. tsx-ts-mode)
     ;; ("\\.sh\\'" 		. bash-ts-mode)
 	  ("\\.py\\'" 			. python-ts-mode)
+    ("\\.lua\\'"      . lua-ts-mode)
     )
   
   :config
