@@ -23,14 +23,13 @@
   (add-to-list 'package-archives '("gnu-devel" . "https://elpa.gnu.org/devel/"))
   (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/")) ;; installed by default from Emacs 28 onwards
   (add-to-list 'package-archives '("nongnu-devel" . "https://elpa.nongnu.org/devel/"))
-  (add-to-list 'package-archives '("org" . "https://mirrors.ustc.edu.cn/elpa/org/"))
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/"))
   (add-to-list 'package-archives '("elpa-devel" . "https://elpa.gnu.org/devel/"))
 
   (unless (bound-and-true-p package--initialized)
     (package-initialize))
   (progn
-    ;; 不检查签名，国内镜像如果正在同步，会导致安装签名失败
-    (setq package-check-signature nil
+    (setq package-check-signature 'allow
 	  load-prefer-newer t)
     ;; 防止反复调用 package-refresh-contents 会影响加载速度
     (when (not package-archive-contents)
