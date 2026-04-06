@@ -182,6 +182,7 @@
 ;; ============================================================================
 ;; 包含许多官方维护但不在 core 中的功能
 (use-package org-contrib
+  :pin nongnu
   :after org
   :config
   (require 'org-checklist))
@@ -243,6 +244,7 @@
 ;; ============================================================================
 ;; 让表格单元格中的文本垂直居中对齐
 (use-package valign
+  :pin gnu-devel
   :after org
   :hook (org-mode . valign-mode)
   :config
