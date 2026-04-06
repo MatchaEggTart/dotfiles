@@ -73,9 +73,8 @@
 
 ;; 启动
 (use-package dashboard
-  :init
-  (dashboard-setup-startup-hook)
   :config
+  (dashboard-setup-startup-hook)
   ;; (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
   (setq dashboard-center-content t)
   (setq dashboard-projects-backend 'projectile)  ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
