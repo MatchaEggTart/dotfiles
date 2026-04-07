@@ -28,7 +28,7 @@
 (require 'init-eglot)
 (require 'init-treesit)
 (require 'init-shell)
-(require 'init-dired)
+;; (require 'init-dired)
 ;; (require 'init-treemacs)
 
 ;; (require 'init-temp)

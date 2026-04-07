@@ -62,7 +62,8 @@
 See `color-desaturate-name' and `color-darken-name'."
   (-> (face-foreground face nil 'default)
     (color-desaturate-name desaturate)
-    (color-darken-name darken)))
+    (color-darken-name darken))
+  )
 
 (defun org-bars-xpm-color-spec-with-level-faces (desaturate darken org-options)
   "Return xpm color specification calculated from `org-level-faces'.
@@ -88,7 +89,8 @@ ORG-OPTIONS is a plist:
                          (org-bars-color-level it desaturate darken)
                          "\",")
           (-take n-faces faces)))
-      "\"0 c None\",")))
+      "\"0 c None\","))
+  )
 
 (defun org-bars-xpm-color-spec-one-color (color)
   "Return xpm color specification with one color COLOR and None color.
@@ -96,7 +98,8 @@ ORG-OPTIONS is a plist:
 In the xpm color specification, * corresponds to color COLOR
 and 0 to None."
   (concat "\"* c " color "\","
-    "\"0 c None\","))
+    "\"0 c None\",")
+  )
 
 (defun org-bars-xpm-color-spec (color-options org-options)
   "Return xpm color specification respecting options COLOR-OPTIONS.
@@ -114,7 +117,8 @@ in `org-bars-xpm-color-spec-with-level-faces' function signature."
       (org-bars-xpm-color-spec-one-color (or color "#8c8c8c"))
       (org-bars-xpm-color-spec-with-level-faces (or desaturate 0)
         (or darken 0)
-        org-options))))
+        org-options)))
+  )
 
 (defun org-bars-xpm-dimensions (level width height indentation colors)
   "Return the xpm dimensions.
@@ -519,7 +523,8 @@ with an advice."
             ""
             (propertize " " 'display (org-bars-xpm-image
                                        n width height
-                                       color-options org-options))))))))
+                                       color-options org-options)))))))
+  )
 
 (defun org-bars-indent (&rest _r)
   "Indent current buffer with recomputed xpm image prefixes.
@@ -527,7 +532,8 @@ with an advice."
 This is meant to be used as advice of `text-scale-increase'."
   (when org-bars-mode
     (org-bars-compute-prefixes)
-    (org-with-wide-buffer (org-indent-indent-buffer))))
+    (org-with-wide-buffer (org-indent-indent-buffer)))
+  )
 
 (defun org-bars-set-line-properties (level _indentation &optional heading)
   "Set prefix properties on current line an move to next one.
@@ -544,7 +550,8 @@ with an advice.  Read it docstring for more details."
     (add-text-properties (line-beginning-position)
       (line-beginning-position 2)
       `(line-prefix ,prefix wrap-prefix ,prefix)))
-  (forward-line))
+  (forward-line)
+  )
 
 ;;; narrowing
 
@@ -574,7 +581,8 @@ This is meant to be used in `post-command-hook'."
                        (goto-char org-bars-narrow-marker)
                        (line-beginning-position 3))))
         (org-indent-refresh-maybe org-bars-narrow-marker marker+ nil))
-      (setq-local org-bars-narrow-marker nil))))
+      (setq-local org-bars-narrow-marker nil)))
+  )
 
 ;;; org-bars-mode
 
@@ -622,7 +630,8 @@ This is meant to be used in `post-command-hook'."
         (org-bars-revert-heading-stars))
       (remove-from-invisibility-spec '(org-bars))
       (org-indent-mode -1)
-      (if org-bars-org-indent-mode (org-indent-mode 1)))))
+      (if org-bars-org-indent-mode (org-indent-mode 1))))
+  )
 
 (provide 'org-bars)
 ;;; org-bars.el ends here

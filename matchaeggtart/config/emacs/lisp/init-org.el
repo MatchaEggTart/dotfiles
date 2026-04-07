@@ -17,7 +17,7 @@
 ;;;   - C-c n    是 org-roam 的标准前缀
 ;;;   - C-c      是用户自定义命令的前缀
 
-;;;   创建文件
+;;; 创建文件
 ;;; mkdir -p ~/Workspace/Org/GTD/ ~/Workspace/Org/blog/ ~/Workspace/Org/org-files/
 
 ;;; Code:
@@ -185,7 +185,8 @@
   :pin nongnu
   :after org
   :config
-  (require 'org-checklist))
+  (require 'org-checklist)
+  )
 
 ;; ============================================================================
 ;; org-modern: 现代外观（替代 org-bars）
@@ -213,7 +214,8 @@
 
   ;; org-modern-table-vertical/horizontal: 表格边框样式
   (setq org-modern-table-vertical 2
-    org-modern-table-horizontal 1))
+    org-modern-table-horizontal 1)
+  )
 
 ;; ============================================================================
 ;; org-superstar: 标题符号美化
@@ -237,7 +239,8 @@
 
   ;; org-superstar-leading: 前导字符设为空格
   ;;   配合 org-hide-leading-stars 使用，可以让标题看起来更干净
-  (setq org-superstar-leading ?\s))
+  (setq org-superstar-leading ?\s)
+  )
 
 ;; ============================================================================
 ;; valign: 表格对齐
@@ -248,7 +251,8 @@
   :after org
   :hook (org-mode . valign-mode)
   :config
-  (setq valign-fraction 0.5))
+  (setq valign-fraction 0.5)
+  )
 
 ;; ============================================================================
 ;; org-appear: 即时显示隐藏的 emphasis 标记
@@ -265,7 +269,8 @@
     org-appear-autosubmarkers t
     org-appear-emphasis t
     org-appear-trigger 'hover      ; 触发方式：hover（鼠标悬停）
-    org-appear-delay 0.2))         ; 延迟 0.2 秒后显示
+    org-appear-delay 0.2)          ; 延迟 0.2 秒后显示
+  )
 
 ;; ============================================================================
 ;; org-fragtog: LaTeX 公式即时预览
@@ -278,7 +283,8 @@
   ;; org-fragtog-plain-scaling: 1.0 公式内文本缩放比例
   ;; org-fragtog-display-when-after: t 在光标后显示预览
   (setq org-fragtog-plain-scaling 1.0
-    org-fragtog-display-when-after t))
+    org-fragtog-display-when-after t)
+  )
 
 ;; ============================================================================
 ;; org-roam: Zettelkasten 双向链接笔记系统
@@ -319,7 +325,8 @@
   (org-roam-db-autosync-mode)
 
   ;; org-roam-protocol: 支持从外部链接（如浏览器）直接创建笔记
-  (require 'org-roam-protocol))
+  (require 'org-roam-protocol)
+  )
 
 ;; ============================================================================
 ;; org-download: 截图和图片下载
@@ -354,7 +361,8 @@
     ;; org-download-image-dir: 图片保存的子目录
     org-download-image-dir "./img"
     ;; org-download-screenshot-file: 临时截图文件位置
-    org-download-screenshot-file (expand-file-name "screenshot.jpg" temporary-file-directory)))
+    org-download-screenshot-file (expand-file-name "screenshot.jpg" temporary-file-directory))
+  )
 
 ;; ;; ============================================================================
 ;; ;; ox-hugo: 导出到 Hugo 博客（暂未安装）
@@ -381,7 +389,8 @@
      (sql . t)          ; 执行 SQL 查询
      (gnuplot . t)      ; 绘制图表
      (latex . t)        ; 处理 LaTeX 公式
-     (plantuml . t)))   ; 绘制 UML 图
+     (plantuml . t))    ; 绘制 UML 图
+  )
 
 (provide 'init-org)
 

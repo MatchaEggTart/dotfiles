@@ -61,7 +61,7 @@
 ;; 打开 Worpspace
 (defun open-workspace()
   (interactive)
-  (dired "~/Workspace/"))
+  (dired "$HOME/Workspace/"))
 
 (global-set-key (kbd "<f9>") 'open-workspace)
 

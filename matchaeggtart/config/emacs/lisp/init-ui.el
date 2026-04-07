@@ -12,7 +12,7 @@
     (setq inhibit-startup-screen t)
     
     ;; 自动最大化
-    (toggle-frame-maximized)
+    ;; (toggle-frame-maximized)
     
     ;; 菜单栏关闭
     ;; (menu-bar-mode 0)
@@ -40,7 +40,7 @@
     ;; 字体
     ;; Setting English Font
     ;; (set-face-attribute 'default nil :font (font-spec :family "JetBrainsMonoNerdFont" :size 16))
-    (set-face-attribute 'default nil :font (font-spec :family "Maple Mono NF CN" :size 18))
+    (set-face-attribute 'default nil :font (font-spec :family "Maple Mono NF CN" :size 16))
 
     ;; 注释变成斜体
     (custom-set-faces
@@ -77,12 +77,16 @@
   (dashboard-setup-startup-hook)
   :config
   ;; (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
-  (setq dashboard-center-content t)
-  (setq dashboard-projects-backend 'projectile)  ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
-  (setq dashboard-startup-banner 'official)      ;; 也可以自定义图片
-  (setq dashboard-items '((recents  . 10)        ;; 显示多少个最近文件
-						               ;; (bookmarks . 5)     ;; 显示多少个最近书签
-						               (projects . 10)))      ;; 显示多少个最近项目
+  ;; (setq dashboard-startup-banner nil)       		;; 不显示 Logo
+  (setq dashboard-center-content t)          			;; 内容居中
+  (setq dashboard-show-shortcuts t)          			;; 显示快捷键提示
+  (setq dashboard-set-heading-icons t)       			;; 标题使用图标（需要 all-the-icons）
+  (setq dashboard-set-init-info t) 								;; 显示加载了多少个包
+  (setq dashboard-projects-backend 'projectile)  	;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
+  (setq dashboard-startup-banner 'official)    		;; 也可以自定义图片
+  (setq dashboard-items '((recents  . 5)        	;; 显示多少个最近文件
+                           ;; (bookmarks . 5)     ;; 显示多少个最近书签
+                           (projects . 5)))      	;; 显示多少个最近项目
   )
 
 ;; 主题
@@ -122,7 +126,7 @@
   :pin melpa
   :ensure t
   :init
-  (setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
+  (setq catppuccin-flavor 'macchiato) ;; or 'latte, 'macchiato, or 'mocha
   (load-theme 'catppuccin :no-confirm)
   ;; :config
   ;; (load-theme 'catppuccin :no-confirm)

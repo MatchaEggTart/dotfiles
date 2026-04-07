@@ -24,7 +24,6 @@
 
   )
 
-
 ;; :confit (display-line-numbers-mode nil))
 ;;  )
 

@@ -8,15 +8,6 @@
 ;; (message package-archives)
 (use-package package
   :config
-  ;; (add-to-list 'package-archives '("melpa"	     . "https://mirrors.ustc.edu.cn/elpa/melpa/"))
-  ;; (add-to-list 'package-archives '("melpa-stable"  . "https://mirrors.ustc.edu.cn/elpa/stable-melpa/"))
-  ;; (add-to-list 'package-archives '("gnu"	     . "https://mirrors.ustc.edu.cn/elpa/gnu/"))
-  ;; (add-to-list 'package-archives '("gnu-devel"	    . "https://mirrors.ustc.edu.cn/elpa/gnu-devel/"))
-  ;; (add-to-list 'package-archives '("nongnu"	     . "https://mirrors.ustc.edu.cn/elpa/nongnu/"))
-  ;; (add-to-list 'package-archives '("nongnu-devel"  . "https://mirrors.ustc.edu.cn/elpa/nongnu-devel/"))
-  ;; (add-to-list 'package-archives '("org"	     . "https://mirrors.ustc.edu.cn/elpa/org/"))
-  
-
   (add-to-list 'package-archives '("melpa" 				. "https://melpa.org/packages/"))
   (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
   (add-to-list 'package-archives '("gnu" 					. "https://elpa.gnu.org/packages/")) ;; installed by default
@@ -24,8 +15,6 @@
   (add-to-list 'package-archives '("nongnu" 			. "https://elpa.nongnu.org/nongnu/")) ;; installed by default from Emacs 28 onwards
   (add-to-list 'package-archives '("nongnu-devel" . "https://elpa.nongnu.org/devel/"))
   (add-to-list 'package-archives '("org" 					. "https://mirrors.ustc.edu.cn/elpa/org/"))
-
-
 
   (unless (bound-and-true-p package--initialized)
     (package-initialize))
@@ -40,6 +29,7 @@
 
 ;; 配置 use-package 默认设置
 (require 'use-package-ensure)
+
 (setq use-package-always-ensure t
   use-package-always-defer t
   use-package-always-demand nil

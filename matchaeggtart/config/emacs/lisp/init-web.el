@@ -22,7 +22,8 @@
   :bind (("C-j" . emmet-expand-line))
   :config
   (setq emmet-indent-after-insert nil
-    emmet-indentation 2))
+    emmet-indentation 2)
+  )
 
 ;; JSONRPC
 ;; (use-package jsonrpc
