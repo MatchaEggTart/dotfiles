@@ -6,7 +6,7 @@
 
 ;; 先设置加载的目标目录到 load-path 中
 (add-to-list 'load-path
-	     (expand-file-name (concat user-emacs-directory "lisp")))
+	(expand-file-name (concat user-emacs-directory "lisp")))
 
 
 ;; update load-path to make customized lisp codes work

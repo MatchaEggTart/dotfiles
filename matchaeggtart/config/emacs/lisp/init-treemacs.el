@@ -69,7 +69,7 @@
     ;; The default width and height of the icons is 22 pixels. If you are
     ;; using a Hi-DPI display, uncomment this to double the icon size.
     ;;(treemacs-resize-icons 44)
-	(treemacs-resize-icons 18)
+	  (treemacs-resize-icons 18)
 
     (treemacs-follow-mode t)
     (treemacs-filewatch-mode t)
@@ -80,9 +80,9 @@
     (pcase (cons (not (null (executable-find "git")))
              (not (null treemacs-python-executable)))
       (`(t . t)
-		(treemacs-git-mode 'deferred))
+		    (treemacs-git-mode 'deferred))
       (`(t . _)
-		(treemacs-git-mode 'simple)))
+		    (treemacs-git-mode 'simple)))
 
     (treemacs-hide-gitignored-files-mode nil))
   :bind

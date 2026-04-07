@@ -61,8 +61,8 @@
 0 <= DESATURATE <= 100 and 0 <= DARKEN <= 100.
 See `color-desaturate-name' and `color-darken-name'."
   (-> (face-foreground face nil 'default)
-      (color-desaturate-name desaturate)
-      (color-darken-name darken)))
+    (color-desaturate-name desaturate)
+    (color-darken-name darken)))
 
 (defun org-bars-xpm-color-spec-with-level-faces (desaturate darken org-options)
   "Return xpm color specification calculated from `org-level-faces'.
@@ -80,15 +80,15 @@ ORG-OPTIONS is a plist:
     we only use the first `:org-n-level-faces' faces of `:org-level-faces'
     in the xpm specification."
   (let ((n-faces (plist-get org-options :org-n-level-faces))
-        (faces (plist-get org-options :org-level-faces)))
+         (faces (plist-get org-options :org-level-faces)))
     (concat
-     (-reduce
-      #'concat
-      (--map-indexed (concat "\"" (number-to-string (1+ it-index)) " c "
-                             (org-bars-color-level it desaturate darken)
-                             "\",")
-                     (-take n-faces faces)))
-     "\"0 c None\",")))
+      (-reduce
+        #'concat
+        (--map-indexed (concat "\"" (number-to-string (1+ it-index)) " c "
+                         (org-bars-color-level it desaturate darken)
+                         "\",")
+          (-take n-faces faces)))
+      "\"0 c None\",")))
 
 (defun org-bars-xpm-color-spec-one-color (color)
   "Return xpm color specification with one color COLOR and None color.
@@ -96,7 +96,7 @@ ORG-OPTIONS is a plist:
 In the xpm color specification, * corresponds to color COLOR
 and 0 to None."
   (concat "\"* c " color "\","
-          "\"0 c None\","))
+    "\"0 c None\","))
 
 (defun org-bars-xpm-color-spec (color-options org-options)
   "Return xpm color specification respecting options COLOR-OPTIONS.
@@ -107,14 +107,14 @@ COLOR-OPTIONS is a plist with the same specification as
 ORG-OPTIONS is a plist with same specification as
 in `org-bars-xpm-color-spec-with-level-faces' function signature."
   (let ((only-one-color-p (plist-get color-options :only-one-color))
-        (color            (plist-get color-options :bar-color))
-        (desaturate       (plist-get color-options :desaturate-level-faces))
-        (darken           (plist-get color-options :darken-level-faces)))
+         (color            (plist-get color-options :bar-color))
+         (desaturate       (plist-get color-options :desaturate-level-faces))
+         (darken           (plist-get color-options :darken-level-faces)))
     (if only-one-color-p
-        (org-bars-xpm-color-spec-one-color (or color "#8c8c8c"))
+      (org-bars-xpm-color-spec-one-color (or color "#8c8c8c"))
       (org-bars-xpm-color-spec-with-level-faces (or desaturate 0)
-                                                (or darken 0)
-                                                org-options))))
+        (or darken 0)
+        org-options))))
 
 (defun org-bars-xpm-dimensions (level width height indentation colors)
   "Return the xpm dimensions.
@@ -122,10 +122,10 @@ in `org-bars-xpm-color-spec-with-level-faces' function signature."
 In practice, `org-bars-xpm-dimensions' is called with INDENTATION argument
 value equal to `org-indent-indentation-per-level'."
   (let ((width-str (number-to-string (* level width indentation)))
-        (heigth-str (number-to-string height))
-        (character-per-pixel "1"))
+         (heigth-str (number-to-string height))
+         (character-per-pixel "1"))
     (concat "\"" width-str " " heigth-str " "
-            (number-to-string colors) " " character-per-pixel "\",")))
+      (number-to-string colors) " " character-per-pixel "\",")))
 
 (defun org-bars-cycle-level (level org-options)
   "Determine the level to pass to `org-bars-pixel-hline'.
@@ -140,9 +140,9 @@ ORG-OPTIONS is a plist:
     number of colors we use in the xpm image.  In practice, the
     value of `:org-n-level-faces' is `org-n-level-faces'."
   (let ((cycle-p (plist-get org-options :org-cycle-level-faces))
-        (n-faces (plist-get org-options :org-n-level-faces)))
+         (n-faces (plist-get org-options :org-n-level-faces)))
     (if cycle-p
-        (if (= (mod level n-faces) 0) n-faces (mod level n-faces))
+      (if (= (mod level n-faces) 0) n-faces (mod level n-faces))
       (min level n-faces))))
 
 (defun org-bars-pixel-hline (level width &optional only-one-color)
@@ -154,22 +154,22 @@ For instance:
     (org-bars-pixel-hline 3 9) -> \"000030000\".
     (org-bars-pixel-hline 3 9 t) -> \"0000*0000\"."
   (cond
-   ((= width 1) (or (and only-one-color "*")
-                    (number-to-string level)))
-   ((= width 2) (concat "0" (or (and only-one-color "*")
-                                (number-to-string level))))
-   ((= (mod width 2) 1)
-    (concat (s-repeat (floor (/ width 2.0)) "0")
-            (or (and only-one-color "*")
-                (number-to-string level))
-            (s-repeat (floor (/ width 2.0)) "0")))
-   (t
-    (let* ((l-pixels (floor (/ width 2.0)))
-           (r-pixels (1- l-pixels)))
-      (concat (s-repeat l-pixels "0")
-              (or (and only-one-color "*")
-                  (number-to-string level))
-              (s-repeat r-pixels "0"))))))
+    ((= width 1) (or (and only-one-color "*")
+                   (number-to-string level)))
+    ((= width 2) (concat "0" (or (and only-one-color "*")
+                               (number-to-string level))))
+    ((= (mod width 2) 1)
+      (concat (s-repeat (floor (/ width 2.0)) "0")
+        (or (and only-one-color "*")
+          (number-to-string level))
+        (s-repeat (floor (/ width 2.0)) "0")))
+    (t
+      (let* ((l-pixels (floor (/ width 2.0)))
+              (r-pixels (1- l-pixels)))
+        (concat (s-repeat l-pixels "0")
+          (or (and only-one-color "*")
+            (number-to-string level))
+          (s-repeat r-pixels "0"))))))
 
 (defun org-bars-pixel-bar (level width indentation only-one-color &optional org-options)
   "Return the pixels bars for level LEVEL with WIDTH being the character's width.
@@ -195,14 +195,14 @@ ORG-OPTIONS is a plist:
 See `org-bars-cycle-level'."
   (let ((none-pixels (s-repeat (* (1- indentation) width) "0")))
     (concat "\""
-            (s-join none-pixels
-                    (--map (org-bars-pixel-hline
-                            (or (and only-one-color 1)
-                                (org-bars-cycle-level it org-options))
-                            width only-one-color)
-                           (number-sequence 1 level)))
-            none-pixels
-            "\",")))
+      (s-join none-pixels
+        (--map (org-bars-pixel-hline
+                 (or (and only-one-color 1)
+                   (org-bars-cycle-level it org-options))
+                 width only-one-color)
+          (number-sequence 1 level)))
+      none-pixels
+      "\",")))
 
 (defun org-bars-xpm-data (level width height color-options org-options)
   "Return xpm data string.
@@ -231,15 +231,15 @@ ORG-OPTIONS is a plist:
     we only use the first `:org-n-level-faces' faces of `:org-level-faces'
     in the xpm specification."
   (let* ((identifier "/* XPM */\nstatic char *rule[] = {")
-         (only-one-color-p (plist-get color-options :only-one-color))
-         (n-faces (plist-get org-options :org-n-level-faces))
-         (colors (if only-one-color-p 2 (1+ n-faces)))
-         (indentation (plist-get org-options :org-indent-indentation-per-level))
-         (dimensions (org-bars-xpm-dimensions level width height indentation colors))
-         (color-spec (org-bars-xpm-color-spec color-options org-options))
-         (pixel-bar (org-bars-pixel-bar level width indentation only-one-color-p org-options))
-         (raster (-reduce #'concat (-repeat height pixel-bar)))
-         (end "};"))
+          (only-one-color-p (plist-get color-options :only-one-color))
+          (n-faces (plist-get org-options :org-n-level-faces))
+          (colors (if only-one-color-p 2 (1+ n-faces)))
+          (indentation (plist-get org-options :org-indent-indentation-per-level))
+          (dimensions (org-bars-xpm-dimensions level width height indentation colors))
+          (color-spec (org-bars-xpm-color-spec color-options org-options))
+          (pixel-bar (org-bars-pixel-bar level width indentation only-one-color-p org-options))
+          (raster (-reduce #'concat (-repeat height pixel-bar)))
+          (end "};"))
     (concat identifier dimensions color-spec raster end)))
 
 (defun org-bars-xpm-image (level width height color-options org-options)
@@ -251,9 +251,9 @@ the XPM image produced by `org-bars-xpm-image'.
 
 LEVEL must be strickly superior to 0."
   `(image :type xpm
-          :data ,(org-bars-xpm-data level width height color-options org-options)
-          :mask heuristic
-          :ascent center))
+     :data ,(org-bars-xpm-data level width height color-options org-options)
+     :mask heuristic
+     :ascent center))
 
 ;;; manage stars and headlines faces
 
@@ -291,8 +291,8 @@ See `face-nontrivial-p', `org-bars-subtree-is-empty-p' and
 
 (defvar org-bars-stars
   '(:empty "◉"
-    :invisible "▶"
-    :visible "▼")
+     :invisible "▶"
+     :visible "▼")
   "Plist of the strings used in place of the last star \"*\" in headlines.
 The replacement star is choosen accordingly to the state of the subtree:
 :empty
@@ -308,10 +308,10 @@ The replacement star is choosen accordingly to the state of the subtree:
   (save-match-data
     (save-excursion
       (let* ((heading-end (progn (outline-back-to-heading)
-                                 (outline-end-of-heading)
-                                 (point)))
-             (subtree-end (progn (outline-end-of-subtree)
-                                 (point))))
+                            (outline-end-of-heading)
+                            (point)))
+              (subtree-end (progn (outline-end-of-subtree)
+                             (point))))
         (= subtree-end heading-end)))))
 
 (defun org-bars-subtree-is-invisible-p ()
@@ -328,14 +328,14 @@ invisible or visible.
 You can customize the stars with the variable `org-bars-stars'."
   (let (star face)
     (cond ((org-bars-subtree-is-empty-p)
-           (setq star (plist-get org-bars-stars :empty))
-           (setq face 'org-bars-star-empty))
-          ((org-bars-subtree-is-invisible-p)
-           (setq star (plist-get org-bars-stars :invisible))
-           (setq face 'org-bars-star-invisible))
-          (t
-           (setq star (plist-get org-bars-stars :visible))
-           (setq face 'org-bars-star-visible)))
+            (setq star (plist-get org-bars-stars :empty))
+            (setq face 'org-bars-star-empty))
+      ((org-bars-subtree-is-invisible-p)
+        (setq star (plist-get org-bars-stars :invisible))
+        (setq face 'org-bars-star-invisible))
+      (t
+        (setq star (plist-get org-bars-stars :visible))
+        (setq face 'org-bars-star-visible)))
     `(:star ,star :face ,face)))
 
 (defun org-bars-get-level-face (n)
@@ -353,31 +353,31 @@ This function is meant to override `org-get-level-face' with an advice."
   ;;   (3 (org-get-level-face 3)))
   ;;
   (let* ((beg-2 (match-beginning 2))
-         (end-2 (match-end 2))
-         (beg-1 (match-beginning 1))
-         (org-l0 (- end-2 beg-1 1))
-         (org-l (if org-odd-levels-only (1+ (/ org-l0 2)) org-l0))
-         (org-f (if org-cycle-level-faces
-                    (nth (% (1- org-l) org-n-level-faces) org-level-faces)
-                  (nth (1- (min org-l org-n-level-faces)) org-level-faces))))
+          (end-2 (match-end 2))
+          (beg-1 (match-beginning 1))
+          (org-l0 (- end-2 beg-1 1))
+          (org-l (if org-odd-levels-only (1+ (/ org-l0 2)) org-l0))
+          (org-f (if org-cycle-level-faces
+                   (nth (% (1- org-l) org-n-level-faces) org-level-faces)
+                   (nth (1- (min org-l org-n-level-faces)) org-level-faces))))
     (cond
-     ;; we return 'default face because a face is expected as a result.
-     ;; But this face will never be used because it is applied to
-     ;; a part of the buffer we make invisible.
-     ((eq n 1)
-      (or (= org-l0 1)
+      ;; we return 'default face because a face is expected as a result.
+      ;; But this face will never be used because it is applied to
+      ;; a part of the buffer we make invisible.
+      ((eq n 1)
+        (or (= org-l0 1)
           (add-text-properties
-           beg-1 (- end-2 2) '(invisible org-bars)))
-      'default)
-     ((eq n 2)
-      (if org-bars-with-dynamic-stars-p
+            beg-1 (- end-2 2) '(invisible org-bars)))
+        'default)
+      ((eq n 2)
+        (if org-bars-with-dynamic-stars-p
           (let* ((star (org-bars-star))
-                 (star-s (plist-get star :star))
-                 (star-f (plist-get star :face)))
+                  (star-s (plist-get star :star))
+                  (star-f (plist-get star :face)))
             (compose-region beg-2 (1- end-2) star-s)
             (if (face-nontrivial-p star-f) star-f org-f))
-        org-f))
-     (t (unless org-level-color-stars-only org-f)))))
+          org-f))
+      (t (unless org-level-color-stars-only org-f)))))
 
 (defun org-bars-refresh-stars (_state)
   "Refontify all visible heading stars.
@@ -428,12 +428,12 @@ See `org-bars-face-height', `org-bars-cycle-level-line-height' and
 This function takes care of the cases where the text has
 been scaled up or down with `text-scale-increase' or `text-scale-decrease'."
   (let* ((face-font-height (aref (font-info (face-font face)) 3))
-         (height-not-an-integer-p
-          (not (integerp (face-attribute face :height nil t))))
-         (scale (nth 2 (assq 'default text-scale-mode-remapping)))
-         (height (cond ((and scale height-not-an-integer-p)
-                        (ceiling (* scale face-font-height)))
-                       (t face-font-height))))
+          (height-not-an-integer-p
+            (not (integerp (face-attribute face :height nil t))))
+          (scale (nth 2 (assq 'default text-scale-mode-remapping)))
+          (height (cond ((and scale height-not-an-integer-p)
+                          (ceiling (* scale face-font-height)))
+                    (t face-font-height))))
     (+ height extra-pixels)))
 
 (defun org-bars-cycle-level-line-height (level extra-pixel org-options)
@@ -452,10 +452,10 @@ ORG-OPTIONS is a plist:
     a list of 8 faces.  In practice, the value of `:org-level-faces'
     is `org-level-faces'."
   (let ((cycle-p (plist-get org-options :org-cycle-level-faces))
-        (n-faces (plist-get org-options :org-n-level-faces))
-        (faces (plist-get org-options :org-level-faces)))
+         (n-faces (plist-get org-options :org-n-level-faces))
+         (faces (plist-get org-options :org-level-faces)))
     (if cycle-p
-        (org-bars-face-height (nth (% (1- level) n-faces) faces) extra-pixel)
+      (org-bars-face-height (nth (% (1- level) n-faces) faces) extra-pixel)
       (org-bars-face-height (nth (1- (min level n-faces)) faces) extra-pixel))))
 
 (defun org-bars-compute-prefixes ()
@@ -465,61 +465,61 @@ This function is meant to override `org-indent--compute-prefixes'
 with an advice."
 
   (setq-local org-indent--heading-line-prefixes
-              (make-vector org-indent--deepest-level nil))
+    (make-vector org-indent--deepest-level nil))
   (setq-local org-indent--inlinetask-line-prefixes
-              (make-vector org-indent--deepest-level nil))
+    (make-vector org-indent--deepest-level nil))
   (setq-local org-indent--text-line-prefixes
-              (make-vector org-indent--deepest-level nil))
+    (make-vector org-indent--deepest-level nil))
 
   (let* ((gc-cons-threshold (max gc-cons-threshold (* 296 800000))) ; 800000 is the default value
-         (width (window-font-width))
-         (height (default-line-height))
-         (color-options org-bars-color-options)
-         (org-options `(:org-indent-indentation-per-level ,org-indent-indentation-per-level
-                        :org-cycle-level-faces ,org-cycle-level-faces
-                        :org-n-level-faces ,org-n-level-faces
-                        :org-level-faces ,org-level-faces)))
+          (width (window-font-width))
+          (height (default-line-height))
+          (color-options org-bars-color-options)
+          (org-options `(:org-indent-indentation-per-level ,org-indent-indentation-per-level
+                          :org-cycle-level-faces ,org-cycle-level-faces
+                          :org-n-level-faces ,org-n-level-faces
+                          :org-level-faces ,org-level-faces)))
     (dotimes (n org-indent--deepest-level)
       (let ((indentation (if (<= n 1) 0
                            (* (1- org-indent-indentation-per-level)
-                              (1- n)))))
+                             (1- n)))))
         ;; Headlines line prefixes.
         (let ((heading-prefix (make-string indentation ?*)))
           (aset org-indent--heading-line-prefixes
-                n
-                (if (<= n 1)
-                    ""
-                  (propertize
-                   " " 'display (org-bars-xpm-image
-                                 (1- n) width
-                                 (org-bars-cycle-level-line-height
-                                  n
-                                  org-bars-extra-pixels-height
-                                  org-options)
-                                 color-options org-options))))
+            n
+            (if (<= n 1)
+              ""
+              (propertize
+                " " 'display (org-bars-xpm-image
+                               (1- n) width
+                               (org-bars-cycle-level-line-height
+                                 n
+                                 org-bars-extra-pixels-height
+                                 org-options)
+                               color-options org-options))))
 
           ;; -------
           ;; BEG: part unchanged from `org-indent--compute-prefixes'
           ;; Inline tasks line prefixes
           (aset org-indent--inlinetask-line-prefixes
-                n
-                (cond ((<= n 1) "")
-                      ((bound-and-true-p org-inlinetask-show-first-star)
-                       (concat org-indent-inlinetask-first-star
-                               (substring heading-prefix 1)))
-                      (t (org-add-props heading-prefix nil 'face 'org-indent))))
+            n
+            (cond ((<= n 1) "")
+              ((bound-and-true-p org-inlinetask-show-first-star)
+                (concat org-indent-inlinetask-first-star
+                  (substring heading-prefix 1)))
+              (t (org-add-props heading-prefix nil 'face 'org-indent))))
           ;; END:
           ;; -------
           )
 
         ;; Text line prefixes.
         (aset org-indent--text-line-prefixes
-              n
-              (if (= n 0)
-                  ""
-                (propertize " " 'display (org-bars-xpm-image
-                                          n width height
-                                          color-options org-options))))))))
+          n
+          (if (= n 0)
+            ""
+            (propertize " " 'display (org-bars-xpm-image
+                                       n width height
+                                       color-options org-options))))))))
 
 (defun org-bars-indent (&rest _r)
   "Indent current buffer with recomputed xpm image prefixes.
@@ -535,15 +535,15 @@ This is meant to be used as advice of `text-scale-increase'."
 This function is meant to override `org-indent-set-line-properties'
 with an advice.  Read it docstring for more details."
   (let* ((prefix
-          (aref (pcase heading
-                  (`nil org-indent--text-line-prefixes)
-                  (`inlinetask org-indent--inlinetask-line-prefixes)
-                  (_ org-indent--heading-line-prefixes))
-                level)))
+           (aref (pcase heading
+                   (`nil org-indent--text-line-prefixes)
+                   (`inlinetask org-indent--inlinetask-line-prefixes)
+                   (_ org-indent--heading-line-prefixes))
+             level)))
     ;; Add properties down to the next line to indent empty lines.
     (add-text-properties (line-beginning-position)
-                         (line-beginning-position 2)
-                         `(line-prefix ,prefix wrap-prefix ,prefix)))
+      (line-beginning-position 2)
+      `(line-prefix ,prefix wrap-prefix ,prefix)))
   (forward-line))
 
 ;;; narrowing
@@ -557,24 +557,24 @@ Restore the bars when the buffer is widen.
 
 This is meant to be used in `post-command-hook'."
   (cond
-   ((buffer-narrowed-p)
-    (when (member this-command
-                  '(org-toggle-narrow-to-subtree
-                    org-narrow-to-block org-narrow-to-element
-                    org-narrow-to-subtree narrow-to-region narrow-to-defun
-                    narrow-to-page narrow-to-defun-include-comments))
-      (setq-local org-bars-narrow-marker (point-max-marker)))
-    (let* ((pmax (point-max))
-           (pmax+ (1+ (point-max))))
-      (org-with-wide-buffer
-       (when (< pmax (point-max))
-         (org-indent-remove-properties pmax pmax+)))))
-   ((member this-command '(widen org-toggle-narrow-to-subtree))
-    (let ((marker+ (save-excursion
-                     (goto-char org-bars-narrow-marker)
-                     (line-beginning-position 3))))
-      (org-indent-refresh-maybe org-bars-narrow-marker marker+ nil))
-    (setq-local org-bars-narrow-marker nil))))
+    ((buffer-narrowed-p)
+      (when (member this-command
+              '(org-toggle-narrow-to-subtree
+                 org-narrow-to-block org-narrow-to-element
+                 org-narrow-to-subtree narrow-to-region narrow-to-defun
+                 narrow-to-page narrow-to-defun-include-comments))
+        (setq-local org-bars-narrow-marker (point-max-marker)))
+      (let* ((pmax (point-max))
+              (pmax+ (1+ (point-max))))
+        (org-with-wide-buffer
+          (when (< pmax (point-max))
+            (org-indent-remove-properties pmax pmax+)))))
+    ((member this-command '(widen org-toggle-narrow-to-subtree))
+      (let ((marker+ (save-excursion
+                       (goto-char org-bars-narrow-marker)
+                       (line-beginning-position 3))))
+        (org-indent-refresh-maybe org-bars-narrow-marker marker+ nil))
+      (setq-local org-bars-narrow-marker nil))))
 
 ;;; org-bars-mode
 
@@ -585,44 +585,44 @@ This is meant to be used in `post-command-hook'."
   "Toggle `org-bars-mode' mode on or off."
   :global nil
   (cond
-   (org-bars-mode
-    (if (not (display-images-p))
+    (org-bars-mode
+      (if (not (display-images-p))
         (progn
           (setq-local org-bars-mode nil)
           (message "org-bars-mode not turned on; your display can't display images."))
-      (add-hook 'post-command-hook 'org-bars-narrow nil 'local)
-      (advice-add 'text-scale-increase :after 'org-bars-indent)
-      (advice-add 'org-indent-set-line-properties :override
-                  'org-bars-set-line-properties)
-      (advice-add 'org-indent--compute-prefixes :override
-                  'org-bars-compute-prefixes)
-      (advice-add 'org-get-level-face :override
-                  'org-bars-get-level-face)
+        (add-hook 'post-command-hook 'org-bars-narrow nil 'local)
+        (advice-add 'text-scale-increase :after 'org-bars-indent)
+        (advice-add 'org-indent-set-line-properties :override
+          'org-bars-set-line-properties)
+        (advice-add 'org-indent--compute-prefixes :override
+          'org-bars-compute-prefixes)
+        (advice-add 'org-get-level-face :override
+          'org-bars-get-level-face)
+        (when org-bars-with-dynamic-stars-p
+          (add-hook 'org-cycle-hook 'org-bars-refresh-stars nil t)
+          (add-hook 'after-change-functions
+            'org-bars-refresh-stars-after-change-function nil t))
+        (add-to-invisibility-spec '(org-bars))
+        (setq-local org-bars-org-indent-mode (bound-and-true-p org-indent-mode))
+        (org-indent-mode -1)
+        (org-indent-mode 1)))
+    (t
+      (remove-hook 'post-command-hook 'org-bars-narrow 'local)
+      (advice-remove 'text-scale-increase 'org-bars-indent)
+      (advice-remove 'org-indent-set-line-properties
+        'org-bars-set-line-properties)
+      (advice-remove 'org-indent--compute-prefixes
+        'org-bars-compute-prefixes)
+      (advice-remove 'org-get-level-face
+        'org-bars-get-level-face)
       (when org-bars-with-dynamic-stars-p
-        (add-hook 'org-cycle-hook 'org-bars-refresh-stars nil t)
-        (add-hook 'after-change-functions
-                  'org-bars-refresh-stars-after-change-function nil t))
-      (add-to-invisibility-spec '(org-bars))
-      (setq-local org-bars-org-indent-mode (bound-and-true-p org-indent-mode))
+        (remove-hook 'org-cycle-hook 'org-bars-refresh-stars t)
+        (remove-hook 'after-change-functions
+          'org-bars-refresh-stars-after-change-function t)
+        (org-bars-revert-heading-stars))
+      (remove-from-invisibility-spec '(org-bars))
       (org-indent-mode -1)
-      (org-indent-mode 1)))
-   (t
-    (remove-hook 'post-command-hook 'org-bars-narrow 'local)
-    (advice-remove 'text-scale-increase 'org-bars-indent)
-    (advice-remove 'org-indent-set-line-properties
-                   'org-bars-set-line-properties)
-    (advice-remove 'org-indent--compute-prefixes
-                   'org-bars-compute-prefixes)
-    (advice-remove 'org-get-level-face
-                   'org-bars-get-level-face)
-    (when org-bars-with-dynamic-stars-p
-      (remove-hook 'org-cycle-hook 'org-bars-refresh-stars t)
-      (remove-hook 'after-change-functions
-                   'org-bars-refresh-stars-after-change-function t)
-      (org-bars-revert-heading-stars))
-    (remove-from-invisibility-spec '(org-bars))
-    (org-indent-mode -1)
-    (if org-bars-org-indent-mode (org-indent-mode 1)))))
+      (if org-bars-org-indent-mode (org-indent-mode 1)))))
 
 (provide 'org-bars)
 ;;; org-bars.el ends here

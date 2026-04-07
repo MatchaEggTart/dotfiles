@@ -13,12 +13,12 @@
 (use-package emmet-mode
   :ensure t
   :hook ((
- 		   ;;sgml-mode-hook
- 		   html-mode-hook
- 		   ;; web-mode-hook
- 		   css-mode-hook
- 		   tsx-ts-mode-hook
-		   ) . emmet-mode)
+ 		       ;;sgml-mode-hook
+ 		       html-mode-hook
+ 		       ;; web-mode-hook
+ 		       css-mode-hook
+ 		       tsx-ts-mode-hook
+		       ) . emmet-mode)
   :bind (("C-j" . emmet-expand-line))
   :config
   (setq emmet-indent-after-insert nil
@@ -76,9 +76,9 @@
   :ensure t
   :mode
   (
-	("\config\\'" . nginx-mode)
-	("\\.conf\\'" . nginx-mode)
-	)
+	  ("\config\\'" . nginx-mode)
+	  ("\\.conf\\'" . nginx-mode)
+	  )
   :config
   (setq nginx-indent-level 2)
   )

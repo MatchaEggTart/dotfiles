@@ -35,26 +35,26 @@
   ;; - variable-pitch-mode: 可变宽字体模式（标题用大字体，正文用等宽）
   ;; - visual-line-mode: 视觉行模式（单词自动折行）
   :hook (
-         (org-mode . org-indent-mode)
-         (org-mode . variable-pitch-mode)
-         (org-mode . visual-line-mode)
-         )
+          (org-mode . org-indent-mode)
+          (org-mode . variable-pitch-mode)
+          (org-mode . visual-line-mode)
+          )
 
   ;; :bind 定义全局快捷键（在任意地方都能用）
   ;; :map org-mode-map 定义在 org-mode 的 keymap 中
   :bind (
-         ;; C-c a 打开日程视图（agenda），查看所有待办事项
-         ("C-c a" . org-agenda)
-         ;; C-c l 存储当前文件的链接，之后可以 C-c C-l 粘贴
-         ("C-c l" . org-store-link)
-         ;; C-c c 快速捕获（capture），在任意地方快速记录想法
-         ("C-c c" . org-capture)
-         :map org-mode-map
-         ;; M-n 跳到下一个可见标题（heading）
-         ("M-n" . org-next-visible-heading)
-         ;; M-p 跳到上一个可见标题
-         ("M-p" . org-previous-visible-heading)
-         )
+          ;; C-c a 打开日程视图（agenda），查看所有待办事项
+          ("C-c a" . org-agenda)
+          ;; C-c l 存储当前文件的链接，之后可以 C-c C-l 粘贴
+          ("C-c l" . org-store-link)
+          ;; C-c c 快速捕获（capture），在任意地方快速记录想法
+          ("C-c c" . org-capture)
+          :map org-mode-map
+          ;; M-n 跳到下一个可见标题（heading）
+          ("M-n" . org-next-visible-heading)
+          ;; M-p 跳到上一个可见标题
+          ("M-p" . org-previous-visible-heading)
+          )
 
   :config
   ;; =========================================================================
@@ -91,10 +91,10 @@
   ;; sequence 表示状态转换链，"|" 左边是未完成状态，右边是完成状态
   ;; 快捷键 C-c C-t 可以快速切换状态
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!)")
-          ;; 第一行: 待办 -> 进行中 -> 完成
-          ;; 第二行: 等待 -> 将来 -> 取消 -> 会议 -> 电话
-          (sequence "WAITING(w@/!)" "SOMEDAY(S)" "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)")))
+    '((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!)")
+       ;; 第一行: 待办 -> 进行中 -> 完成
+       ;; 第二行: 等待 -> 将来 -> 取消 -> 会议 -> 电话
+       (sequence "WAITING(w@/!)" "SOMEDAY(S)" "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)")))
 
   ;; =========================================================================
   ;; 记录完成时间
@@ -102,8 +102,8 @@
   ;; org-log-done: 'time 完成时自动记录时间戳
   ;; org-log-into-drawer: t 把日志写入 LOGBOOK drawer（:LOGBOOK: ... :END:）
   (setq org-log-done 'time
-        org-log-into-drawer t
-        org-log-state-notes-insert-after-drawers nil)
+    org-log-into-drawer t
+    org-log-state-notes-insert-after-drawers nil)
 
   ;; =========================================================================
   ;; GTD 日程管理配置
@@ -133,8 +133,8 @@
   ;; org-src-tab-acts-natively: t 代码块中 Tab 正常工作
   ;; org-edit-src-content-indentation: 2 代码块内容缩进空格数
   (setq org-src-fontify-natively t
-        org-src-tab-acts-natively t
-        org-edit-src-content-indentation 2)
+    org-src-tab-acts-natively t
+    org-edit-src-content-indentation 2)
 
   ;; =========================================================================
   ;; 导出配置
@@ -144,9 +144,9 @@
   ;; org-html-doctype: "html5" 使用 HTML5
   ;; org-html-html5-fancy: t 使用 HTML5 标签
   (setq org-export-with-drawers t
-        org-export-with-beamer t
-        org-html-doctype "html5"
-        org-html-html5-fancy t)
+    org-export-with-beamer t
+    org-html-doctype "html5"
+    org-html-html5-fancy t)
 
   ;; =========================================================================
   ;; 表格配置
@@ -154,7 +154,7 @@
   ;; org-table-default-size: "4 2" 默认创建 4 列 2 行的表格
   ;; org-table-header-font-style: 'bold 表头加粗
   (setq org-table-default-size "4 2"
-        org-table-header-font-style 'bold)
+    org-table-header-font-style 'bold)
 
   ;; =========================================================================
   ;; 附件配置
@@ -162,7 +162,7 @@
   ;; org-attach-dir-relative: t 附件路径相对于当前文件
   ;; org-attach-use-inheritance: t 子标题继承父标题的附件目录设置
   (setq org-attach-dir-relative t
-        org-attach-use-inheritance t)
+    org-attach-use-inheritance t)
 
   ;; =========================================================================
   ;; Easy Templates（快速插入代码块）
@@ -200,20 +200,20 @@
   ;; org-modern-table: nil 禁用内置表格美化（由 valign 处理）
   ;; org-modern-block-fringe: nil 禁用代码块边框
   (setq org-modern-hide-stars nil
-        org-modern-indent t
-        org-modern-table nil
-        org-modern-block-fringe nil)
+    org-modern-indent t
+    org-modern-table nil
+    org-modern-block-fringe nil)
 
   ;; org-modern-priority: t 显示优先级徽章（如 [#A]）
   ;; org-modern-todo: t 美化 TODO 标签
   ;; org-modern-done: nil 不美化 DONE 标签
   (setq org-modern-priority t
-        org-modern-todo t
-        org-modern-done nil)
+    org-modern-todo t
+    org-modern-done nil)
 
   ;; org-modern-table-vertical/horizontal: 表格边框样式
   (setq org-modern-table-vertical 2
-        org-modern-table-horizontal 1))
+    org-modern-table-horizontal 1))
 
 ;; ============================================================================
 ;; org-superstar: 标题符号美化
@@ -228,12 +228,12 @@
   ;;   ?- 表示连字符，?\u2013 表示 en dash (–)
   ;;   ?+ 表示加号，?\u2726 表示 star (✦)
   (setq org-superstar-headings
-        '((?* . ?•)    ; * 标题 -> • 标题（一级）
-          (?- . ?–)    ; - 标题 -> – 标题（二级）
-          (?+ . ?✦))   ; + 标题 -> ✦ 标题（三级）
+    '((?* . ?•)    ; * 标题 -> • 标题（一级）
+       (?- . ?–)    ; - 标题 -> – 标题（二级）
+       (?+ . ?✦))   ; + 标题 -> ✦ 标题（三级）
 
-        ;; org-superstar-special-headers: nil 不特殊处理特定标题
-        org-superstar-special-headers nil)
+    ;; org-superstar-special-headers: nil 不特殊处理特定标题
+    org-superstar-special-headers nil)
 
   ;; org-superstar-leading: 前导字符设为空格
   ;;   配合 org-hide-leading-stars 使用，可以让标题看起来更干净
@@ -262,10 +262,10 @@
   ;; org-appear-autosubmarkers: t 显示下标 _ 和上标 ^
   ;; org-appear-emphasis: t 鼠标悬停时显示 * / + 等强调标记
   (setq org-appear-autolinks t
-        org-appear-autosubmarkers t
-        org-appear-emphasis t
-        org-appear-trigger 'hover      ; 触发方式：hover（鼠标悬停）
-        org-appear-delay 0.2))         ; 延迟 0.2 秒后显示
+    org-appear-autosubmarkers t
+    org-appear-emphasis t
+    org-appear-trigger 'hover      ; 触发方式：hover（鼠标悬停）
+    org-appear-delay 0.2))         ; 延迟 0.2 秒后显示
 
 ;; ============================================================================
 ;; org-fragtog: LaTeX 公式即时预览
@@ -278,7 +278,7 @@
   ;; org-fragtog-plain-scaling: 1.0 公式内文本缩放比例
   ;; org-fragtog-display-when-after: t 在光标后显示预览
   (setq org-fragtog-plain-scaling 1.0
-        org-fragtog-display-when-after t))
+    org-fragtog-display-when-after t))
 
 ;; ============================================================================
 ;; org-roam: Zettelkasten 双向链接笔记系统
@@ -289,19 +289,19 @@
 
   ;; 定义快捷键（都在 C-c n 前缀下）
   :bind (
-         ;; C-c n l 切换 Roam 侧边栏（显示当前笔记的反向链接）
-         ("C-c n l" . org-roam-buffer-toggle)
-         ;; C-c n f 查找或创建节点（文件）
-         ("C-c n f" . org-roam-node-find)
-         ;; C-c n g 查看关系图谱
-         ("C-c n g" . org-roam-graph)
-         ;; C-c n i 插入指向其他节点的链接
-         ("C-c n i" . org-roam-node-insert)
-         ;; C-c n c 快速捕获到 Roam
-         ("C-c n j" . org-roam-dailies-capture-today)
-         :map org-mode-map
-         ;; 在 org-mode-map 中也可以用这些快捷键
-         ("C-c n j" . org-roam-dailies-capture-today))
+          ;; C-c n l 切换 Roam 侧边栏（显示当前笔记的反向链接）
+          ("C-c n l" . org-roam-buffer-toggle)
+          ;; C-c n f 查找或创建节点（文件）
+          ("C-c n f" . org-roam-node-find)
+          ;; C-c n g 查看关系图谱
+          ("C-c n g" . org-roam-graph)
+          ;; C-c n i 插入指向其他节点的链接
+          ("C-c n i" . org-roam-node-insert)
+          ;; C-c n c 快速捕获到 Roam
+          ("C-c n j" . org-roam-dailies-capture-today)
+          :map org-mode-map
+          ;; 在 org-mode-map 中也可以用这些快捷键
+          ("C-c n j" . org-roam-dailies-capture-today))
 
   :config
   ;; org-roam-directory: 笔记存放的根目录
@@ -311,8 +311,8 @@
   ;;   ${title:*} 显示标题
   ;;   ${tags:10} 显示标签（宽度 10，右对齐）
   (setq org-roam-node-display-template
-        (concat "${title:*} "
-                (propertize "${tags:10}" 'face 'org-tag)))
+    (concat "${title:*} "
+      (propertize "${tags:10}" 'face 'org-tag)))
 
   ;; org-roam-db-autosync-mode: 启用数据库自动同步
   ;;   自动建立索引，加快搜索和链接解析
@@ -349,12 +349,12 @@
 
   ;; 默认设置
   (setq-default
-   ;; org-download-heading-lvl: nil 下载图片时不添加标题
-   org-download-heading-lvl nil
-   ;; org-download-image-dir: 图片保存的子目录
-   org-download-image-dir "./img"
-   ;; org-download-screenshot-file: 临时截图文件位置
-   org-download-screenshot-file (expand-file-name "screenshot.jpg" temporary-file-directory)))
+    ;; org-download-heading-lvl: nil 下载图片时不添加标题
+    org-download-heading-lvl nil
+    ;; org-download-image-dir: 图片保存的子目录
+    org-download-image-dir "./img"
+    ;; org-download-screenshot-file: 临时截图文件位置
+    org-download-screenshot-file (expand-file-name "screenshot.jpg" temporary-file-directory)))
 
 ;; ;; ============================================================================
 ;; ;; ox-hugo: 导出到 Hugo 博客（暂未安装）
@@ -372,16 +372,16 @@
 ;; 支持在 org 文件中编写和执行代码块
 ;; 使用 C-c C-c 执行当前代码块
 (org-babel-do-load-languages
- 'org-babel-load-languages
- '((shell . t)        ; 执行 shell 命令
-   (python . t)       ; 执行 Python 代码
-   (ruby . t)         ; 执行 Ruby 代码
-   (js . t)           ; 执行 JavaScript 代码
-   (emacs-lisp . t)   ; 执行 Emacs Lisp 代码
-   (sql . t)          ; 执行 SQL 查询
-   (gnuplot . t)      ; 绘制图表
-   (latex . t)        ; 处理 LaTeX 公式
-   (plantuml . t)))   ; 绘制 UML 图
+  'org-babel-load-languages
+  '((shell . t)        ; 执行 shell 命令
+     (python . t)       ; 执行 Python 代码
+     (ruby . t)         ; 执行 Ruby 代码
+     (js . t)           ; 执行 JavaScript 代码
+     (emacs-lisp . t)   ; 执行 Emacs Lisp 代码
+     (sql . t)          ; 执行 SQL 查询
+     (gnuplot . t)      ; 绘制图表
+     (latex . t)        ; 处理 LaTeX 公式
+     (plantuml . t)))   ; 绘制 UML 图
 
 (provide 'init-org)
 

@@ -47,8 +47,8 @@
   (defun my-hs-overlay-display (ov)
     (when (eq 'code (overlay-get ov 'hs))
       (let* ((start (overlay-start ov))
-			      (line (buffer-substring start (line-end-position)))
-			      (overlay-put ov 'display (concat " ▶ " (string-trim line) " ..."))))
+			        (line (buffer-substring start (line-end-position)))
+			        (overlay-put ov 'display (concat " ▶ " (string-trim line) " ..."))))
       
       ;; 语言特定配置 (Python 示例)
       (add-hook 'python-mode-hook
@@ -65,8 +65,8 @@
 		      (lambda () (setq-local linum-disabled t))))
 
       :bind (:map hs-minor-mode-map
-			      ("C-c <left>" . hs-hide-all)
-			      ("C-c <right>" . hs-show-all))
+			        ("C-c <left>" . hs-hide-all)
+			        ("C-c <right>" . hs-show-all))
 	    )
 	  )
   )
