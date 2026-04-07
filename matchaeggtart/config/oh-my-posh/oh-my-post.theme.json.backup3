@@ -77,49 +77,49 @@
       "newline": true // 本区块后换行
     },
     // ========================= 第二行（右对齐） =========================
-    // {
-    //   "alignment": "right",
-    //   "segments": [
-    //     // 1. 用户和主机名
-    //     {
-    //       "background": "#29315A", // 深蓝紫色背景
-    //       "foreground": "#43CCEA", // 青蓝色文本
-    //       "leading_diamond": "\ue0c5", // Powerline左箭头
-    //       "trailing_diamond": "\ue0bc", // Powerline右箭头
-    //       "style": "diamond",
-    //       "template": "  {{ .UserName }}<transparent> / </>{{ .HostName }} ", // 显示 用户名 / 主机名
-    //       "type": "session"
-    //     },
-    //     // 2. 命令执行时间（已注释掉的时间模块）
-    //     /*
-    //     {
-    //       "background": "#29315A",
-    //       "foreground": "#3EC669",
-    //       "properties": { "time_format": "15:04:05" },
-    //       "leading_diamond": "\ue0ba",
-    //       "trailing_diamond": "\ue0bc",
-    //       "style": "diamond",
-    //       "template": " {{ .CurrentDate | date .Format }} ",
-    //       "type": "time"
-    //     },
-    //     */
-    //     // 3. 命令执行耗时
-    //     {
-    //       "background": "#49404f", // 灰紫色背景
-    //       "foreground": "#ffffff",
-    //       "leading_diamond": "\ue0ba", // Powerline左箭头
-    //       "properties": {
-    //         "style": "dallas", // 时间显示样式
-    //         "threshold": 0 // 所有命令都显示耗时
-    //       },
-    //       "style": "diamond",
-    //       "template": " {{ .FormattedMs }}s ", // 显示执行时间（秒）
-    //       // "trailing_diamond": "\ue0b0<#ffffff,transparent>\u2500\u256e</>", // 特殊分隔符
-    //       "type": "executiontime"
-    //     }
-    //   ],
-    //   "type": "prompt"
-    // },
+    {
+      "alignment": "right",
+      "segments": [
+        // 1. 用户和主机名
+        {
+          "background": "#29315A", // 深蓝紫色背景
+          "foreground": "#43CCEA", // 青蓝色文本
+          "leading_diamond": "\ue0c5", // Powerline左箭头
+          "trailing_diamond": "\ue0bc", // Powerline右箭头
+          "style": "diamond",
+          "template": "  {{ .UserName }}<transparent> / </>{{ .HostName }} ", // 显示 用户名 / 主机名
+          "type": "session"
+        },
+        // 2. 命令执行时间（已注释掉的时间模块）
+        /*
+        {
+          "background": "#29315A",
+          "foreground": "#3EC669",
+          "properties": { "time_format": "15:04:05" },
+          "leading_diamond": "\ue0ba",
+          "trailing_diamond": "\ue0bc",
+          "style": "diamond",
+          "template": " {{ .CurrentDate | date .Format }} ",
+          "type": "time"
+        },
+        */
+        // 3. 命令执行耗时
+        {
+          "background": "#49404f", // 灰紫色背景
+          "foreground": "#ffffff",
+          "leading_diamond": "\ue0ba", // Powerline左箭头
+          "properties": {
+            "style": "dallas", // 时间显示样式
+            "threshold": 0 // 所有命令都显示耗时
+          },
+          "style": "diamond",
+          "template": " {{ .FormattedMs }}s ", // 显示执行时间（秒）
+          // "trailing_diamond": "\ue0b0<#ffffff,transparent>\u2500\u256e</>", // 特殊分隔符
+          "type": "executiontime"
+        }
+      ],
+      "type": "prompt"
+    },
     // ========================= 第三行（输入提示符） =========================
     {
       "alignment": "left",
