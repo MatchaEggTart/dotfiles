@@ -23,7 +23,7 @@
     
     ;; 显示行号
     (add-hook 'prog-mode-hook #'display-line-numbers-mode t)
-    ;; (add-hook 'text-mode-hook #'display-line-numbers-mode t)
+    (add-hook 'text-mode-hook #'display-line-numbers-mode t)
     ;; 设置默认行号的长度
     ;; (setq-default display-line-numbers-width-start 4)
     (setq-default display-line-numbers-width 4)
@@ -80,7 +80,7 @@
   ;; (setq dashboard-startup-banner nil)       		;; 不显示 Logo
   (setq dashboard-center-content t)          			;; 内容居中
   (setq dashboard-show-shortcuts t)          			;; 显示快捷键提示
-  (setq dashboard-set-heading-icons t)       			;; 标题使用图标（需要 all-the-icons）
+  ;; (setq dashboard-set-heading-icons t)       	;; 标题使用图标（需要 all-the-icons）
   (setq dashboard-set-init-info t) 								;; 显示加载了多少个包
   (setq dashboard-projects-backend 'projectile)  	;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
   (setq dashboard-startup-banner 'official)    		;; 也可以自定义图片
@@ -190,7 +190,7 @@
   ;; fix doom modeline for org
   ;; 设置 mode-line 高度
   ;;   :custom-face
-  ;;   (mode-line ((t (:height 0.9))))
+  ;;   (modE-line ((t (:height 0.9))))
   ;;   (mode-line-inactive ((t (:height 0.9))))
   )
 
@@ -198,6 +198,12 @@
 (use-package saveplace
   :ensure nil
   :hook (after-init . save-place-mode))
+
+;; neovim 的 neovide
+;; (use-package beacon
+;;   :ensure t
+;;   :config
+;;   (beacon-mode 1))
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
