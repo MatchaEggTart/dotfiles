@@ -65,6 +65,14 @@
     )
   )
 
+(use-package nerd-icons
+  :ensure t
+  ;; :custom
+  ;; The Nerd Font you want to use in GUI
+  ;; "Symbols Nerd Font Mono" is the default and is recommended
+  ;; but you can use any other Nerd Font if you want
+  ;; (nerd-icons-font-family "Symbols Nerd Font Mono")
+  )
 
 (use-package projectile
   :config
@@ -174,11 +182,7 @@
   (after-init . keycast-mode)
   )
 
-;; M-x all-the-icons-install-fonts
-;; (use-package all-the-icons
-;;   :if
-;;   (display-graphic-p)
-;;   )
+
 
 ;; 这里的执行顺序非常重要，doom-modeline-mode 的激活时机一定要在设置global-mode-string 之后
 (use-package doom-modeline

@@ -15,6 +15,7 @@
 
 (require 'init-basic)
 (require 'init-system)
+(require 'init-proxy)
 (require 'init-elpa)
 (require 'init-env)
 (require 'init-keybindings)
