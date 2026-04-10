@@ -9,8 +9,8 @@ Cycle Overview=
 Cycle Overview Opposite=
 Decrease Opacity=
 Edit Tiles=Meta+T
-Expose=Ctrl+F9; Meta+F9
-ExposeAll=Ctrl+F10; Meta+F10; Launch (C)
+Expose=Meta+F9; Ctrl+F9
+ExposeAll=Launch (C); Ctrl+F10; Meta+F10
 ExposeClass=Ctrl+F7; Meta+F7
 ExposeClassCurrentDesktop=
 Grid View=Meta+G
@@ -77,7 +77,7 @@ Switch to Screen to the Left=
 Switch to Screen to the Right=
 Toggle Night Color=
 Toggle Window Raise/Lower=
-Walk Through Windows=Meta+Tab; Alt+Tab
+Walk Through Windows=Alt+Tab; Meta+Tab
 Walk Through Windows (Reverse)=Alt+Shift+Tab; Meta+Shift+Tab
 Walk Through Windows Alternative=
 Walk Through Windows Alternative (Reverse)=
@@ -186,7 +186,19 @@ seekforwardmedialong=
 stopmedia=Media Stop
 
 [org.kde.kscreen.desktop][Global Shortcuts]
-ShowOSD=Display; Meta+P
+ShowOSD=Meta+P; Display
+
+[org.kde.spectacle.desktop][Global Shortcuts]
+ActiveWindowScreenShot=Meta+Print
+CurrentMonitorScreenShot=
+FullScreenScreenShot=Shift+Print
+OpenWithoutScreenshot=
+RecordRegion=Meta+Shift+R; Meta+R
+RecordScreen=Meta+Alt+R
+RecordWindow=Meta+Ctrl+R
+RectangularRegionScreenShot=Meta+Shift+Print; Meta+F1
+WindowUnderCursorScreenShot=Meta+Ctrl+Print
+_launch=Meta+Shift+S; Print
 
 [plasmashell][Global Shortcuts]
 Slideshow Wallpaper Next Image=
@@ -201,6 +213,7 @@ activate task manager entry 6=
 activate task manager entry 7=
 activate task manager entry 8=
 activate task manager entry 9=
+activate widget 76=
 clear-history=
 clipboard_action=
 cycle-panels=Meta+Alt+P
