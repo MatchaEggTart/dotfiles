@@ -9,11 +9,34 @@
 ;;   ;; (global-tree-sitter-mode)
 ;;   (tree-sitter-require 'c)
 ;;   (tree-sitter-require 'typescript)
-;;   
+;;
 ;;   )
-;;  
+;;
 ;; (use-package tree-sitter-langs
 ;;   )
+
+
+;; 强制忽略所有 treesit 查询错误，防止高亮直接挂掉
+(setq treesit--suppress-native-compile-warnings t) ; 减少干扰
+
+(with-eval-after-load 'treesit
+  ;; 1. 修正 treesit-query-capture 的 advice，去掉 message 提示，实现完全静音
+  (advice-add 'treesit-query-capture :around
+    (lambda (orig-fun &rest args)
+      (condition-case nil
+        (apply orig-fun args)
+        (treesit-query-error nil))))
+
+  ;; 2. 针对 Emacs 30 内置 C 模式的硬核修理
+  ;; 直接从根源上移除 c-ts-mode 中那些会导致错误的定义
+  (advice-add 'treesit-query-compile :around
+    (lambda (orig-fun lang query &optional eager)
+      (let ((clean-query query))
+        (when (and (eq lang 'c) (stringp query))
+          ;; 依次移除报错频率最高的几个坏规则
+          (setq clean-query (replace-regexp-in-string "((declaration type: (macro_type_specifier name: (identifier) @_name) @for-each-tail) (#match \"FOR_EACH_\\\\(?:ALIST_VALUE\\\\|FRAME\\\\|LIVE_BUFFER\\\\|TAIL\\\\(?:_SAFE\\\\)?\\\\)\" @_name))" "" clean-query))
+          (setq clean-query (replace-regexp-in-string "((call_expression (call_expression function: (identifier) @fn) @c-ts-mode--fontify-DEFUN) (#match \"\\\\`DEFUN\\\\'\" @fn))" "" clean-query)))
+        (apply orig-fun lang clean-query eager)))))
 
 (use-package treesit-auto
   :demand t
@@ -38,6 +61,7 @@
 	     ))
   :mode
   (
+    ("\\.c\\'"        . c-ts-mode)
     ("\\.go\\'" 			. go-ts-mode)
     ("/go\\.mod\\'" 	. go-mod-ts-mode)
     ("\\.rs\\'" 			. rust-ts-mode)
@@ -54,14 +78,15 @@
 	  ("\\.py\\'" 			. python-ts-mode)
     ("\\.lua\\'"      . lua-ts-mode)
     )
-  
+
   :config
   (setq treesit-auto-install 'prompt)
   (global-treesit-auto-mode)
-  (add-to-list 'treesit-extra-load-path "~/.config/emacs/tree-sitter/tree-sitter-module")
-  
+  (add-to-list 'treesit-extra-load-path "~/.config/emacs/tree-sitter")
+
   ;; (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
   ;; 更多高亮
+  ;; (setq treesit-font-lock-level 4)
   (setq treesit-font-lock-level 4)
 
   ;; 缩进
@@ -73,25 +98,25 @@
 
   ;; lisp
   (setq lisp-indent-offset 2)
-  
+
   ;; c
   (setq c-ts-mode-indent-offset 4)
-  
+
   ;; js ts
   ;; (setq js-ts-mode-indent-offset 2)
   (setq js-indent-level 2)
   (setq tsx-ts-mode-indent-offset 2)
-  
+
   ;; json
   (setq json-ts-mode-indent-offset 2)
-  
+
   ;; ts
   (setq typescript-ts-mode-indent-offset 2)
   (setq tsx-ts-mode-indent-offset 2)
 
   ;; python
   (setq python-indent-offset 2)
-  
+
   ;; nginx
   (with-eval-after-load 'nginx-mode
 	  (setq nginx-indent-level 4))
@@ -101,4 +126,3 @@
 (provide 'init-treesit)
 
 ;;; init-treesit.el ends here
-

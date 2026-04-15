@@ -39,14 +39,16 @@
 ;; 打开 init.el 文件
 (defun open-init-file()
   (interactive)
-  (find-file (concat user-emacs-directory "init.el")))
+  (find-file (concat user-emacs-directory "init.el"))
+  )
 
 (global-set-key (kbd "<f6>") 'open-init-file)
 
 ;; 打开配置文件
 (defun open-config-folder()
   (interactive)
-  (dired "~/.config/emacs/lisp/"))
+  (dired "~/.config/emacs/lisp/")
+  )
 
 (global-set-key (kbd "<f7>") 'open-config-folder)
 
@@ -61,7 +63,8 @@
 ;; 打开 Worpspace
 (defun open-workspace()
   (interactive)
-  (dired "$HOME/Workspace/"))
+  (dired "$HOME/Workspace/")
+  )
 
 (global-set-key (kbd "<f9>") 'open-workspace)
 

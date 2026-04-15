@@ -8,22 +8,23 @@
   :config
   ;; 1. 通过 ls 参数确保对齐
   (setq dired-listing-switches "-lAgho --group-directories-first --time-style=long-iso")
-  
+
   (setq dired-dwim-target t
 	  delete-by-moving-to-trash t)
   ;; 开启 Dired 详情隐藏（默认只看文件名，按 ( 切换）
   ;; (add-hook 'dired-mode-hook 'dired-hide-details-mode)
-  
+
   ;; 如果是 Linux 用户，解决 ls 参数报错问题
   ;; (when (string= system-type "gnu/linux")
   ;;   (setq dired-use-ls-dired t))
-  
+
   ;; 解决 dired-subtree 展开时图标不刷新的问题
   (with-eval-after-load 'dired-subtree
     (advice-add 'dired-subtree-insert :after #'nerd-icons-dired-mode))
 
   )
 
+;; 左侧树状
 (use-package dired-sidebar
   :ensure t
   :bind (
@@ -51,7 +52,8 @@
 ;; 颜色高亮
 (use-package diredfl
   :ensure t
-  :hook (dired-mode . diredfl-mode))
+  :hook (dired-mode . diredfl-mode)
+  )
 
 (use-package nerd-icons-dired
   :pin melpa

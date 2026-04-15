@@ -10,7 +10,8 @@
 
 (defun my-exec-path-from-shell-initialize ()
   (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
+    (exec-path-from-shell-initialize))
+  )
 
 (use-package exec-path-from-shell
   :ensure t
@@ -34,7 +35,6 @@
   ;; :init
   ;; (add-hook 'after-init-hook 'my-exec-path-from-shell-initialize)
   ;; (setq exec-path-from-shell-check-startup-files nil)
-
   )
 
 (provide 'init-env)

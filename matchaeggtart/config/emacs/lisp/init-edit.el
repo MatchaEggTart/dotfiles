@@ -30,13 +30,13 @@
 (use-package hideshow
   :ensure nil  ; 内置包不需要安装
   :hook (prog-mode . hs-minor-mode)  ; 在编程模式自动启用
-  
+
   :config
   ;; 基本设置
   (setq hs-hide-comments-when-hiding-all nil
 	  hs-isearch-open t
 	  hs-allow-nesting t)
-  
+
   ;; 按键绑定 (使用 C-c h 前缀)
   (define-key hs-minor-mode-map (kbd "C-c TAB") 'hs-toggle-hiding)
   (define-key hs-minor-mode-map (kbd "C-c <left>") 'hs-hide-all)
@@ -49,7 +49,7 @@
       (let* ((start (overlay-start ov))
 			        (line (buffer-substring start (line-end-position)))
 			        (overlay-put ov 'display (concat " ▶ " (string-trim line) " ..."))))
-      
+
       ;; 语言特定配置 (Python 示例)
       (add-hook 'python-mode-hook
 		    (lambda ()
@@ -58,7 +58,7 @@
 					           nil "#"
 					           hs-c-like-adjust-block-beginning)
 			        hs-special-modes-alist))))
-      
+
       ;; 兼容行号显示
       (with-eval-after-load 'linum
 		    (add-hook 'hs-minor-mode-hook
@@ -85,11 +85,13 @@
 ;; 删除自动清除空白位置(新)
 (use-package hungry-delete
   ;; :init (global-hungry-delete-mode))
-  :hook (after-init . global-hungry-delete-mode))
+  :hook (after-init . global-hungry-delete-mode)
+  )
 
 ;; 文本编辑之行/区域上下移动(新)
 (use-package move-dup
-  :hook (after-init . global-move-dup-mode))
+  :hook (after-init . global-move-dup-mode)
+  )
 
 ;; 快速切换窗格
 (use-package ace-window
@@ -134,7 +136,8 @@
   :ensure t
   :defer t
   :bind (("C-c e e" . er/expand-region)
-		      ("C-c e c" . er/contract-region)))
+		      ("C-c e c" . er/contract-region))
+  )
 
 
 (provide 'init-edit)

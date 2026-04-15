@@ -29,13 +29,15 @@
       '((typescript-ts-mode tsx-ts-mode)
          . ("typescript-language-server" "--stdio")))
     ;; (add-to-list 'eglot-server-programs '((sql-mode). ("sql-language-server" "up --method stdio")))
-    ))
+    )
+  )
 
 (use-package eldoc-box
   :ensure t
   :custom
   ;; remove child frame as soon as cursor moves to another position
-  (eldoc-box-cleanup-interval 0))
+  (eldoc-box-cleanup-interval 0)
+  )
 
 (provide 'init-eglot)
 ;;; init-eglot.el ends here

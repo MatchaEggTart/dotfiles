@@ -13,7 +13,8 @@
   ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
   ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
   :init
-  (vertico-mode))
+  (vertico-mode)
+  )
 
 ;; 保存搜索历史
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
@@ -42,7 +43,8 @@
   ;;       orderless-component-separator #'orderless-escapable-split-on-space)
   (setq completion-styles '(orderless basic)
 	  completion-category-defaults nil
-	  completion-category-overrides '((file (styles partial-completion)))))
+	  completion-category-overrides '((file (styles partial-completion))))
+  )
 
 ;; 增强 minibuffer， 可以显示各种值跟其他数据
 ;; Enable rich annotations using the Marginalia package
@@ -57,7 +59,8 @@
 
   ;; Must be in the :init section of use-package such that the mode gets
   ;; enabled right away. Note that this forces loading the package.
-  (marginalia-mode))
+  (marginalia-mode)
+  )
 
 ;; C-s C-r 搜索增强
 ;; sudo dnf install ripgrep || sudo pacman -S ripgrep
@@ -117,7 +120,8 @@
   ;; only need to install it, embark loads it after consult if found
   :after (consult embark)
   :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
+  (embark-collect-mode . consult-preview-at-point-mode)
+  )
 
 (use-package wgrep
   :config
@@ -140,9 +144,10 @@
 	             (embark-export)))
       ('consult-location (let ((embark-after-export-hook #'occur-edit-mode))
 			                     (embark-export)))
-      (x (user-error "embark category %S doesn't support writable export" x)))))
+      (x (user-error "embark category %S doesn't support writable export" x))))
+  )
 
-(define-key minibuffer-local-map (kbd "C-c C-e") 'embark-export-write)  
+(define-key minibuffer-local-map (kbd "C-c C-e") 'embark-export-write)
 
 ;; 批量替换
 ;; 先使用 M-x consult-ripgrep，输入字符串

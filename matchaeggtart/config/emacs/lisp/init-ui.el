@@ -10,29 +10,29 @@
   (progn
     ;; 关闭启动界面
     (setq inhibit-startup-screen t)
-    
+
     ;; 自动最大化
     ;; (toggle-frame-maximized)
-    
+
     ;; 菜单栏关闭
     ;; (menu-bar-mode 0)
     ;; 工具栏关闭
     ;; (tool-bar-mode 0)
     ;; 滚动条关闭
     ;; (scroll-bar-mode 0)
-    
+
     ;; 显示行号
     (add-hook 'prog-mode-hook #'display-line-numbers-mode t)
     (add-hook 'text-mode-hook #'display-line-numbers-mode t)
     ;; 设置默认行号的长度
     ;; (setq-default display-line-numbers-width-start 4)
     (setq-default display-line-numbers-width 4)
-    
+
     ;; 高亮当前行
     (add-hook 'prog-mode-hook #'hl-line-mode t)
     (add-hook 'text-mode-hook #'hl-line-mode t)
     ;; (global-hl-line-mode t)
-    
+
     ;; 光标线状还是块状
     ;; (setq-default cursor-type 'bar)
     (setq-default cursor-type 'box)
@@ -49,7 +49,7 @@
     ;; (set-fontset-font t 'han (font-spec :family "霞鹜文楷" :weight 'bold))
     ;; (set-fontset-font t 'han (font-spec :family "WenQuanYi Zen Hei Mono" :size 16))
     ;; (set-fontset-font t 'han (font-spec :family "Maple Mono NF CN" :size 16))
-    
+
     ;; 透明度
     ;; (set-frame-parameter nil 'alpha-background 90)
     ;; (add-to-list 'default-frame-alist '(alpha-background . 90))
@@ -74,28 +74,28 @@
   ;; (nerd-icons-font-family "Symbols Nerd Font Mono")
   )
 
-(use-package projectile
-  :config
-  (projectile-mode +1)  
-  )
+;; (use-package projectile
+;;   :config
+;;   (projectile-mode +1)
+;;   )
 
 ;; 启动
-(use-package dashboard
-  :init
-  (dashboard-setup-startup-hook)
-  :config
-  ;; (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
-  ;; (setq dashboard-startup-banner nil)       		;; 不显示 Logo
-  (setq dashboard-center-content t)          			;; 内容居中
-  (setq dashboard-show-shortcuts t)          			;; 显示快捷键提示
-  ;; (setq dashboard-set-heading-icons t)       	;; 标题使用图标（需要 all-the-icons）
-  (setq dashboard-set-init-info t) 								;; 显示加载了多少个包
-  (setq dashboard-projects-backend 'projectile)  	;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
-  (setq dashboard-startup-banner 'official)    		;; 也可以自定义图片
-  (setq dashboard-items '((recents  . 5)        	;; 显示多少个最近文件
-                           ;; (bookmarks . 5)     ;; 显示多少个最近书签
-                           (projects . 5)))      	;; 显示多少个最近项目
-  )
+;; (use-package dashboard
+;;   :init
+;;   (dashboard-setup-startup-hook)
+;;   :config
+;;   ;; (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
+;;   ;; (setq dashboard-startup-banner nil)       		;; 不显示 Logo
+;;   (setq dashboard-center-content t)          			;; 内容居中
+;;   (setq dashboard-show-shortcuts t)          			;; 显示快捷键提示
+;;   ;; (setq dashboard-set-heading-icons t)       	;; 标题使用图标（需要 all-the-icons）
+;;   (setq dashboard-set-init-info t) 								;; 显示加载了多少个包
+;;   (setq dashboard-projects-backend 'projectile)  	;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
+;;   (setq dashboard-startup-banner 'official)    		;; 也可以自定义图片
+;;   (setq dashboard-items '((recents  . 5)        	;; 显示多少个最近文件
+;;                            ;; (bookmarks . 5)     ;; 显示多少个最近书签
+;;                            (projects . 5)))      	;; 显示多少个最近项目
+;;   )
 
 ;; 主题
 ;; For packaged versions which must use `require'.
@@ -107,14 +107,14 @@
 ;;     ;; Add all your customizations prior to loading the themes
 ;;     (setq modus-themes-italic-constructs t
 ;; 	  modus-themes-bold-constructs nil)
-;;     
+;;
 ;;     ;; Maybe define some palette overrides, such as by using our presets
 ;;     (setq modus-themes-common-palette-overrides
 ;; 	  modus-themes-preset-overrides-intense)
-;;     
+;;
 ;;     ;; Load the theme of your choice.
 ;;     (load-theme 'modus-operandi-tinted :no-confim)
-;;     
+;;
 ;;     ;; (define-key global-map (kbd "<f5>") #'modus-themes-toggle)
 ;;     )
 ;;   )
@@ -201,7 +201,8 @@
 ;; 记住 buffer 光标位置
 (use-package saveplace
   :ensure nil
-  :hook (after-init . save-place-mode))
+  :hook (after-init . save-place-mode)
+  )
 
 ;; neovim 的 neovide
 ;; (use-package beacon

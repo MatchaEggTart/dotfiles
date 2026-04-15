@@ -63,7 +63,7 @@
 
   ;; 以前的标题
   ;; (require 'org-bars)
-  
+
   ;; org-hide-leading-stars: t 隐藏标题前的多余星号
   ;;   例如: * 第一章  显示为 第一章 (而不是 * 第一章)
   (setq org-hide-leading-stars t)
