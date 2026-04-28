@@ -28,7 +28,7 @@
 (use-package dired-sidebar
   :ensure t
   :bind (
-          ("C-c C-d" . dired-sidebar-toggle-sidebar)
+          ("C-c d" . dired-sidebar-toggle-sidebar)
           :map dired-sidebar-mode-map
 	        ("<backspace>" . dired-sidebar-up-directory)
           )

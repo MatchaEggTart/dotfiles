@@ -1,23 +1,50 @@
-function proxy_on() {
-    export http_proxy="socks5://127.0.0.1:1080"
-    export https_proxy=$http_proxy
-    echo -e "\nPROXY is ON\n"
-}
+# function proxy_on() {
+#     export http_proxy="socks5://127.0.0.1:1080"
+#     export https_proxy=$http_proxy
+#     echo -e "\nPROXY is ON\n"
+# }
+# 
+# function proxy_off(){
+#     unset http_proxy https_proxy
+#     echo -e "\nPROXY is OFF\n"
+# }
+# 
+# function proxy_status() {
+#     echo 
+#     if [ -z ${https_proxy} ]; then
+# 	echo -e "PROXY is OFF\n"
+#     else
+# 	echo -e "PROXY is ON\n"
+#     fi
+# }
+# 
+# function proxy_test() {
+#     curl -I http://www.google.com
+# }
+#
 
+function proxy_on() {
+    # 使用 Privoxy (socks5 -> http)
+    export http_proxy="http://127.0.0.1:1080"
+    export https_proxy=$http_proxy
+    export HTTP_PROXY=$http_proxy
+    export HTTPS_PROXY=$https_proxy
+    echo -e "\nPROXY is ON (HTTP via Privoxy)\n"
+}
 function proxy_off(){
-    unset http_proxy https_proxy
+    unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
     echo -e "\nPROXY is OFF\n"
 }
-
 function proxy_status() {
     echo 
     if [ -z ${https_proxy} ]; then
-	echo -e "PROXY is OFF\n"
+        echo -e "PROXY is OFF\n"
     else
-	echo -e "PROXY is ON\n"
+        echo -e "PROXY is ON\n"
+        echo "http_proxy=$http_proxy"
+        echo "https_proxy=$https_proxy"
     fi
 }
-
 function proxy_test() {
     curl -I http://www.google.com
 }
