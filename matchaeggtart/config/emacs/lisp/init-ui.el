@@ -74,28 +74,28 @@
   ;; (nerd-icons-font-family "Symbols Nerd Font Mono")
   )
 
-;; (use-package projectile
-;;   :config
-;;   (projectile-mode +1)
-;;   )
+(use-package projectile
+  :config
+  (projectile-mode +1)
+  )
 
 ;; 启动
-;; (use-package dashboard
-;;   :init
-;;   (dashboard-setup-startup-hook)
-;;   :config
-;;   ;; (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
-;;   ;; (setq dashboard-startup-banner nil)       		;; 不显示 Logo
-;;   (setq dashboard-center-content t)          			;; 内容居中
-;;   (setq dashboard-show-shortcuts t)          			;; 显示快捷键提示
-;;   ;; (setq dashboard-set-heading-icons t)       	;; 标题使用图标（需要 all-the-icons）
-;;   (setq dashboard-set-init-info t) 								;; 显示加载了多少个包
-;;   (setq dashboard-projects-backend 'projectile)  	;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
-;;   (setq dashboard-startup-banner 'official)    		;; 也可以自定义图片
-;;   (setq dashboard-items '((recents  . 5)        	;; 显示多少个最近文件
-;;                            ;; (bookmarks . 5)     ;; 显示多少个最近书签
-;;                            (projects . 5)))      	;; 显示多少个最近项目
-;;   )
+(use-package dashboard
+  :init
+  (dashboard-setup-startup-hook)
+  :config
+  ;; (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
+  ;; (setq dashboard-startup-banner nil)       		;; 不显示 Logo
+  (setq dashboard-center-content t)          			;; 内容居中
+  (setq dashboard-show-shortcuts t)          			;; 显示快捷键提示
+  ;; (setq dashboard-set-heading-icons t)       	;; 标题使用图标（需要 all-the-icons）
+  (setq dashboard-set-init-info t) 								;; 显示加载了多少个包
+  (setq dashboard-projects-backend 'projectile)  	;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
+  (setq dashboard-startup-banner 'official)    		;; 也可以自定义图片
+  (setq dashboard-items '((recents  . 5)        	;; 显示多少个最近文件
+                           ;; (bookmarks . 5)     ;; 显示多少个最近书签
+                           (projects . 5)))      	;; 显示多少个最近项目
+  )
 
 ;; 主题
 ;; For packaged versions which must use `require'.
