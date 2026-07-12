@@ -19,7 +19,7 @@ rm -rf $HOME/.config/pip
 
 rm -rf $HOME/.npmrc
 
-cd $HOME/dotfiles/matchaeggtart
+cd "$(dirname "$0")/matchaeggtart"
 stow --target=$HOME zsh
 stow --target=$HOME bash
 stow --target=$HOME npm
